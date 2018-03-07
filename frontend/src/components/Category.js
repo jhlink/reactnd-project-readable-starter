@@ -13,3 +13,5 @@ Category.propTypes = {
 	name: PropTypes.string.isRequired,
 	path: PropTypes.string.isRequired
 };
+
+export default Category;
