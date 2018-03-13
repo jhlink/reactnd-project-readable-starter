@@ -23,8 +23,10 @@ class App extends Component {
 
 		return (
 			<div className="App">
-				<div className="App-header">
+				<div className="column menu">
 					<NavHeader categories={ categories } />
+				</div>
+				<div className="column content">
 				</div>
 			</div>
 		);
