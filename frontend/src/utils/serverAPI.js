@@ -11,6 +11,11 @@ export const GetCategories = () =>
 		headers: reqHeaders
 	}).then((res) => res.json());
 
+export const GetPosts = () =>
+	fetch(`${API_HOST}/posts`, { 
+		headers: reqHeaders
+	}).then((res) => res.json());
+
 export const GetCategoryPosts = (category) => 
 	fetch(`${API_HOST}/${category}/posts`, {
 		headers:  reqHeaders
