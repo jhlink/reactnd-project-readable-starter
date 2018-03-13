@@ -2,7 +2,7 @@ import {
 	LOAD_CATEGORY_POSTS
 } from '../actions';
 
-function categoryPostLoader (state = initialState, action) {
+function categoryPostLoader (state, action) {
 	const { categoryId } = action;
 
 	if ( action.type === LOAD_CATEGORY_POSTS ) {
