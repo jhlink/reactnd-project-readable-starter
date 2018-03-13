@@ -2,16 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 
 const Category = (props) => {
-	const { name, path } = props; 
+	const { category } = props;
+	console.log(category);
+	const name = category.name;
 
 	return (
-		<li key={path}>{name}</li> 
+		<span>
+			{ name }
+		</span>
 	);
 };
 
 Category.propTypes = {
-	name: PropTypes.string.isRequired,
-	path: PropTypes.string.isRequired
+	category: PropTypes.object.isRequired
 };
 
 export default Category;
