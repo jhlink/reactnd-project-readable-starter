@@ -20,6 +20,18 @@ li {
   border: 1px solid black;
 }
 
+.column {
+  float: left;
+}
+
+.column.menu {
+  width: 25%;
+}
+
+.column.content {
+  width: 75%;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1070px;
