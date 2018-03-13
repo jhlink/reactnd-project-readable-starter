@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import * as ServerAPI from '../utils/serverAPI.js';
 import NavHeader from './NavHeader.js';
-import Post from './Post.js';
 import PostList from './PostList.js';
 
 class App extends Component {
