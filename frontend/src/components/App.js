@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import * as ServerAPI from './utils/serverAPI.js';
-import NavHeader from './components/NavHeader.js';
+import * as ServerAPI from '../utils/serverAPI.js';
+import NavHeader from './NavHeader.js';
 
 class App extends Component {
 	constructor(props) {
