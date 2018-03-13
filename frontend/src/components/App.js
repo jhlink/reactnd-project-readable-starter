@@ -19,10 +19,10 @@ class App extends Component {
 				this.setState(data);
 			});
 
-		ServerAPI.GetCategoryPosts('react')
+		ServerAPI.GetPosts()
 			.then((data) => {
 				console.log(data);
-				this.setState( {posts: data });
+				this.setState( { posts: data } );
 			});
 	}
 
