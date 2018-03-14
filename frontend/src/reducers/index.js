@@ -9,8 +9,11 @@ function categoryPostLoader (state = {}, action) {
 		console.log('Reducer Output: ', state);
 		return {
 			...state,
+			selectedCategoryId: categoryId
 		};
-	}
+	} 
+  
+	return state;
 }
 
 export default categoryPostLoader;
