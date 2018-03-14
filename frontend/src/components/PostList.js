@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Post from './Post';
+import { connect } from 'react-redux';
 
 class PostList extends Component {
   
@@ -24,4 +25,4 @@ PostList.propTypes = {
 };
 
 
-export default PostList;
+export default connect()(PostList);
