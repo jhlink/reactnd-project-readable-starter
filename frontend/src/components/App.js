@@ -1,5 +1,5 @@
 import React from 'react';
-import NavHeader from './NavHeader';
+import CategoryListLogic from '../containers/CategoryListLogic';
 import PostList from './PostList';
 import PropTypes from 'prop-types';
 
@@ -9,7 +9,7 @@ const App = (props) => {
 	return (
 		<div className="App">
 			<div className="column menu">
-				<NavHeader categories={ categories } />
+				<CategoryListLogic categories={ categories } />
 			</div>
 			<div className="column content">
 				<PostList posts={ posts } />
