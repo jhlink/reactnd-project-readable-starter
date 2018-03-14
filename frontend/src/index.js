@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import AppLogic from './containers/AppLogic';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore } from 'redux';
 import reducer from './reducers';
@@ -14,7 +14,7 @@ const store = createStore(
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App /> 
+		<AppLogic /> 
 	</Provider>,
 	document.getElementById('root'));
 registerServiceWorker();
