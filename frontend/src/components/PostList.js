@@ -24,5 +24,13 @@ PostList.propTypes = {
 	posts: PropTypes.array.isRequired
 };
 
+const mapStateToProps = (state, props) => {
+	let filteredState = { posts : props.posts };
+	if (state.selectedCategoryId) {
+		filteredState['posts'] = filteredState['posts'].filter((post) => post.category === state.selectedCategoryId);
+	} 
+  
+	return filteredState;
+};
 
-export default connect()(PostList);
+export default connect(mapStateToProps)(PostList);
