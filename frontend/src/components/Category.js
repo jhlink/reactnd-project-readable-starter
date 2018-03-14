@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 const Category = (props) => {
 	const { category } = props;
-	const name = category.name;
 
 	return (
 		<span>
-			{ name }
+			{ category.name }
 		</span>
 	);
 };
