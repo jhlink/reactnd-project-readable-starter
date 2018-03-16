@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: ["plugin:react/recommended"],
+  extends: ["babel-eslint", "plugin:react/recommended"],
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
