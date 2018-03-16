@@ -1,6 +1,6 @@
 import React from 'react';
 import CategoryListLogic from '../containers/CategoryListLogic';
-import PostList from './PostList';
+import PostListLogic from '../containers/PostListLogic';
 import PropTypes from 'prop-types';
 
 const App = (props) => { 
@@ -12,7 +12,7 @@ const App = (props) => {
 				<CategoryListLogic categories={ categories } />
 			</div>
 			<div className="column content">
-				<PostList posts={ posts } />
+				<PostListLogic posts={ posts } />
 			</div>
 		</div>
 	); 
