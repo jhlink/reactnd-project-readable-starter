@@ -1,36 +1,26 @@
-import React, { Component } from 'react';
-import * as ServerAPI from '../utils/serverAPI.js';
-import NavHeader from './NavHeader.js';
+import React from 'react';
+import CategoryListLogic from '../containers/CategoryListLogic';
+import PostListLogic from '../containers/PostListLogic';
+import PropTypes from 'prop-types';
 
-class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			categories: []
-		};
-	}
+const App = (props) => { 
+	const { categories, posts } = props;
 
-	componentDidMount() {
-		ServerAPI.GetCategories()
-			.then((data) => {
-				console.log(data);
-				this.setState(data);
-			});
-	}
-
-	render() {
-		const { categories } = this.state;
-
-		return (
-			<div className="App">
-				<div className="column menu">
-					<NavHeader categories={ categories } />
-				</div>
-				<div className="column content">
-				</div>
+	return (
+		<div className="App">
+			<div className="column menu">
+				<CategoryListLogic categories={ categories } />
 			</div>
-		);
-	}
-}
+			<div className="column content">
+				<PostListLogic posts={ posts } />
+			</div>
+		</div>
+	); 
+}; 
+
+App.propTypes = {
+	categories: PropTypes.array.isRequired,
+	posts: PropTypes.array.isRequired
+};
 
 export default App;
