@@ -14,6 +14,7 @@ const CategoryList = (props) => {
             <Link 
               to={'/' +  c.path}
               onClick={() => handleSelectedCategory(c.path) }
+              className="nav link"
             > { c.name } </Link>
 					</li>
 				)}
