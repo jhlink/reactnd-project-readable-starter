@@ -10,7 +10,7 @@ const CategoryList = (props) => {
 			<h1 className=".header">Categories</h1>
 			<ul className=".nav">
 				{categories.map( c => 
-					<li key = { c.path } onClick={(e) => handleSelectedCategory(e.target.textContent)}>
+					<li key = { c.path } onClick={() => handleSelectedCategory(c.path)}>
 						<Category category={ c } />
 					</li>
 				)}
