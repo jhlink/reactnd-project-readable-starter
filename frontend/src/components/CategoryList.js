@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Category from './Category';
+import { Link } from 'react-router-dom'
 
 const CategoryList = (props) => {
 	const { categories, handleSelectedCategory } = props;
@@ -9,9 +9,12 @@ const CategoryList = (props) => {
 		<div>
 			<h1 className=".header">Categories</h1>
 			<ul className=".nav">
-				{categories.map( c => 
-					<li key = { c.path } onClick={() => handleSelectedCategory(c.path)}>
-						<Category category={ c } />
+				{ categories.map( c => 
+					<li key={ c.path }>
+            <Link 
+              to={'/' +  c.path}
+              onClick={() => handleSelectedCategory(c.path) }
+            > { c.name } </Link>
 					</li>
 				)}
 			</ul>
