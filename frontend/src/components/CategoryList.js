@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 const CategoryList = (props) => {
 	const { categories, handleSelectedCategory } = props;
@@ -11,11 +11,11 @@ const CategoryList = (props) => {
 			<ul className=".nav">
 				{ categories.map( c => 
 					<li key={ c.path }>
-            <Link 
+            <NavLink 
               to={'/' +  c.path}
               onClick={() => handleSelectedCategory(c.path) }
               className="nav link"
-            > { c.name } </Link>
+            > { c.name } </NavLink>
 					</li>
 				)}
 			</ul>
