@@ -25,6 +25,10 @@ li {
   display: block;
 }
 
+.active {
+  color: orange;
+}
+
 .post {
   width: 100%;
 }
