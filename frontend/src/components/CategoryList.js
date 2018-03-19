@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
+import PostListLogic from '../containers/PostListLogic'
 
 const CategoryList = (props) => {
-	const { categories, handleSelectedCategory } = props;
+	const { categories } = props;
 
 	return (
 		<div>
@@ -13,19 +14,21 @@ const CategoryList = (props) => {
 					<li key={ c.path }>
             <NavLink 
               to={'/' +  c.path}
-              onClick={() => handleSelectedCategory(c.path) }
               className="nav link"
             > { c.name } </NavLink>
 					</li>
 				)}
 			</ul>
+
+      <Switch> 
+        <Route path={`/:categoryId?`} component={ PostListLogic }/>
+      </Switch>
 		</div>
 	);
 };
 
 CategoryList.propTypes = {
-	categories: PropTypes.array.isRequired,
-	handleSelectedCategory: PropTypes.func.isRequired
+	categories: PropTypes.array.isRequired
 };
 
 export default CategoryList;
