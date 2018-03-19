@@ -8,19 +8,12 @@ class AppLogic extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			categories: [],
-			posts: []
+			categories: []
 		};
 	}
 
 	componentDidMount() {
     this.props.dispatch(FetchCategories());
-    
-		ServerAPI.GetPosts()
-			.then((data) => {
-				console.log(data);
-				this.setState( { posts: data } );
-			});
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -31,8 +24,7 @@ class AppLogic extends Component {
 
 	render() {
     const { categories } = this.state;
-		return <App categories={categories}
-			posts={this.state.posts}/>;
+		return <App categories={categories}/>;
 	}
 }
 
