@@ -1,3 +1,5 @@
+import { combineReducers} from 'redux'
+
 import {
 	LOAD_CATEGORY_POSTS,
   GET_ALL_CATEGORIES,
@@ -41,4 +43,9 @@ function postHandler (state = {}, action) {
   }
 }
 
-export default categoryHandler;
+const rootReducer = combineReducers({
+  categoryHandler,
+  postHandler
+});
+
+export default rootReducer;

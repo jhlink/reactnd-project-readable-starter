@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import AppLogic from './containers/AppLogic';
 import registerServiceWorker from './registerServiceWorker';
-import reducer from './reducers';
+import rootReducer from './reducers';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,7 +13,7 @@ import thunkMiddleware from 'redux-thunk';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
-	reducer,
+	rootReducer,
   composeEnhancers(
     applyMiddleware(loggerMiddleware),
     applyMiddleware(thunkMiddleware)
