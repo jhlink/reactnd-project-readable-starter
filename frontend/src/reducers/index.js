@@ -3,7 +3,7 @@ import {
   GET_ALL_CATEGORIES
 } from '../actions';
 
-function categoryPostLoader (state = {}, action) {
+function categoryHandler (state = {}, action) {
 	const { categoryId, categories } = action;
 
   switch (action.type) {
@@ -25,4 +25,4 @@ function categoryPostLoader (state = {}, action) {
   
 }
 
-export default categoryPostLoader;
+export default categoryHandler;
