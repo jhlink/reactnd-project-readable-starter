@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as ServerAPI from '../utils/serverAPI.js';
 import { FetchCategories } from '../actions'
 import App from '../components/App';
 
