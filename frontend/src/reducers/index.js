@@ -1,6 +1,7 @@
 import {
 	LOAD_CATEGORY_POSTS,
-  GET_ALL_CATEGORIES
+  GET_ALL_CATEGORIES,
+  GET_ALL_POSTS
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -22,7 +23,22 @@ function categoryHandler (state = {}, action) {
     default : 
       return state;
   }
-  
+}
+
+function postHandler (state = {}, action) {
+  const { posts } = action;
+
+  switch (action.type) {
+    case GET_ALL_POSTS:
+      return {
+        ...state,
+        posts
+      };
+
+    default :
+      return state;
+
+  }
 }
 
 export default categoryHandler;
