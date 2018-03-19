@@ -1,19 +1,28 @@
 import {
-	LOAD_CATEGORY_POSTS
+	LOAD_CATEGORY_POSTS,
+  GET_ALL_CATEGORIES
 } from '../actions';
 
-function categoryPostLoader (state = {}, action) {
-	const { categoryId } = action;
+function categoryHandler (state = {}, action) {
+	const { categoryId, categories } = action;
 
-	if ( action.type === LOAD_CATEGORY_POSTS ) {
-		console.log('Reducer Output: ', state);
-		return {
-			...state,
-			selectedCategoryId: categoryId
-		};
-	} 
+  switch (action.type) {
+    case LOAD_CATEGORY_POSTS:
+		  return {
+		  	...state,
+		  	selectedCategoryId: categoryId
+		  };
+
+    case GET_ALL_CATEGORIES:
+      return {
+        ...state,
+        categories: categories
+      };
+
+    default : 
+      return state;
+  }
   
-	return state;
 }
 
-export default categoryPostLoader;
+export default categoryHandler;
