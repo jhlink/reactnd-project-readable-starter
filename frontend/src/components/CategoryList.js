@@ -8,17 +8,18 @@ const CategoryList = (props) => {
 
 	return (
 		<div>
-			<h1 className=".header">Categories</h1>
-			<ul className=".nav">
-				{ categories.map( c => 
-					<li key={ c.path }>
-            <NavLink 
-              to={'/' +  c.path}
-              className="nav link"
-            > { c.name } </NavLink>
-					</li>
-				)}
-			</ul>
+      <div className="column menu">
+			  <ul className="nav">
+			  	{ categories.map( c => 
+			  		<li key={ c.path }>
+              <NavLink 
+                to={'/' +  c.path}
+                className="nav link"
+              > { c.name } </NavLink>
+			  		</li>
+			  	)}
+			  </ul>
+      </div>
 
       <Switch> 
         <Route path={`/:categoryId?`} component={ PostListLogic }/>

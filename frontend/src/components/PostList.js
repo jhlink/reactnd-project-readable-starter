@@ -6,13 +6,15 @@ const PostList = ( props ) =>  {
 	const { posts } = props; 
 
 	return (
-		<ul className="column content">
-			{posts.map((post) => (
-				<li key={post.id} className="post">
-					<Post post={ post }/>
-				</li>
-			))}
-		</ul>
+    <div className="column content">
+		  <ul>
+		  	{posts.map((post) => (
+		  		<li key={post.id} className="post">
+		  			<Post post={ post }/>
+		  		</li>
+		  	))}
+		  </ul>
+    </div>
 	);
 };
 
