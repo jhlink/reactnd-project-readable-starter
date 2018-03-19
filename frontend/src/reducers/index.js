@@ -1,4 +1,4 @@
-import { combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 
 import {
 	LOAD_CATEGORY_POSTS,
@@ -19,7 +19,7 @@ function categoryHandler (state = {}, action) {
     case GET_ALL_CATEGORIES:
       return {
         ...state,
-        categories: categories
+        categories
       };
 
     default : 
