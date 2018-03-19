@@ -7,9 +7,8 @@ const App = (props) => {
 
 	return (
 		<div className="App">
-			<div className="column menu">
-				<CategoryListLogic categories={ categories } />
-			</div>
+			<h1 className=".header">Categories</h1>
+		  <CategoryListLogic categories={ categories } />
 		</div>
 	); 
 }; 
