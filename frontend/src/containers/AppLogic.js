@@ -37,7 +37,7 @@ class AppLogic extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const { categories } = state
+  const { categories } = state.categoryHandler
 
   return { categories };
 }
