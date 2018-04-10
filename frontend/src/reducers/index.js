@@ -7,15 +7,9 @@ import {
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
-	const { categoryId, categories } = action;
+	const { categories } = action;
 
   switch (action.type) {
-    case LOAD_CATEGORY_POSTS:
-		  return {
-		  	...state,
-		  	selectedCategoryId: categoryId
-		  };
-
     case GET_ALL_CATEGORIES:
       return {
         ...state,
@@ -37,9 +31,14 @@ function postHandler (state = {}, action) {
         posts
       };
 
+    case LOAD_CATEGORY_POSTS:
+		  return {
+		  	...state,
+        posts
+		  };
+
     default :
       return state;
-
   }
 }
 

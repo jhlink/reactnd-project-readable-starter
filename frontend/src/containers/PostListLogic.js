@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostList from '../components/PostList';
-import { FetchAllPosts } from '../actions';
+import { FetchAllPosts, FetchCategoryPosts } from '../actions';
 
 
 class PostListLogic extends Component {
@@ -17,14 +17,28 @@ class PostListLogic extends Component {
 		};
 	}
 
+  handlePostDispatch = ( categoryId ) => {
+    if (categoryId) {
+      this.props.dispatch(FetchCategoryPosts(categoryId));
+    } else {
+      this.props.dispatch(FetchAllPosts());
+    }
+  }
+
+
   componentWillMount() {
     const { categoryId } = this.props.match.params;
-    if (categoryId) {
-      this.props.dispatch(FetchAllPosts());
-    } 
+    this.handlePostDispatch(categoryId);
   }
 
 	componentWillReceiveProps(nextProps) {
+    const { categoryId } = this.props.match.params;
+    const newCategoryId = nextProps.match.params.categoryId;
+
+    if (categoryId !== newCategoryId) {
+      this.handlePostDispatch(newCategoryId);
+    }
+
 		this.setState( 
 			nextProps.posts
 		);
@@ -41,12 +55,10 @@ PostListLogic.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const { selectedCategoryId, postHandler } = state;
+  const { postHandler } = state;
   const posts = postHandler;
 
-  if (!selectedCategoryId) {
-    return { posts };
-  }
+  console.log(props);
 
   return { posts };
 };

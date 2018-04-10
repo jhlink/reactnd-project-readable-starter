@@ -34,6 +34,6 @@ const mapStateToProps = (state, props) => {
   return { categories };
 }
 
-// TODO: Using withRouter here feels like a hack. 
+// TODO: Using withRouter here feels like a hack. Commit 859229a69 
 //   Is there a better way or is this the best method to use for production?
 export default withRouter(connect(mapStateToProps)(AppLogic));
