@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FetchCategories } from '../actions'
 import App from '../components/App';
+import { withRouter } from 'react-router-dom';
 
 class AppLogic extends Component {
 	constructor(props) {
@@ -33,4 +34,6 @@ const mapStateToProps = (state, props) => {
   return { categories };
 }
 
-export default connect(mapStateToProps)(AppLogic);
+// TODO: Using withRouter here feels like a hack. 
+//   Is there a better way or is this the best method to use for production?
+export default withRouter(connect(mapStateToProps)(AppLogic));

@@ -19,7 +19,7 @@ class PostListLogic extends Component {
 
   componentWillMount() {
     const { categoryId } = this.props.match.params;
-    if (!categoryId) {
+    if (categoryId) {
       this.props.dispatch(FetchAllPosts());
     } 
   }
