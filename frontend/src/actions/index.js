@@ -4,10 +4,10 @@ export const LOAD_CATEGORY_POSTS = 'LOAD_CATEGORY_POSTS';
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 
-export const loadCategoryPosts = ( categoryId ) => {
+export const loadCategoryPosts = ( posts ) => {
 	return {
 		type: LOAD_CATEGORY_POSTS,
-		categoryId
+	  posts	
 	};
 };
 
