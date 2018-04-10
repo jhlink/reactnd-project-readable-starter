@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import PostList from '../components/PostList';
 import { connect } from 'react-redux';
+import PostList from '../components/PostList';
+import { FetchAllPosts } from '../actions';
+
 
 class PostListLogic extends Component {
 	/* TODO: Ask how if this is what production code looks like
@@ -15,10 +17,16 @@ class PostListLogic extends Component {
 		};
 	}
 
+  componentWillMount() {
+    const { categoryId } = this.props.match.params;
+    if (categoryId) {
+      this.props.dispatch(FetchAllPosts());
+    } 
+  }
+
 	componentWillReceiveProps(nextProps) {
-		console.log(nextProps);
 		this.setState( 
-			nextProps
+			nextProps.posts
 		);
 	}
   
@@ -29,16 +37,18 @@ class PostListLogic extends Component {
 }
 
 PostListLogic.propTypes = {
-	posts: PropTypes.array.isRequired
+	posts: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state, props) => {
-	let filteredState = { posts : props.posts };
-	if (state.selectedCategoryId) {
-		filteredState['posts'] = filteredState['posts'].filter((post) => post.category === state.selectedCategoryId);
-	} 
-  
-	return filteredState;
+  const { selectedCategoryId, postHandler } = state;
+  const posts = postHandler;
+
+  if (!selectedCategoryId) {
+    return { posts };
+  }
+
+  return { posts };
 };
 
 export default connect(mapStateToProps)(PostListLogic);

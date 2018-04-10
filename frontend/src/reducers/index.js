@@ -1,19 +1,51 @@
+import { combineReducers } from 'redux'
+
 import {
-	LOAD_CATEGORY_POSTS
+	LOAD_CATEGORY_POSTS,
+  GET_ALL_CATEGORIES,
+  GET_ALL_POSTS
 } from '../actions';
 
-function categoryPostLoader (state = {}, action) {
-	const { categoryId } = action;
+function categoryHandler (state = {}, action) {
+	const { categoryId, categories } = action;
 
-	if ( action.type === LOAD_CATEGORY_POSTS ) {
-		console.log('Reducer Output: ', state);
-		return {
-			...state,
-			selectedCategoryId: categoryId
-		};
-	} 
-  
-	return state;
+  switch (action.type) {
+    case LOAD_CATEGORY_POSTS:
+		  return {
+		  	...state,
+		  	selectedCategoryId: categoryId
+		  };
+
+    case GET_ALL_CATEGORIES:
+      return {
+        ...state,
+        categories
+      };
+
+    default : 
+      return state;
+  }
 }
 
-export default categoryPostLoader;
+function postHandler (state = {}, action) {
+  const { posts } = action;
+
+  switch (action.type) {
+    case GET_ALL_POSTS:
+      return {
+        ...state,
+        posts
+      };
+
+    default :
+      return state;
+
+  }
+}
+
+const rootReducer = combineReducers({
+  categoryHandler,
+  postHandler
+});
+
+export default rootReducer;

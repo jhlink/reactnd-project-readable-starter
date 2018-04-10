@@ -13,11 +13,20 @@ li {
   list-style-type: none;
   display: block;
   width: 100px;
-  padding: 8px 16px;
   color:  black;
   background-color: white;
   cursor: pointer;
   border: 1px solid black;
+}
+
+.nav.link {
+  text-decoration: none;
+  padding: 8px 16px;
+  display: block;
+}
+
+.active {
+  color: orange;
 }
 
 .post {

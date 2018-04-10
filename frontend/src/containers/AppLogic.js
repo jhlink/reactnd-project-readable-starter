@@ -1,34 +1,39 @@
 import React, { Component } from 'react';
-import * as ServerAPI from '../utils/serverAPI.js';
+import { connect } from 'react-redux';
+import { FetchCategories } from '../actions'
 import App from '../components/App';
+import { withRouter } from 'react-router-dom';
 
 class AppLogic extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			categories: [],
-			posts: []
+			categories: []
 		};
 	}
 
 	componentDidMount() {
-		ServerAPI.GetCategories()
-			.then((data) => {
-				console.log(data);
-				this.setState(data);
-			});
+    this.props.dispatch(FetchCategories());
+	}
 
-		ServerAPI.GetPosts()
-			.then((data) => {
-				console.log(data);
-				this.setState( { posts: data } );
-			});
+	componentWillReceiveProps(nextProps) {
+    this.setState(
+      nextProps.categories
+    );
 	}
 
 	render() {
-		return <App categories={this.state.categories}
-			posts={this.state.posts}/>;
+    const { categories } = this.state;
+		return <App categories={categories}/>;
 	}
 }
 
-export default AppLogic;
+const mapStateToProps = (state, props) => {
+  const { categories } = state.categoryHandler
+
+  return { categories };
+}
+
+// TODO: Using withRouter here feels like a hack. 
+//   Is there a better way or is this the best method to use for production?
+export default withRouter(connect(mapStateToProps)(AppLogic));
