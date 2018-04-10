@@ -36,3 +36,8 @@ export const FetchAllPosts = () => dispatch => {
   return ServerAPI.GetPosts()
     .then(posts => dispatch(getPosts(posts)))
 };
+
+export const FetchCategoryPosts = ( categoryId ) => dispatch => {
+  return ServerAPI.GetCategoryPosts(categoryId)
+    .then(categoryPosts => dispatch(loadCategoryPosts(categoryPosts)))
+};
