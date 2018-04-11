@@ -50,4 +50,7 @@ export const FetchCategoryPosts = ( categoryId ) => dispatch => {
     .then(categoryPosts => dispatch(loadCategoryPosts(categoryPosts)))
 };
 
-
+export const FetchPostComments = ( postId ) => dispatch => {
+  return ServerAPI.GetPostComments(postId)
+    .then(postComments => dispatch(loadPostComments(postComments)))
+};
