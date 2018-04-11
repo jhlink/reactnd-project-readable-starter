@@ -25,7 +25,6 @@ class PostDetailViewLogic extends Component {
 
   componentWillMount() {
     const { postId } = this.props.match.params;
-    console.log("Component mount: " + postId);
     this.handleCommentsDispatch(postId);
   }
 
@@ -67,15 +66,9 @@ const mapStateToProps = (state, props) => {
   const { comments } = state.commentHandler;
   const { posts } = state.postHandler;
   const { postId } = props.match.params;
+  const post = posts ? posts.filter( post => post.id === postId)[0] : {};
 
-  if (posts && posts.length > 0) {
-    const post = posts.filter( post => post.id === postId)[0];
-    console.log(post);
-      return { post, comments } ;
-  }
-
-  return { comments };
-
+  return { post, comments } 
 };
 
 export default connect(mapStateToProps)(PostDetailViewLogic);
