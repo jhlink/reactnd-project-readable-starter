@@ -73,8 +73,17 @@ li.comment {
 
 .comment.content {
   text-decoration: none;
-  margin-left: 1.5em;
-  margin-bottom: .5em;
+  margin-left: 1em;
+}
+
+.commentAuthor {
+  font-size: .8em;
+  font-weight: 300;
+  margin: 0.3125em 0 0 1.5em;
+}
+
+.commentBody {
+  font-size: 1em;
 }
 
 .postHeader {
@@ -94,7 +103,7 @@ li.comment {
   margin-left: 1.5em;
 }
 
-.postVoteScore {
+.postVoteScore, .commentVoteScore  {
   font-size: .8em;
   text-align: right;
   margin: .5em;
