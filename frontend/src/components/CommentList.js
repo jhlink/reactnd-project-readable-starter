@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Comment from './Post';
+import Comment from './Comment';
 
 const CommentList = (props) => {
 	const { comments } = props;
@@ -9,7 +9,7 @@ const CommentList = (props) => {
 		<ul className="column content">
 			{comments.map((comment) => (
 				<li key={comment.id} className="comment">
-					<Comment comment={ comment }/>
+          <Comment comment={ comment }/>
 				</li>
 			))}
 		</ul>
@@ -19,6 +19,5 @@ const CommentList = (props) => {
 CommentList.propTypes = {
 	comments: PropTypes.array.isRequired
 };
-
 
 export default CommentList;
