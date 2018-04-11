@@ -46,7 +46,8 @@ class PostListLogic extends Component {
   
 	render() {
 		const { posts } = this.state;
-		return <PostList posts={ posts }/>;
+    const { match } = this.props;
+		return <PostList posts={ posts } match={ match }/>;
 	}
 }
 
