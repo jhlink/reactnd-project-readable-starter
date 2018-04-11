@@ -6,8 +6,8 @@ const App = (props) => {
 	const { categories } = props;
 
 	return (
-		<div className="App">
-			<h1 className=".header">Categories</h1>
+		<div>
+			<h1 className="header category">Categories</h1>
 		  <CategoryListLogic categories={ categories } />
 		</div>
 	); 

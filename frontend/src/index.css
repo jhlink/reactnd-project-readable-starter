@@ -5,7 +5,7 @@ body {
 }
 
 ul {
-  padding-left: 0;
+  padding-left: 1em;
   text-align: left;
 }
 
@@ -16,17 +16,19 @@ li {
   color:  black;
   background-color: white;
   cursor: pointer;
+  margin-top: -1px;
   border: 1px solid black;
-}
-
-.App {
-  text-align: left;
 }
 
 li.post {
   width: 80%;
   border: 2px groove gray;
   margin-bottom: 1em;
+}
+
+.header.category {
+  text-align: left;
+  margin: 1em .5em .4em;
 }
 
 .nav {

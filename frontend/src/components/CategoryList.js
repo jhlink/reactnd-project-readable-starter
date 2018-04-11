@@ -9,7 +9,7 @@ const CategoryList = (props) => {
 	return (
 		<div>
       <div className="column menu">
-			  <ul className="nav">
+			  <ul>
 			  	{ categories.map( c => 
 			  		<li key={ c.path }>
               <NavLink 
