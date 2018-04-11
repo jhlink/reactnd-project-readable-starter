@@ -23,7 +23,7 @@ li {
 li.post {
   width: 80%;
   border: 2px groove gray;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
 }
 
 li.comment {
@@ -68,6 +68,7 @@ li.comment {
 }
 
 .comments {
+  margin-top: 2em;
   width: 100%;
 }
 
@@ -86,27 +87,23 @@ li.comment {
   font-size: 1em;
 }
 
-.postHeader {
-  font-size: 1.25em;
-  margin: .8em 0 0 .8em;
-  text-align: left;
-}
-
 .postSubheader {
   font-size: .8em;
   font-weight: 300;
-  margin: 0.3125em 0 0 2.5em;
+  margin: -1em 0 0 4em;
 }
 
 .postBody {
   font-size: 1em;
-  margin-left: 1.5em;
+  margin-left: 2em;
+  margin-bottom: .5em;
 }
 
 .postVoteScore, .commentVoteScore  {
   font-size: .8em;
   text-align: right;
-  margin: .5em;
+  margin-right: .5em;
+  margin-bottom: .5em;
 }
 
 .icon-btn {
