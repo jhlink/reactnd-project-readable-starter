@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryListLogic from '../containers/CategoryListLogic';
+import CategoryList from './CategoryList';
 import PropTypes from 'prop-types';
 
 const App = (props) => { 
@@ -8,7 +8,7 @@ const App = (props) => {
 	return (
 		<div>
 			<h1 className="header category">Categories</h1>
-		  <CategoryListLogic categories={ categories } />
+		  <CategoryList categories={ categories } />
 		</div>
 	); 
 }; 
