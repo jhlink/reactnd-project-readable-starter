@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Comment = () => { 
-	console.log(this.props.comment);
+const Comment = (props) => { 
+	console.log(props.comment);
   
 	const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = props.comment;
 
