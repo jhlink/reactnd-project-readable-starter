@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 import {
 	LOAD_CATEGORY_POSTS,
+  LOAD_POST_COMMENTS,
   GET_ALL_CATEGORIES,
   GET_ALL_POSTS
 } from '../actions';
@@ -42,9 +43,26 @@ function postHandler (state = {}, action) {
   }
 }
 
+function commentHandler (state = {}, action) {
+  const { comments } = action;
+
+  switch (action.type) {
+    case LOAD_POST_COMMENTS:
+      return {
+        ...state,
+        comments
+      };
+  
+    default:
+      return state;
+  }
+
+}
+
 const rootReducer = combineReducers({
   categoryHandler,
-  postHandler
+  postHandler,
+  commentHandler
 });
 
 export default rootReducer;
