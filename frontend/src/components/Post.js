@@ -2,16 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Post = (props) => {
-	const {  timestamp, title, body, author, category, voteScore, deleted } = props.post;
+	const { timestamp, title, body, author, category, voteScore, deleted } = props.post;
 	const hideFromDelete = deleted ? 'none' : 'block';
 	const formattedDated = new Date(timestamp).toLocaleString();
 
 	return (
 		<div display={ hideFromDelete }>
-			<h2> { category } </h2>
-			<h3>{ title } by {author }, posted @ { formattedDated }</h3>
-			<p> { body } </p>  
-			<div> { voteScore } </div>
+			<h2 className="postHeader"> { title } </h2>
+      <h3 className="postSubheader"> by {author } - { formattedDated } </h3>
+			<p className="postBody"> { body } </p>  
+			<div className="postVoteScore"> Vote Score:  { voteScore } </div>
 		</div>
 	);
 };

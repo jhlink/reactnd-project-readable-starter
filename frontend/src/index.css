@@ -19,6 +19,23 @@ li {
   border: 1px solid black;
 }
 
+.App {
+  text-align: left;
+}
+
+li.post {
+  width: 80%;
+  border: 2px groove gray;
+  margin-bottom: 1em;
+}
+
+.nav {
+  overflow: hidden;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .nav.link {
   text-decoration: none;
   padding: 8px 16px;
@@ -29,64 +46,42 @@ li {
   color: orange;
 }
 
-.post {
-  width: 100%;
-}
-
 .column {
   float: left;
 }
 
 .column.menu {
-  width: 25%;
+  width: 20%;
 }
 
 .column.content {
-  width: 75%;
+  width: 80%;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 1070px;
-  padding: 20px;
-  min-width: 1070px;
-}
-
-.header {
-  font-size: 50px;
-  font-weight: 300;
-  margin: 10px 0;
+.postHeader {
+  font-size: 1.25em;
+  margin: .8em 0 0 .8em;
   text-align: left;
 }
 
-.subheader {
-  font-size: 30px;
+.postSubheader {
+  font-size: .8em;
   font-weight: 300;
+  margin: 0.3125em 0 0 2.5em;
+}
+
+.postBody {
+  font-size: 1em;
+  margin-left: 1.5em;
+}
+
+.postVoteScore {
+  font-size: .8em;
+  text-align: right;
+  margin: .5em;
 }
 
 .icon-btn {
   background: none;
   border: none;
-}
-
-.nav {
-  overflow: hidden;
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.App {
-  text-align: left;
-}
-
-.App-header {
-  background-color: #222;
-  height: 12em;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
 }
