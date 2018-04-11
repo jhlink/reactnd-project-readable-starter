@@ -6,6 +6,14 @@ let db = {}
 const defaultData = {
   categories: [
       {
+        name: 'android',
+        path: 'android'
+      },
+      {
+        name: 'ios',
+        path: 'ios'
+      },
+      {
         name: 'react',
         path: 'react'
       },
