@@ -6,7 +6,7 @@ const CommentList = (props) => {
 	const { comments } = props;
 
 	return (
-		<ul className="column content">
+		<ul className="comments">
 			{comments.map((comment) => (
 				<li key={comment.id} className="comment">
           <Comment comment={ comment }/>

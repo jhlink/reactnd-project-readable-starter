@@ -11,7 +11,7 @@ const Post = (props) => {
   console.log(props)
 
 	return (
-		<div display={ hideFromDelete }>
+		<div display={ hideFromDelete } className="column content">
 			<h2 className="postHeader"> { title } </h2>
       <h3 className="postSubheader"> by {author } - { formattedDated } </h3>
 			<p className="postBody"> { body } + { category } </p>  

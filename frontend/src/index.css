@@ -27,7 +27,7 @@ li.post {
 }
 
 li.comment {
-  width: 90%;
+  width: 100%;
   border: .125em groove gray;
   margin-bottom: 1em;
   margin-left: 1em;
@@ -65,6 +65,16 @@ li.comment {
 
 .column.content {
   width: 80%;
+}
+
+.comments {
+  width: 100%;
+}
+
+.comment.content {
+  text-decoration: none;
+  margin-left: 1.5em;
+  margin-bottom: .5em;
 }
 
 .postHeader {

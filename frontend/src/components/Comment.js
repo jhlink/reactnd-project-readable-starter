@@ -7,7 +7,7 @@ const Comment = (props) => {
 	const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = props.comment;
 
 	return (
-		<div>
+		<div className="comment content">
 			<p> { body } -- { author } </p>  
 			<div> { voteScore } </div>
 		</div>
