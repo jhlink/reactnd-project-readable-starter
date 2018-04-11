@@ -4,7 +4,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 
 const PostList = ( props ) =>  {
-	const { posts } = props; 
+	const { posts, match } = props; 
 
 	return (
     <div className="column content">
@@ -12,7 +12,7 @@ const PostList = ( props ) =>  {
 		  	{posts.map((post) => (
 		  		<li key={post.id} className="post">
               <NavLink 
-                to={'/' +  post.id + '/comments'}
+                to={match.url + '/' +  post.id + '/comments'}
                 className="nav link"
               > { post.title } 
               </NavLink>
@@ -20,7 +20,7 @@ const PostList = ( props ) =>  {
 		  	))}
 		  </ul>
       <Switch> 
-        <Route path={`/:postId?/comments`} component={ PostDetailViewLogic }/>
+        <Route path={match.url + `/:postId?/comments`} component={ PostDetailViewLogic }/>
       </Switch>
     </div>
 	);
