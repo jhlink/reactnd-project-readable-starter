@@ -55,10 +55,7 @@ PostListLogic.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const { postHandler } = state;
-  const posts = postHandler;
-
-  console.log(props);
+  const posts = state.postHandler;
 
   return { posts };
 };
