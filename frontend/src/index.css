@@ -80,6 +80,22 @@ li.comment {
   border: 1px solid #ccc;
 }
 
+.addPostForm button {
+  margin: 1em;
+  margin-right: 20%;
+  background: #ccc;
+  padding: 10px;
+  text-transform: uppercase;
+  float: right;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.addPostForm button:hover {
+  background-color: #999;
+}
+
 .active {
   color: orange;
 }
