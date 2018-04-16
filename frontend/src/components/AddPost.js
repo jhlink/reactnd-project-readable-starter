@@ -11,8 +11,8 @@ const AddPost = (props) => {
 		<div className="column content">
         <form className="addPostForm">
             <input type="text" name="title" placeholder="Title"/>
-            <input type="text" name="body" placeholder="Enter text here..."/>
             <input type="text" name="author" placeholder="Who are you?"/>
+            <textarea type="text" name="body" placeholder="Enter text here..."/>
             <button>Add Post</button>
         </form>
 		</div>
