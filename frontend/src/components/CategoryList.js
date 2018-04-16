@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostListLogic from '../containers/PostListLogic'
+import AddPost from './AddPost';
 
 const CategoryList = (props) => {
 	const { categories } = props;
@@ -22,7 +23,8 @@ const CategoryList = (props) => {
       </div>
 
       <Switch> 
-        <Route path={`/:categoryId?`} component={ PostListLogic }/>
+        <Route path={`/:categoryId?/addpost`} component={ AddPost }/>
+        <Route exact path={`/:categoryId?`} component={ PostListLogic }/>
       </Switch>
 		</div>
 	);
