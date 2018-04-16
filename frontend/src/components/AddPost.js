@@ -6,14 +6,15 @@ const AddPost = (props) => {
   //const { comments } = props;
 	//const hideFromDelete = deleted ? 'none' : 'block';
 	//const formattedDated = new Date(timestamp).toLocaleString();
-
+  
 	return (
-		<div>
-      <div>
-        <input type="text" name="title" placeholder="Title"/>
-        <input type="text" name="body" placeholder="Enter text here..."/>
-        <input type="text" name="author" placeholder="Who are you?"/>
-      </div>
+		<div className="column content">
+        <form className="addPostForm">
+            <input type="text" name="title" placeholder="Title"/>
+            <input type="text" name="body" placeholder="Enter text here..."/>
+            <input type="text" name="author" placeholder="Who are you?"/>
+            <button>Add Post</button>
+        </form>
 		</div>
 	);
 };
