@@ -8,6 +8,14 @@ const PostList = ( props ) =>  {
 
 	return (
     <div className="column content">
+      <div>
+        <NavLink
+          to={match.url + '/addpost'}
+          className="addpost"
+         >
+        Add Post
+        </NavLink>
+      </div>
 		  <ul>
 		  	{posts.map((post) => (
 		  		<li key={post.id} className="post">
