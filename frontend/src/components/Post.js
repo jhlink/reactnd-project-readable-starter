@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import PostForm from './PostForm';
+import PostFormLogic from '../containers/PostFormLogic';
 
 const Post = (props) => {
 	const { id, timestamp, title, body, author, category, voteScore, deleted } = props.post;
@@ -30,12 +30,7 @@ const Post = (props) => {
       </div>
     )}
       <Switch>
-        <Route path={match.url + `/editpost`} render={props => (
-          <PostForm categoryId={category} 
-                    title={title}
-                    body={body}
-                    author={author}/> 
-          )}/>
+        <Route path={match.url + `/editpost`} component={ PostFormLogic }/> 
       </Switch>
 		</div>
 	);
