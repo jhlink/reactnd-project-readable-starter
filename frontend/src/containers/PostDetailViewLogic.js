@@ -39,7 +39,7 @@ class PostDetailViewLogic extends Component {
     if (nextProps.post) {
       console.log(nextProps.post);
       this.setState(
-        { post: nextProps.post}
+        { post: nextProps.post }
       );
     }
 
