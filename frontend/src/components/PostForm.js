@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AddPost = (props) => {
+const PostForm = (props) => {
   
 	return (
 		<div className="column content">
@@ -16,8 +16,8 @@ const AddPost = (props) => {
 	);
 };
 
-AddPost.propTypes = {
+PostForm.propTypes = {
 	handlePostSubmit: PropTypes.func.isRequired
 };
 
-export default AddPost;
+export default PostForm;

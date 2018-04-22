@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import AddPost from '../components/AddPost';
+import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
 import { CreateNewPost } from '../actions';
 import serializeForm from 'form-serialize';
@@ -50,7 +50,7 @@ class AddPostLogic extends Component {
   
 	render() {
     const { category } = this.state;
-		return <AddPost handlePostSubmit={(e) => this.handlePostSubmit(e) }
+		return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
                     categoryId={ category }/>;
 	}
 }
