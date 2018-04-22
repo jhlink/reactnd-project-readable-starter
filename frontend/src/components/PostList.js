@@ -8,6 +8,7 @@ const PostList = ( props ) =>  {
   const filteredPosts = posts.filter(post => location.pathname === match.url + '/' + post.id);
   const postToShow =  filteredPosts.length > 0 ? filteredPosts : posts;
   const showAddPost = match.params.categoryId !== undefined ? true : false;
+  const selectedPost = filteredPosts.length > 0;
 
 	return (
     <div className="column content">
@@ -30,6 +31,13 @@ const PostList = ( props ) =>  {
                 className="nav link"
               > { post.title } 
               </NavLink>
+              { selectedPost  && (
+                <NavLink 
+                  to={match.url + '/' +  post.id + '/editpost'}
+                  className="nav link edit"
+                > Edit  
+                </NavLink>
+              )}
 		  		</li>
 		  	))}
 		  </ul>
