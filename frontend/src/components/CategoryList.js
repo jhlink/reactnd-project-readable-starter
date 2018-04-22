@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostListLogic from '../containers/PostListLogic'
-import AddPost from './AddPost';
+import AddPostLogic from '../containers/AddPostLogic';
 
 const CategoryList = (props) => {
 	const { categories } = props;
@@ -33,7 +33,7 @@ const CategoryList = (props) => {
          /  URL path, is it okay to place the NavLink in a separate component and add the Route
          /  to that component to the parent of that component?
         */}
-        <Route path={`/:categoryId?/addpost`} component={ AddPost }/>
+        <Route path={`/:categoryId?/addpost`} component={ AddPostLogic }/>
         <Route exact path={`/:categoryId?`} component={ PostListLogic }/>
       </Switch>
 		</div>
