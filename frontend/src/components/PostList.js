@@ -7,17 +7,21 @@ const PostList = ( props ) =>  {
 	const { posts, match, location } = props; 
   const filteredPosts = posts.filter(post => location.pathname === match.url + '/' + post.id);
   const postToShow =  filteredPosts.length > 0 ? filteredPosts : posts;
+  const showAddPost = match.params.categoryId !== undefined ? true : false;
 
 	return (
     <div className="column content">
       <div>
-        <NavLink
-          to={match.url + '/addpost'}
-          className="addpost"
-         >
-        Add Post
-        </NavLink>
-      </div>
+        { showAddPost && ( 
+
+          <NavLink 
+            to={match.url + '/addpost'}
+            className="addpost"
+           >
+          Add Post
+          </NavLink>
+        )}
+        </div>
 		  <ul>
 		  	{postToShow.map((post) => (
 		  		<li key={post.id} className="post">
