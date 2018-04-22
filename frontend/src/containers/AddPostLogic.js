@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AddPost from '../components/AddPost';
 import { connect } from 'react-redux';
 import { FetchAllPosts, FetchCategoryPosts } from '../actions';
-
+import serializeForm from 'form-serialize';
 
 class AddPostLogic extends Component {
 
@@ -24,7 +24,16 @@ class AddPostLogic extends Component {
   handlePostSubmit = (e) => {
     e.preventDefault();
 
-    // Generate uuid, timestamp, category, initialDeleteFlag. and voteScore
+    const values = serializeForm(e.target, { hash: true });
+    const newValues = {
+      ...values,
+      id: "test",
+      timestamp: 234235235,
+      category: "catID",
+      initialDeleteFlag: false,
+      voteScore: 1
+      };
+    console.log(newValues);
   }
 
   componentWillMount() {
@@ -35,7 +44,7 @@ class AddPostLogic extends Component {
 	}
   
 	render() {
-		return <AddPost />;
+		return <AddPost handlePostSubmit={(e) => this.handlePostSubmit(e) }/>;
 	}
 }
 
