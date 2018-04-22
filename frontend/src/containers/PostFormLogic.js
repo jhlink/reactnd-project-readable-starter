@@ -31,49 +31,58 @@ class PostFormLogic extends Component {
     }
   }
 
-  handlePostChange = (e) => {
+  handleSectionPostUpdate = ( property, value ) => {
+    const postKey = property;
+    console.log(postKey);
     this.setState({
       post: 
       update(this.state.post, 
-              { [e.target.name]: { 
-                  $set: e.target.value
+              { [postKey]: { 
+                  $set: value
                   }
               }
             )} 
     )
+  }
+
+  handlePostChange = (e) => {
+    this.handleSectionPostUpdate(e.target.name, e.target.value);
   }
   
   handlePostSubmit = (e) => {
     e.preventDefault();
 
     //const userInputs = serializeForm(e.target, { hash: true });
-    const isEditPost = this.props.match.url.includes("editpost");
 
-    if (isEditPost) {
-      
-    } else {
-      const newPostData = {
-        ...this.state.post,
-        id: uuidv4(),
-        timestamp: Date.now()
-      };
+    switch (this.state.type) {
+      case "edit":
+        
+        break;
 
-      this.props.dispatch(CreateNewPost(newPostData));
+      case "add":
+      default:
+        const newPostData = {
+          ...this.state.post,
+          id: uuidv4(),
+          timestamp: Date.now()
+        };
+
+        this.props.dispatch(CreateNewPost(newPostData));
     }
   }
 
   componentWillMount() {
     const { categoryId } = this.props.match.params;
-    this.setState({ 
-      category: categoryId,
-    });
+    const isEditPost = this.props.match.url.includes("editpost") ? "edit" : "add";
+    this.handleSectionPostUpdate("type", isEditPost);
+    this.handleSectionPostUpdate("category", categoryId);
   }
 
 	componentWillReceiveProps(nextProps) {
 	}
   
 	render() {
-    const post = { ...this.state};
+    const { post } = this.state;
 		return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
                      handlePostChange={(e) => this.handlePostChange(e) }
                      post={ post }/>;
