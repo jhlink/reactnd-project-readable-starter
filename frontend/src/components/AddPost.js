@@ -5,6 +5,7 @@ const AddPost = (props) => {
   
 	return (
 		<div className="column content">
+        <h2>New { props.categoryId } Post</h2>
         <form className="addPostForm" onSubmit={ props.handlePostSubmit }>
             <input type="text" name="title" placeholder="Title"/>
             <input type="text" name="author" placeholder="Who are you?"/>
