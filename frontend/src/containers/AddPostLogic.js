@@ -4,6 +4,7 @@ import AddPost from '../components/AddPost';
 import { connect } from 'react-redux';
 import { FetchAllPosts, FetchCategoryPosts } from '../actions';
 import serializeForm from 'form-serialize';
+import uuidv4 from "uuid/v4";
 
 class AddPostLogic extends Component {
 
@@ -27,7 +28,7 @@ class AddPostLogic extends Component {
     const values = serializeForm(e.target, { hash: true });
     const newValues = {
       ...values,
-      id: "test",
+      id: uuidv4(),
       timestamp: 234235235,
       category: "catID",
       initialDeleteFlag: false,
