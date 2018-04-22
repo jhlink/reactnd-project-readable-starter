@@ -38,24 +38,23 @@ class AddPostLogic extends Component {
 
   componentWillMount() {
     const { categoryId } = this.props.match.params;
+    this.setState({ post: {
+      category: categoryId
+    }});
   }
 
 	componentWillReceiveProps(nextProps) {
 	}
   
 	render() {
-		return <AddPost handlePostSubmit={(e) => this.handlePostSubmit(e) }/>;
+    const { category } = this.state.post;
+		return <AddPost handlePostSubmit={(e) => this.handlePostSubmit(e) }
+                    categoryId={ category }/>;
 	}
 }
 
 AddPostLogic.propTypes = {
-	post: PropTypes.object.isRequired
+	//post: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state, props) => {
-  const post = state.postHandler;
-
-  return { post };
-};
-
-export default connect(mapStateToProps)(AddPostLogic);
+export default connect()(AddPostLogic);
