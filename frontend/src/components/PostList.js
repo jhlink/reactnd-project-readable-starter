@@ -4,7 +4,9 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 
 const PostList = ( props ) =>  {
-	const { posts, match } = props; 
+	const { posts, match, location } = props; 
+  const filteredPosts = posts.filter(post => location.pathname === match.url + '/' + post.id);
+  const postToShow =  filteredPosts.length > 0 ? filteredPosts : posts;
 
 	return (
     <div className="column content">
@@ -17,7 +19,7 @@ const PostList = ( props ) =>  {
         </NavLink>
       </div>
 		  <ul>
-		  	{posts.map((post) => (
+		  	{postToShow.map((post) => (
 		  		<li key={post.id} className="post">
               <NavLink 
                 to={match.url + '/' +  post.id + '/comments'}
