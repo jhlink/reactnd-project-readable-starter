@@ -12,7 +12,8 @@ class AddPostLogic extends Component {
 		super(props);
 
 		this.state = {
-      post: {}
+        deleted: false,
+        voteScore: 1
 		};
 	}
 
@@ -25,30 +26,29 @@ class AddPostLogic extends Component {
   handlePostSubmit = (e) => {
     e.preventDefault();
 
-    const values = serializeForm(e.target, { hash: true });
-    const newValues = {
-      ...values,
+    const userInputs = serializeForm(e.target, { hash: true });
+    const newPostData = {
+      ...userInputs,
+      ...this.state,
       id: uuidv4(),
       timestamp: Date.now(),
-      category: "catID",
-      initialDeleteFlag: false,
-      voteScore: 1
-      };
-    console.log(newValues);
+    };
+
+    console.log(newPostData);
   }
 
   componentWillMount() {
     const { categoryId } = this.props.match.params;
-    this.setState({ post: {
-      category: categoryId
-    }});
+    this.setState({ 
+      category: categoryId,
+    });
   }
 
 	componentWillReceiveProps(nextProps) {
 	}
   
 	render() {
-    const { category } = this.state.post;
+    const { category } = this.state;
 		return <AddPost handlePostSubmit={(e) => this.handlePostSubmit(e) }
                     categoryId={ category }/>;
 	}
