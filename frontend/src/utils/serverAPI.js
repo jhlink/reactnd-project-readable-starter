@@ -26,3 +26,9 @@ export const GetPostComments = (post) =>
 		headers:  reqHeaders
 	}).then((res) => res.json());
 
+export const PostNewPost = (postData) =>
+  fetch(`${API_HOST}/posts`, {
+    headers: reqHeaders,
+    body: JSON.stringify(postData)
+  }).then((res) => res.json());
+
