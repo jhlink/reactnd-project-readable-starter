@@ -24,6 +24,8 @@ li.post {
   width: 80%;
   border: 2px groove gray;
   margin-bottom: .5em;
+  display: flex;
+  justify-content: space-between;
 }
 
 li.comment {
