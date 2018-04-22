@@ -3,6 +3,7 @@ const API_HOST = 'http://localhost:3001';
 
 const reqHeaders = {
 	'Accept': 'application/json',
+	'Content-Type': 'application/json',
 	'Authorization': AUTH_KEY 
 };
 
@@ -29,6 +30,7 @@ export const GetPostComments = (post) =>
 export const PostNewPost = (postData) =>
   fetch(`${API_HOST}/posts`, {
     headers: reqHeaders,
+    method: 'POST',
     body: JSON.stringify(postData)
   }).then((res) => res.json());
 
