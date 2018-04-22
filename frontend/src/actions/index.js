@@ -4,6 +4,7 @@ export const LOAD_CATEGORY_POSTS = 'LOAD_CATEGORY_POSTS';
 export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS';
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
+export const POST_NEW_POST = 'POST_NEW_POST';
 
 export const loadCategoryPosts = ( posts ) => {
 	return {
@@ -33,6 +34,13 @@ export const loadPostComments = ( comments ) => {
   };
 };
 
+export const postNewPost = ( status ) => {
+  return {
+      type: POST_NEW_POST,
+      status 
+  };
+};
+
 // Thunks 
 
 export const FetchCategories = () => dispatch => {
@@ -54,3 +62,9 @@ export const FetchPostComments = ( postId ) => dispatch => {
   return ServerAPI.GetPostComments(postId)
     .then(postComments => dispatch(loadPostComments(postComments)))
 };
+
+export const CreateNewPost = ( postData ) => dispatch => {
+  return ServerAPI.PostNewPost(postData)
+    .then(success => dispatch(postNewPost(success)));
+};
+
