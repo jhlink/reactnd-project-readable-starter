@@ -29,7 +29,7 @@ class AddPostLogic extends Component {
     const newValues = {
       ...values,
       id: uuidv4(),
-      timestamp: 234235235,
+      timestamp: Date.now(),
       category: "catID",
       initialDeleteFlag: false,
       voteScore: 1
