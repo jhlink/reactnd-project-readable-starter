@@ -6,7 +6,7 @@ import { CreateNewPost } from '../actions';
 import serializeForm from 'form-serialize';
 import uuidv4 from "uuid/v4";
 
-class AddPostLogic extends Component {
+class PostFormLogic extends Component {
 
 	constructor(props) {
 		super(props);
@@ -14,7 +14,10 @@ class AddPostLogic extends Component {
 		this.state = {
         deleted: false,
         voteScore: 1,
-        category: ""
+        category: "",
+        title: "",
+        body: "",
+        author: ""
 		};
 	}
 
@@ -23,14 +26,17 @@ class AddPostLogic extends Component {
       console.log(categoryId);
     }
   }
+
+  handlePostChange = (e) => {
+    this.setState( {[e.target.name]: e.target.value } ); 
+  }
   
   handlePostSubmit = (e) => {
     e.preventDefault();
 
-    const userInputs = serializeForm(e.target, { hash: true });
+    //const userInputs = serializeForm(e.target, { hash: true });
     const newPostData = {
-      ...userInputs,
-      category: this.state.category,
+      ...this.state,
       id: uuidv4(),
       timestamp: Date.now()
     };
@@ -49,14 +55,15 @@ class AddPostLogic extends Component {
 	}
   
 	render() {
-    const { category } = this.state;
+    const post = { ...this.state};
 		return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
-                    categoryId={ category }/>;
+                     handlePostChange={(e) => this.handlePostChange(e) }
+                     post={ post }/>;
 	}
 }
 
-AddPostLogic.propTypes = {
+PostFormLogic.propTypes = {
 	//post: PropTypes.object.isRequired
 };
 
-export default connect()(AddPostLogic);
+export default connect()(PostFormLogic);
