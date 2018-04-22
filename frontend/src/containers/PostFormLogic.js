@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { CreateNewPost } from '../actions';
 import serializeForm from 'form-serialize';
 import uuidv4 from "uuid/v4";
+import update from 'immutability-helper';
 
 class PostFormLogic extends Component {
 
@@ -12,12 +13,15 @@ class PostFormLogic extends Component {
 		super(props);
 
 		this.state = {
+      post: {
         deleted: false,
         voteScore: 1,
         category: "",
         title: "",
         body: "",
         author: ""
+     },
+     type: ""
 		};
 	}
 
@@ -28,20 +32,34 @@ class PostFormLogic extends Component {
   }
 
   handlePostChange = (e) => {
-    this.setState( {[e.target.name]: e.target.value } ); 
+    this.setState({
+      post: 
+      update(this.state.post, 
+              { [e.target.name]: { 
+                  $set: e.target.value
+                  }
+              }
+            )} 
+    )
   }
   
   handlePostSubmit = (e) => {
     e.preventDefault();
 
     //const userInputs = serializeForm(e.target, { hash: true });
-    const newPostData = {
-      ...this.state,
-      id: uuidv4(),
-      timestamp: Date.now()
-    };
+    const isEditPost = this.props.match.url.includes("editpost");
 
-    this.props.dispatch(CreateNewPost(newPostData));
+    if (isEditPost) {
+      
+    } else {
+      const newPostData = {
+        ...this.state.post,
+        id: uuidv4(),
+        timestamp: Date.now()
+      };
+
+      this.props.dispatch(CreateNewPost(newPostData));
+    }
   }
 
   componentWillMount() {
