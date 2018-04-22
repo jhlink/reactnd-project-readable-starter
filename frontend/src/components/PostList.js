@@ -10,6 +10,10 @@ const PostList = ( props ) =>  {
   const showAddPost = match.params.categoryId !== undefined ? true : false;
   const selectedPost = filteredPosts.length > 0;
 
+  const categoryUrl = (postCategory) => {
+    return match.url !== '/' ? match.url : postCategory;
+  };
+
 	return (
     <div className="column content">
       <div>
@@ -27,13 +31,13 @@ const PostList = ( props ) =>  {
 		  	{postToShow.map((post) => (
 		  		<li key={post.id} className="post">
               <NavLink 
-                to={match.url + '/' +  post.id}
+                to={categoryUrl(post.category) + '/' +  post.id}
                 className="nav link"
               > { post.title } 
               </NavLink>
               { selectedPost  && (
                 <NavLink 
-                  to={match.url + '/' +  post.id + '/editpost'}
+                  to={categoryUrl(post.category) + '/' +  post.id + '/editpost'}
                   className="nav link edit"
                 > Edit  
                 </NavLink>
