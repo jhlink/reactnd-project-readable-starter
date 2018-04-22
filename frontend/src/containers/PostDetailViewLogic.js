@@ -53,8 +53,8 @@ class PostDetailViewLogic extends Component {
   
 	render() {
 		const { post, comments } = this.state;
-    const { match } = this.props;
-		return <Post post={ post } comments={ comments } match={ match }/>;
+    const { match, location } = this.props;
+		return <Post post={ post } comments={ comments } match={ match } location={ location }/>;
 	}
 }
 
