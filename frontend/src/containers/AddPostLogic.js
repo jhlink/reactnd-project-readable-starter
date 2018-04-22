@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AddPost from '../components/AddPost';
 import { connect } from 'react-redux';
-import { FetchAllPosts, FetchCategoryPosts } from '../actions';
+import { CreateNewPost } from '../actions';
 import serializeForm from 'form-serialize';
 import uuidv4 from "uuid/v4";
 
@@ -13,7 +13,8 @@ class AddPostLogic extends Component {
 
 		this.state = {
         deleted: false,
-        voteScore: 1
+        voteScore: 1,
+        category: ""
 		};
 	}
 
@@ -29,12 +30,12 @@ class AddPostLogic extends Component {
     const userInputs = serializeForm(e.target, { hash: true });
     const newPostData = {
       ...userInputs,
-      ...this.state,
+      category: this.state.category,
       id: uuidv4(),
-      timestamp: Date.now(),
+      timestamp: Date.now()
     };
 
-    console.log(newPostData);
+    this.props.dispatch(CreateNewPost(newPostData));
   }
 
   componentWillMount() {
