@@ -28,10 +28,10 @@ export const getPosts = ( posts ) => {
   };
 };
 
-export const getPost = ( postId ) => {
+export const getPost = ( post ) => {
   return {
     type: GET_POST,
-    postId 
+    post 
   };
 };
 
