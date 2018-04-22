@@ -34,10 +34,10 @@ export const loadPostComments = ( comments ) => {
   };
 };
 
-export const postNewPost = ( status ) => {
+export const postNewPost = ( post ) => {
   return {
       type: POST_NEW_POST,
-      status 
+      post 
   };
 };
 
@@ -65,6 +65,7 @@ export const FetchPostComments = ( postId ) => dispatch => {
 
 export const CreateNewPost = ( postData ) => dispatch => {
   return ServerAPI.PostNewPost(postData)
-    .then(success => dispatch(postNewPost(success)));
+    .then(post =>  dispatch(postNewPost(post))
+    );
 };
 
