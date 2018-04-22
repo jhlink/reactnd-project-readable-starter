@@ -8,9 +8,9 @@ const PostForm = (props) => {
 		<div className="column content">
         <h2>New { categoryId } Post</h2>
         <form className="addPostForm" onSubmit={ handlePostSubmit }>
-            <input type="text" name="title" placeholder="Title" value={ title } />
-            <input type="text" name="author" placeholder="Who are you?" value={ author } />
-            <textarea type="text" name="body" placeholder="Enter text here..." value={ body } />
+            <input type="text" name="title" placeholder="Title" defaultValue={ title } />
+            <input type="text" name="author" placeholder="Who are you?" defaultValue={ author } />
+            <textarea type="text" name="body" placeholder="Enter text here..." defaultValue={ body } />
             <button>Add Post</button>
         </form>
 		</div>

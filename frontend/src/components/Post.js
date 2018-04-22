@@ -30,7 +30,12 @@ const Post = (props) => {
       </div>
     )}
       <Switch>
-        <Route path={match.url + `/:postId/editpost`} component={ PostForm }/>
+        <Route path={match.url + `/editpost`} render={props => (
+          <PostForm categoryId={category} 
+                    title={title}
+                    body={body}
+                    author={author}/> 
+          )}/>
       </Switch>
 		</div>
 	);
