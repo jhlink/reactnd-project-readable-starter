@@ -22,7 +22,7 @@ const PostList = ( props ) =>  {
 		  	{postToShow.map((post) => (
 		  		<li key={post.id} className="post">
               <NavLink 
-                to={match.url + '/' +  post.id + '/comments'}
+                to={match.url + '/' +  post.id}
                 className="nav link"
               > { post.title } 
               </NavLink>
@@ -30,7 +30,7 @@ const PostList = ( props ) =>  {
 		  	))}
 		  </ul>
       <Switch> 
-        <Route path={match.url + `/:postId?/comments`} component={ PostDetailViewLogic }/>
+        <Route path={match.url + `/:postId`} component={ PostDetailViewLogic }/>
       </Switch>
     </div>
 	);
