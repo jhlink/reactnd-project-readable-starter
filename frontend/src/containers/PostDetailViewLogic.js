@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Post from '../components/Post';
-import { FetchPostComments } from '../actions';
+import { FetchPost, FetchPostComments } from '../actions';
 
 class PostDetailViewLogic extends Component {
 	/* TODO: Ask how if this is what production code looks like
@@ -23,9 +23,20 @@ class PostDetailViewLogic extends Component {
     }
   }
 
+  isObjectEmpty = ( obj ) => {
+    return Object.keys(obj).length === 0 && obj.constructor === Object;
+  }
+
+  handlePostDispatch = ( postId ) => {
+    if (this.isObjectEmpty(this.state.post)) {
+      this.props.dispatch(FetchPost(postId));
+    }
+  }
+
   componentWillMount() {
     const { postId } = this.props.match.params;
     this.handleCommentsDispatch(postId);
+    this.handlePostDispatch(postId);
   }
 
 	componentWillReceiveProps(nextProps) {
@@ -37,7 +48,7 @@ class PostDetailViewLogic extends Component {
     }
 
     if (nextProps.post) {
-      console.log(nextProps.post);
+      console.log("next props: " + nextProps.post);
       this.setState(
         { post: nextProps.post }
       );
@@ -65,11 +76,14 @@ PostDetailViewLogic.propTypes = {
 
 const mapStateToProps = (state, props) => {
   const { comments } = state.commentHandler;
-  const { posts } = state.postHandler;
+  const { posts, post } = state.postHandler;
   const { postId } = props.match.params;
-  const post = posts ? posts.filter( post => post.id === postId)[0] : {};
+  //const targetPost = posts ? posts.filter( targetPost => targetPost.id === postId)[0] : {};
+  const fpost = posts ? posts.filter( post => post.id === postId)[0] : {}; 
+  const tpost = post ? post : fpost;
 
-  return { post, comments } 
+  console.log(tpost);
+  return { post:tpost, comments } 
 };
 
 export default connect(mapStateToProps)(PostDetailViewLogic);
