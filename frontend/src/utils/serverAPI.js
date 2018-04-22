@@ -34,3 +34,7 @@ export const PostNewPost = (postData) =>
     body: JSON.stringify(postData)
   }).then((res) => res.json());
 
+export const GetPost = (postId) => {
+	fetch(`${API_HOST}/posts/${postId}`, {
+		headers:  reqHeaders
+	}).then((res) => res.json());
