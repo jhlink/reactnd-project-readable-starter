@@ -24,7 +24,7 @@ function categoryHandler (state = {}, action) {
 }
 
 function postHandler (state = {}, action) {
-  const { posts, status } = action;
+  const { posts, post } = action;
 
   switch (action.type) {
     case GET_ALL_POSTS:
@@ -42,7 +42,7 @@ function postHandler (state = {}, action) {
     case POST_NEW_POST:
       return {
         ...state,
-        status
+          post
       };
 
     default :
