@@ -5,6 +5,7 @@ export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS';
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const POST_NEW_POST = 'POST_NEW_POST';
+export const GET_POST = 'GET_POST';
 
 export const loadCategoryPosts = ( posts ) => {
 	return {
@@ -24,6 +25,13 @@ export const getPosts = ( posts ) => {
   return {
     type: GET_ALL_POSTS,
     posts
+  };
+};
+
+export const getPost = ( postId ) => {
+  return {
+    type: GET_POST,
+    postId 
   };
 };
 
@@ -65,7 +73,11 @@ export const FetchPostComments = ( postId ) => dispatch => {
 
 export const CreateNewPost = ( postData ) => dispatch => {
   return ServerAPI.PostNewPost(postData)
-    .then(post =>  dispatch(postNewPost(post))
-    );
+    .then(post => dispatch(postNewPost(post)));
+};
+
+export const FetchPost = ( postId ) => dispatch => {
+  return ServerAPI.GetPost(postId)
+    .then(post => dispatch(getPost(post)));
 };
 
