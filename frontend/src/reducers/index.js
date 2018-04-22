@@ -5,7 +5,8 @@ import {
   LOAD_POST_COMMENTS,
   GET_ALL_CATEGORIES,
   GET_ALL_POSTS,
-  POST_NEW_POST
+  POST_NEW_POST,
+  GET_POST
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -40,6 +41,12 @@ function postHandler (state = {}, action) {
 		  };
 
     case POST_NEW_POST:
+      return {
+        ...state,
+          post
+      };
+
+    case GET_POST:
       return {
         ...state,
           post
