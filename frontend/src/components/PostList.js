@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
+import PostForm from './PostForm';
 
 const PostList = ( props ) =>  {
 	const { posts, match, location } = props; 
-  const filteredPosts = posts.filter(post => location.pathname === match.url + '/' + post.id);
-  const postToShow =  filteredPosts.length > 0 ? filteredPosts : posts;
+  const postsToShow = location.pathname === match.url ? posts : [];
   const showAddPost = match.params.categoryId !== undefined ? true : false;
-  const selectedPost = filteredPosts.length > 0;
 
   const categoryUrl = (postCategory) => {
     return match.url !== '/' ? match.url : postCategory;
@@ -18,7 +17,6 @@ const PostList = ( props ) =>  {
     <div className="column content">
       <div>
         { showAddPost && ( 
-
           <NavLink 
             to={match.url + '/addpost'}
             className="addpost"
@@ -28,20 +26,13 @@ const PostList = ( props ) =>  {
         )}
         </div>
 		  <ul>
-		  	{postToShow.map((post) => (
+		  	{postsToShow.map((post) => (
 		  		<li key={post.id} className="post">
               <NavLink 
                 to={categoryUrl(post.category) + '/' +  post.id}
                 className="nav link"
               > { post.title } 
               </NavLink>
-              { selectedPost  && (
-                <NavLink 
-                  to={categoryUrl(post.category) + '/' +  post.id + '/editpost'}
-                  className="nav link edit"
-                > Edit  
-                </NavLink>
-              )}
 		  		</li>
 		  	))}
 		  </ul>
