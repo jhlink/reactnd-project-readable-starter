@@ -18,12 +18,24 @@ const PostForm = (props) => {
 		<div className="column content">
         <h2>New { category } Post</h2>
         <form className="addPostForm" onSubmit={ handlePostSubmit }>
-            <input type="text" name="title" placeholder="Title" value={ title } onChange={e => (
-              handlePostChange(e))} />
-            <input type="text" name="author" placeholder="Who are you?" value={ author } onChange={e => (
-              handlePostChange(e))}  />
-            <textarea type="text" name="body" placeholder="Enter text here..." value={ body } onChange={e => (
-              handlePostChange(e))} />
+            <input type="text" 
+                    name="title" 
+                    placeholder="Title" 
+                    value={ title } 
+                    onChange={e => (
+                      handlePostChange(e))} />
+            <input type="text" 
+                    name="author" 
+                    placeholder="Who are you?" 
+                    value={ author } 
+                    onChange={e => (
+                      handlePostChange(e))}  />
+            <textarea type="text" 
+                        name="body" 
+                        placeholder="Enter text here..." 
+                        value={ body } 
+                        onChange={e => (
+                          handlePostChange(e))} />
             <button>Submit</button>
         </form>
 		</div>
