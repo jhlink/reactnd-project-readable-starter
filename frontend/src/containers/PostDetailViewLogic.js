@@ -48,14 +48,12 @@ class PostDetailViewLogic extends Component {
     }
 
     if (nextProps.post) {
-      console.log("next props: " + nextProps.post);
       this.setState(
         { post: nextProps.post }
       );
     }
 
     if (nextProps.comments && nextProps.comments.length > 0) {
-      console.log(nextProps.comments);
       this.setState(
         {comments: nextProps.comments}
       );
@@ -82,7 +80,7 @@ const mapStateToProps = (state, props) => {
   const fpost = posts ? posts.filter( post => post.id === postId)[0] : {}; 
   const tpost = post ? post : fpost;
 
-  console.log(tpost);
+  //console.log(tpost);
   return { post:tpost, comments } 
 };
 
