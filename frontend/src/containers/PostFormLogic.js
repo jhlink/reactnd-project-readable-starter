@@ -111,10 +111,11 @@ class PostFormLogic extends Component {
 	}
   
 	render() {
-    const { post } = this.state;
+    const { post, type } = this.state;
 		return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
                      handlePostChange={(e) => this.handlePostChange(e) }
-                     post={ post }/>;
+                     post={ post }
+                     type={ type }/>;
 	}
 }
 
