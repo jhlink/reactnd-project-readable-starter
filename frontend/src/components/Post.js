@@ -16,7 +16,7 @@ const Post = (props) => {
 		{ isEditPost && (
       <div display={ hideFromDelete } className="column content">
         <h2 className="postHeader"> { title } </h2> 
-        <div>
+        <div className="horizJust">
           <h3 className="postSubheader"> by {author } - { formattedDated } </h3>
           <NavLink 
             to={match.url + '/editpost'}

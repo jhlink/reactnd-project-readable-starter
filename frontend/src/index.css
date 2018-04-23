@@ -54,7 +54,7 @@ li.comment {
 }
 
 .nav.link.edit {
-  margin: -1.75em 0 0 2em;
+  margin: 0;
   text-align: right;
   font-size: .9em;
 }
@@ -150,10 +150,16 @@ li.comment {
   margin: 0em 0 0 0em;
 }
 
+.horizJust {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .postSubheader {
   font-size: .8em;
   font-weight: 300;
-  margin: .5em 0 0 4em;
+  margin-left: 4em;
 }
 
 .postBody {
