@@ -98,6 +98,10 @@ li.comment {
   background-color: #999;
 }
 
+.postFormHeader {
+  text-transform: uppercase;
+}
+
 .active {
   color: orange;
 }
