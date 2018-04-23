@@ -24,7 +24,7 @@ const PostForm = (props) => {
               handlePostChange(e))}  />
             <textarea type="text" name="body" placeholder="Enter text here..." value={ body } onChange={e => (
               handlePostChange(e))} />
-            <button>Add Post</button>
+            <button>Submit</button>
         </form>
 		</div>
 	);
