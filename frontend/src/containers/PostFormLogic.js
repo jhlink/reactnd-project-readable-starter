@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
-import { CreateNewPost } from '../actions';
+import { FetchPost, CreateNewPost } from '../actions';
 import serializeForm from 'form-serialize';
 import uuidv4 from "uuid/v4";
 import update from 'immutability-helper';
@@ -33,7 +33,6 @@ class PostFormLogic extends Component {
 
   handleSectionPostUpdate = ( property, value ) => {
     const postKey = property;
-    console.log(postKey);
     this.setState({
       post: 
       update(this.state.post, 
@@ -72,13 +71,36 @@ class PostFormLogic extends Component {
   }
 
   componentWillMount() {
-    const { categoryId } = this.props.match.params;
     const isEditPost = this.props.match.url.includes("editpost") ? "edit" : "add";
     this.handleSectionPostUpdate("type", isEditPost);
-    this.handleSectionPostUpdate("category", categoryId);
+
+  
+    switch (isEditPost) {
+      case "edit":
+          if (this.props.post !== undefined) {
+            this.setState(
+               { post: this.props.post }
+            );
+          }
+        break;
+
+      case "add":
+        const { categoryid } = this.props.match.params;
+        this.handlesectionpostupdate("category", categoryid);
+    }
+
   }
 
 	componentWillReceiveProps(nextProps) {
+    if (nextProps.post === undefined) {
+      return;
+    }
+
+    if (this.state.post.id === undefined || this.state.post.id !== nextProps.post.id) {
+      this.setState(
+        { post: nextProps.post }
+      );
+    }
 	}
   
 	render() {
@@ -90,7 +112,11 @@ class PostFormLogic extends Component {
 }
 
 PostFormLogic.propTypes = {
-	//post: PropTypes.object.isRequired
+	post: PropTypes.object
 };
 
-export default connect()(PostFormLogic);
+const mapStateToProps = (state, props) => {
+  const { post } = state.postHandler;
+  return { post };
+};
+export default connect(mapStateToProps)(PostFormLogic);
