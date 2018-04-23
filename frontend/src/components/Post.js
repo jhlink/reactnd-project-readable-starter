@@ -15,7 +15,7 @@ const Post = (props) => {
     <div>
 		{ isEditPost && (
       <div display={ hideFromDelete } className="column content">
-        <h2> { title } </h2> 
+        <h2 className="postHeader"> { title } </h2> 
         <div>
           <h3 className="postSubheader"> by {author } - { formattedDated } </h3>
           <NavLink 
