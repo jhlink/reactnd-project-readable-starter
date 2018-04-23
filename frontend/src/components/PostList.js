@@ -7,7 +7,7 @@ import PostForm from './PostForm';
 const PostList = ( props ) =>  {
 	const { posts, match, location } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
-  const showAddPost = match.params.categoryId !== undefined ? true : false;
+  const showAddPost = location.pathname !== '/' && location.pathname === match.url;
 
   const categoryUrl = (postCategory) => {
     return match.url !== '/' ? match.url : postCategory;
