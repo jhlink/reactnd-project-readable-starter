@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
-import { FetchPost, CreateNewPost } from '../actions';
+import { PutPost, FetchPost, CreateNewPost } from '../actions';
 import serializeForm from 'form-serialize';
 import uuidv4 from "uuid/v4";
 import update from 'immutability-helper';
@@ -55,7 +55,12 @@ class PostFormLogic extends Component {
 
     switch (this.state.type) {
       case "edit":
+        const postEditedText = {
+          title: this.state.post.title,
+          body: this.state.post.body
+        };
         
+        this.props.dispatch(PutPost(this.state.post.id, postEditedText));
         break;
 
       case "add":
@@ -72,7 +77,7 @@ class PostFormLogic extends Component {
 
   componentWillMount() {
     const isEditPost = this.props.match.url.includes("editpost") ? "edit" : "add";
-    this.handleSectionPostUpdate("type", isEditPost);
+    this.setState({type: isEditPost});
 
   
     switch (isEditPost) {
@@ -85,10 +90,10 @@ class PostFormLogic extends Component {
         break;
 
       case "add":
+      default:
         const { categoryid } = this.props.match.params;
         this.handlesectionpostupdate("category", categoryid);
     }
-
   }
 
 	componentWillReceiveProps(nextProps) {
@@ -119,4 +124,5 @@ const mapStateToProps = (state, props) => {
   const { post } = state.postHandler;
   return { post };
 };
+
 export default connect(mapStateToProps)(PostFormLogic);
