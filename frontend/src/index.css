@@ -59,6 +59,15 @@ li.comment {
   font-size: .9em;
 }
 
+.nav.link.addpost {
+  margin-right: 20%;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1em;
+  border: solid black .125em;
+  background: white;
+}
+
 .addPostForm {
   padding: 8px 0;
   margin: 0 auto;

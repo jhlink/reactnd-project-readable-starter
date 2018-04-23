@@ -15,11 +15,12 @@ const PostList = ( props ) =>  {
 
 	return (
     <div className="column content">
-      <div>
+      <div className="horizJust">
+        <span/>
         { showAddPost && ( 
           <NavLink 
             to={match.url + '/addpost'}
-            className="addpost"
+            className="nav link addpost"
            >
           Add Post
           </NavLink>
