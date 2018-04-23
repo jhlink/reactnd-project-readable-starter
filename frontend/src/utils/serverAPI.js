@@ -42,6 +42,7 @@ export const GetPost = (postId) =>
 export const PutPost = (postId, postData) => 
   fetch(`${API_HOST}/posts/${postId}`, {
     headers: reqHeaders,
-    method: 'put',
+    method: 'PUT',
     body: JSON.stringify(postData)
   }).then((res) => res.json());
+
