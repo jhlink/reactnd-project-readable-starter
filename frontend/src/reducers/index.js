@@ -6,7 +6,8 @@ import {
   GET_ALL_CATEGORIES,
   GET_ALL_POSTS,
   POST_NEW_POST,
-  GET_POST
+  GET_POST,
+  PUT_POST
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -47,6 +48,12 @@ function postHandler (state = {}, action) {
       };
 
     case GET_POST:
+      return {
+        ...state,
+          post
+      };
+
+    case PUT_POST:
       return {
         ...state,
           post
