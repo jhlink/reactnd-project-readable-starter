@@ -11,8 +11,6 @@ const Post = (props) => {
 	const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
 
-  console.log(props)
-
 	return (
     <div>
 		{ isEditPost && (
@@ -30,7 +28,9 @@ const Post = (props) => {
       </div>
     )}
       <Switch>
-        <Route path={match.url + `/editpost`} component={ PostFormLogic }/> 
+        <Route path={match.url + `/editpost`} render={props => (
+          <PostFormLogic post={props.post} match={props.match}/>  
+          )}/>
       </Switch>
 		</div>
 	);
