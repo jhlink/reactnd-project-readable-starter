@@ -6,6 +6,7 @@ export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const POST_NEW_POST = 'POST_NEW_POST';
 export const GET_POST = 'GET_POST';
+export const PUT_POST = 'PUT_POST';
 
 export const loadCategoryPosts = ( posts ) => {
 	return {
@@ -49,6 +50,13 @@ export const postNewPost = ( post ) => {
   };
 };
 
+export const editPost = ( post ) => {
+  return {
+      type: PUT_POST,
+      post 
+  };
+};
+
 // Thunks 
 
 export const FetchCategories = () => dispatch => {
@@ -81,3 +89,7 @@ export const FetchPost = ( postId ) => dispatch => {
     .then(post => dispatch(getPost(post)));
 };
 
+export const PutPost = ( postId, postBody ) => dispatch => {
+  return ServerAPI.PutPost(postId, postBody)
+    .then(post => dispatch(editPost(post)));
+};
