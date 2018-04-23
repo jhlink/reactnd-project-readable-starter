@@ -29,7 +29,7 @@ const Post = (props) => {
     )}
       <Switch>
         <Route path={match.url + `/editpost`} render={props => (
-          <PostFormLogic post={props.post} match={props.match}/>  
+          <PostFormLogic post={props.post} {...props}/>  
           )}/>
       </Switch>
 		</div>

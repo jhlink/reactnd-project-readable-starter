@@ -73,6 +73,8 @@ class PostFormLogic extends Component {
 
         this.props.dispatch(CreateNewPost(newPostData));
     }
+
+    this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
   }
 
   componentWillMount() {
