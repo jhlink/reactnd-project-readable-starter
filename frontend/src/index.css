@@ -53,6 +53,12 @@ li.comment {
   display: block;
 }
 
+.nav.link.edit {
+  margin: -1.75em 0 0 2em;
+  text-align: right;
+  font-size: .9em;
+}
+
 .addPostForm {
   padding: 8px 0;
   margin: 0 auto;

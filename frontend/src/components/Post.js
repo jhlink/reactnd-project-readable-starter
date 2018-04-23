@@ -15,15 +15,17 @@ const Post = (props) => {
     <div>
 		{ isEditPost && (
       <div display={ hideFromDelete } className="column content">
-      <h2> { title } </h2> 
-      <h3 className="postSubheader"> by {author } - { formattedDated } </h3>
-			<p className="postBody"> { body } + { category } </p>  
-			<div className="postVoteScore"> Vote Score:  { voteScore } </div>
-        <NavLink 
-          to={match.url + '/editpost'}
-          className="nav link edit"
-        > Edit  
-        </NavLink>
+        <h2> { title } </h2> 
+        <div>
+          <h3 className="postSubheader"> by {author } - { formattedDated } </h3>
+          <NavLink 
+            to={match.url + '/editpost'}
+            className="nav link edit"
+          > Edit  
+          </NavLink>
+        </div>
+			  <p className="postBody"> { body } + { category } </p>  
+			  <div className="postVoteScore"> Vote Score:  { voteScore } </div>
       <CommentList comments={ comments }/>
       </div>
     )}
