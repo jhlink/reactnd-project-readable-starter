@@ -93,8 +93,8 @@ class PostFormLogic extends Component {
 
       case "add":
       default:
-        const { categoryid } = this.props.match.params;
-        this.handlesectionpostupdate("category", categoryid);
+        const { categoryId } = this.props.match.params;
+        this.handleSectionPostUpdate("category", categoryId);
     }
   }
 
