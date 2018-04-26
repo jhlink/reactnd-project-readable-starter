@@ -61,6 +61,7 @@ class PostFormLogic extends Component {
         };
         
         this.props.dispatch(PutPost(this.state.post.id, postEditedText));
+        this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
         break;
 
       case "add":
@@ -74,7 +75,6 @@ class PostFormLogic extends Component {
         this.props.dispatch(CreateNewPost(newPostData));
     }
 
-    this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
   }
 
   componentWillMount() {
