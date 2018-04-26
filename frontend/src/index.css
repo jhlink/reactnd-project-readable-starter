@@ -57,6 +57,7 @@ li.comment {
   margin: 0;
   text-align: right;
   font-size: .9em;
+  border: solid black .125em;
 }
 
 .nav.link.addpost {
