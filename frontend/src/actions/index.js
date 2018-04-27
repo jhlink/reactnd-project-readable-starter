@@ -43,7 +43,8 @@ export const loadPostComments = ( comments ) => {
   };
 };
 
-export const postNewPost = ( post ) => {
+export const postNewPost = ( post, cbOnSuccess ) => {
+  cbOnSuccess();
   return {
       type: POST_NEW_POST,
       post 
@@ -79,9 +80,9 @@ export const FetchPostComments = ( postId ) => dispatch => {
     .then(postComments => dispatch(loadPostComments(postComments)))
 };
 
-export const CreateNewPost = ( postData ) => dispatch => {
+export const CreateNewPost = ( postData, cb ) => dispatch => {
   return ServerAPI.PostNewPost(postData)
-    .then(post => dispatch(postNewPost(post)));
+    .then(post => dispatch(postNewPost(post, cb)));
 };
 
 export const FetchPost = ( postId ) => dispatch => {
