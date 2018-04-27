@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostList from '../components/PostList';
 import { FetchAllPosts, FetchCategoryPosts } from '../actions';
+import update from 'immutability-helper';
 
 
 class PostListLogic extends Component {
@@ -25,7 +26,6 @@ class PostListLogic extends Component {
     }
   }
 
-
   componentWillMount() {
     const { categoryId } = this.props.match.params;
     this.handlePostDispatch(categoryId);
@@ -39,9 +39,18 @@ class PostListLogic extends Component {
       this.handlePostDispatch(newCategoryId);
     }
 
-		this.setState( 
-			nextProps.posts
-		);
+    const mergedPosts = update(this.state.posts, {$merge: nextProps.posts})
+      .map(post => {
+        if (nextProps.post !== undefined) {
+          if (nextProps.post.id === post.id) {
+            return nextProps.post;
+          } 
+        }
+        return post;
+     }
+   );
+
+    this.setState({ posts: mergedPosts });
 	}
   
 	render() {
@@ -52,13 +61,13 @@ class PostListLogic extends Component {
 }
 
 PostListLogic.propTypes = {
-	posts: PropTypes.object.isRequired
+	posts: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => {
-  const posts = state.postHandler;
+  const { posts, post } = state.postHandler;
 
-  return { posts };
+  return { posts, post };
 };
 
 export default connect(mapStateToProps)(PostListLogic);
