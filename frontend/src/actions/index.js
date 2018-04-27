@@ -51,7 +51,8 @@ export const postNewPost = ( post, cbOnSuccess ) => {
   };
 };
 
-export const editPost = ( post ) => {
+export const editPost = ( post, cbOnSuccess ) => {
+  cbOnSuccess();
   return {
       type: PUT_POST,
       post 
@@ -90,7 +91,7 @@ export const FetchPost = ( postId ) => dispatch => {
     .then(post => dispatch(getPost(post)));
 };
 
-export const PutPost = ( postId, postBody ) => dispatch => {
+export const PutPost = ( postId, postBody, cb ) => dispatch => {
   return ServerAPI.PutPost(postId, postBody)
-    .then(post => dispatch(editPost(post)));
+    .then(post => dispatch(editPost(post, cb)));
 };
