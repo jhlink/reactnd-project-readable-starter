@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
-import PostForm from './PostForm';
 
 const PostList = ( props ) =>  {
 	const { posts, match, location } = props; 

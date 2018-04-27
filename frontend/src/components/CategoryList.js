@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostListLogic from '../containers/PostListLogic'
 import PostFormLogic from '../containers/PostFormLogic';
-import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 
 const CategoryList = (props) => {
 	const { categories } = props;

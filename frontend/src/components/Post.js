@@ -5,7 +5,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import PostFormLogic from '../containers/PostFormLogic';
 
 const Post = (props) => {
-	const { id, timestamp, title, body, author, category, voteScore, deleted } = props.post;
+	const { timestamp, title, body, author, category, voteScore, deleted } = props.post;
   const { comments, match, location } = props;
 	const hideFromDelete = deleted ? 'none' : 'block';
 	const formattedDated = new Date(timestamp).toLocaleString();
