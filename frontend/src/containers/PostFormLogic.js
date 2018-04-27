@@ -51,8 +51,6 @@ class PostFormLogic extends Component {
   handlePostSubmit = (e) => {
     e.preventDefault();
 
-    //const userInputs = serializeForm(e.target, { hash: true });
-
     switch (this.state.type) {
       case "edit":
         const postEditedText = {
@@ -60,8 +58,10 @@ class PostFormLogic extends Component {
           body: this.state.post.body
         };
         
-        this.props.dispatch(PutPost(this.state.post.id, postEditedText));
-        this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
+        this.props.dispatch(PutPost(this.state.post.id, postEditedText, () => {
+          this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
+        }));
+
         break;
 
       case "add":
