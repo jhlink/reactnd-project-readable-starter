@@ -72,8 +72,9 @@ class PostFormLogic extends Component {
           timestamp: Date.now()
         };
 
-        this.props.dispatch(CreateNewPost(newPostData));
-        this.props.history.push('/' + this.state.post.category);
+        this.props.dispatch(CreateNewPost(newPostData, () => {
+          this.props.history.push('/' + this.state.post.category);
+        }));
     }
   }
 
