@@ -16,6 +16,7 @@ class PostListLogic extends Component {
 		this.state = {
 			posts: []
 		};
+    //this.handleClick = this.handleClick.bind.(this);
 	}
 
   handlePostDispatch = ( categoryId ) => {
@@ -24,6 +25,16 @@ class PostListLogic extends Component {
     } else {
       this.props.dispatch(FetchAllPosts());
     }
+  }
+
+  handleUpVote = (e) => {
+    e.preventDefault();
+    console.log("UpVote");
+  }
+
+  handleDownVote = (e) => {
+    e.preventDefault();
+    console.log("DownVote");
   }
 
   componentWillMount() {
@@ -56,7 +67,11 @@ class PostListLogic extends Component {
 	render() {
 		const { posts } = this.state;
     const { match, location } = this.props;
-		return <PostList posts={ posts } match={ match } location={ location }/>;
+		return <PostList posts={ posts } 
+                     match={ match } 
+                     location={ location }
+                     upVote={ this.handleUpVote }
+                     downVote={ this.handleDownVote }/>;
 	}
 }
 
