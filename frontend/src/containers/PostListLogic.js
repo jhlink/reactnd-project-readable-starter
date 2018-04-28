@@ -55,7 +55,7 @@ class PostListLogic extends Component {
       this.handlePostDispatch(newCategoryId);
     }
 
-    const mergedPosts = update(this.state.posts, {$merge: nextProps.posts})
+    const mergedPosts = update(this.state.posts, {$set: nextProps.posts})
       .map(post => {
         if (nextProps.post !== undefined) {
           if (nextProps.post.id === post.id) {
