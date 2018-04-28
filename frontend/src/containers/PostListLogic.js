@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostList from '../components/PostList';
-import { FetchAllPosts, FetchCategoryPosts } from '../actions';
+import { FetchAllPosts, FetchCategoryPosts, PostVote } from '../actions';
 import update from 'immutability-helper';
 
 
@@ -16,7 +16,7 @@ class PostListLogic extends Component {
 		this.state = {
 			posts: []
 		};
-    //this.handleClick = this.handleClick.bind.(this);
+    this.handleUpVote = this.handleUpVote.bind(this);
 	}
 
   handlePostDispatch = ( categoryId ) => {
@@ -27,14 +27,17 @@ class PostListLogic extends Component {
     }
   }
 
-  handleUpVote = (e) => {
+  handleUpVote = (postId, e) => {
     e.preventDefault();
-    console.log("UpVote");
+    const upVote = { option: "upVote" };
+    console.log(upVote);
+    this.props.dispatch(PostVote(postId, upVote));
   }
 
   handleDownVote = (e) => {
     e.preventDefault();
-    console.log("DownVote");
+    const downVote = { option: "downVote" };
+    this.props.dispatch(PostVote(downVote));
   }
 
   componentWillMount() {
