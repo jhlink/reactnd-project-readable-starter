@@ -17,6 +17,7 @@ class PostListLogic extends Component {
 			posts: []
 		};
     this.handleUpVote = this.handleUpVote.bind(this);
+    this.handleDownVote = this.handleDownVote.bind(this);
 	}
 
   handlePostDispatch = ( categoryId ) => {
@@ -34,10 +35,11 @@ class PostListLogic extends Component {
     this.props.dispatch(PostVote(postId, upVote));
   }
 
-  handleDownVote = (e) => {
+  handleDownVote = (postId, e) => {
     e.preventDefault();
     const downVote = { option: "downVote" };
-    this.props.dispatch(PostVote(downVote));
+    console.log(downVote);
+    this.props.dispatch(PostVote(postId, downVote));
   }
 
   componentWillMount() {
