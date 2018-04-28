@@ -33,9 +33,9 @@ const PostList = ( props ) =>  {
                 className="nav link"
               > { post.title } 
               </NavLink>
-              <div>
+              <div className="vote">
                 <button onClick={upVote.bind(this, post.id)}>UpVote</button>
-                <span>Vote Score { post.voteScore }</span>
+                <span>Votes: { post.voteScore }</span>
                 <button onClick={downVote.bind(this, post.id)}>DownVote</button>
               </div>
 		  		</li>
