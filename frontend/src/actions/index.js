@@ -60,10 +60,10 @@ export const editPost = ( post, cbOnSuccess ) => {
   };
 };
 
-export const postVote = ( voteType ) => {
+export const postVote = ( post ) => {
   return {
     type: POST_VOTE,
-    voteType
+    post
   };
 }; 
 
@@ -106,5 +106,5 @@ export const PutPost = ( postId, postBody, cb ) => dispatch => {
 
 export const PostVote = ( postId, voteIntent ) => dispatch => {
   return ServerAPI.PostVote(postId, voteIntent)
-    .then(post => dispatch(postVote(voteIntent)));
+    .then(post => dispatch(postVote(post)));
 };
