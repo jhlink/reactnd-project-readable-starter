@@ -46,3 +46,9 @@ export const PutPost = (postId, postData) =>
     body: JSON.stringify(postData)
   }).then((res) => res.json());
 
+export const PostVote = (postId, voteIntent) =>
+  fetch(`${API_HOST}/posts/${postId}`, {
+    headers: reqHeaders,
+    method: 'POST',
+    body: JSON.stringify(voteIntent)
+  }).then((res) => res.json());
