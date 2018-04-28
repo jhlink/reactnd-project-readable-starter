@@ -60,8 +60,7 @@ export const editPost = ( post, cbOnSuccess ) => {
   };
 };
 
-export const postVote = { voteType } => {
-  
+export const postVote = ( voteType ) => {
   return {
     type: POST_VOTE,
     voteType
