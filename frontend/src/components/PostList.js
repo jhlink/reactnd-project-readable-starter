@@ -16,6 +16,13 @@ const PostList = ( props ) =>  {
     <div className="column content">
       <div className="horizJust">
         <span/>
+        <select>
+          <option value="voteScoreDesc">Most Popular</option>
+          <option value="voteScoreAsc">Least Popular</option>
+          <option value="timestampDesc">Newest Post</option>
+          <option value="timestampAsc">Oldest Post</option>
+        </select>
+
         { showAddPost && ( 
           <NavLink 
             to={match.url + '/addpost'}
