@@ -12,15 +12,24 @@ const PostList = ( props ) =>  {
     return match.url !== '/' ? match.url : postCategory;
   };
 
+  const jsonify = ( criteria, order ) => {
+    return JSON.stringify({ 
+          criteria,
+          order
+      });
+  }
+
+  console.log(sortValues.formSortCriteria);
+
 	return (
     <div className="column content">
       <div className="horizJust">
         <span/>
-        <select value={ sortValues.formSortCriteria } onChange={sortValues.sortHandler.bind(this)}>
-          <option value={JSON.stringify({voteScore: 'desc'})}>Most Popular</option>
-          <option value={JSON.stringify({voteScore: 'asc'})}>Least Popular</option>
-          <option value={JSON.stringify({timestamp: 'desc'})}>Newest Post</option>
-          <option value={JSON.stringify({timestamp: 'asc'})}>Oldest Post</option>
+        <select value={ JSON.stringify(sortValues.formSortCriteria) } onChange={sortValues.sortHandler.bind(this)}>
+          <option value={ jsonify('voteScore', 'desc') }>Most Popular</option>
+          <option value={ jsonify('voteScore', 'asc') }>Least Popular</option>
+          <option value={ jsonify('timestamp', 'desc') }>Newest Post</option>
+          <option value={ jsonify('timestamp', 'asc') }>Oldest Post</option>
         </select>
 
         { showAddPost && ( 
