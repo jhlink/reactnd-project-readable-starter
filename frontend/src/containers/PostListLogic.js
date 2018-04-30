@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PostList from '../components/PostList';
 import { FetchAllPosts, FetchCategoryPosts, PostVote } from '../actions';
 import update from 'immutability-helper';
-
+import _ from 'lodash';
 
 class PostListLogic extends Component {
 	/* TODO: Ask how if this is what production code looks like
@@ -15,7 +15,8 @@ class PostListLogic extends Component {
 
 		this.state = {
 			posts: [],
-      formSortCriteria: {voteScore: "desc"} 
+      formSortCriteria: { criteria: 'voteScore',
+                          order: 'desc'} 
 		};
     this.handleUpVote = this.handleUpVote.bind(this);
     this.handleDownVote = this.handleDownVote.bind(this);
@@ -48,8 +49,15 @@ class PostListLogic extends Component {
     e.preventDefault();
     const sortCrit = JSON.parse(e.target.value);
     console.log(sortCrit);
-    this.setState({formSortCriteria: e.target.value});
+    this.setState({ formSortCriteria: sortCrit,
+                    posts: this.postSorter(sortCrit.criteria, sortCrit.order)});
   }
+
+  postSorter = (criteria, direction) => {
+    const nposts = _.orderBy(this.state.posts, [criteria], [direction]);
+    return nposts;
+  }
+
 
   componentWillMount() {
     const { categoryId } = this.props.match.params;
