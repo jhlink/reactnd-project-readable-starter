@@ -18,8 +18,7 @@ class PostListLogic extends Component {
       formSortCriteria: { criteria: 'voteScore',
                           order: 'desc'} 
 		};
-    this.handleUpVote = this.handleUpVote.bind(this);
-    this.handleDownVote = this.handleDownVote.bind(this);
+    this.handleVote = this.handleVote.bind(this);
     this.handleSelectedSort = this.handleSelectedSort.bind(this);
 	}
 
@@ -31,18 +30,11 @@ class PostListLogic extends Component {
     }
   }
 
-  handleUpVote = (postId, e) => {
+  handleVote = (postId, e) => {
     e.preventDefault();
-    const upVote = { option: "upVote" };
-    console.log(upVote);
-    this.props.dispatch(PostVote(postId, upVote));
-  }
-
-  handleDownVote = (postId, e) => {
-    e.preventDefault();
-    const downVote = { option: "downVote" };
-    console.log(downVote);
-    this.props.dispatch(PostVote(postId, downVote));
+    const voteType = { option: e.target.id };
+    console.log(voteType);
+    this.props.dispatch(PostVote(postId, voteType));
   }
 
   handleSelectedSort = ( e ) => {
@@ -84,8 +76,7 @@ class PostListLogic extends Component {
 		return <PostList posts={ sorted } 
                      match={ match } 
                      location={ location }
-                     upVote={ this.handleUpVote }
-                     downVote={ this.handleDownVote }
+                     voteHandler={ this.handleVote }
                      sortValues={ sortValues }/>;
 	}
 }
