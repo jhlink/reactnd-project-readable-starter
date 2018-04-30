@@ -49,12 +49,13 @@ class PostListLogic extends Component {
     e.preventDefault();
     const sortCrit = JSON.parse(e.target.value);
     console.log(sortCrit);
-    this.setState({ formSortCriteria: sortCrit,
-                    posts: this.postSorter(sortCrit.criteria, sortCrit.order)});
+    this.setState({ formSortCriteria: sortCrit });
   }
 
-  postSorter = (criteria, direction) => {
-    const nposts = _.orderBy(this.state.posts, [criteria], [direction]);
+  postSorter = (posts) => {
+    const nposts = _.orderBy(posts, 
+                            this.state.formSortCriteria.criteria, 
+                            this.state.formSortCriteria.order);
     return nposts;
   }
 
@@ -72,25 +73,15 @@ class PostListLogic extends Component {
       this.handlePostDispatch(newCategoryId);
     }
 
-    const mergedPosts = update(this.state.posts, {$set: nextProps.posts})
-      .map(post => {
-        if (nextProps.post !== undefined) {
-          if (nextProps.post.id === post.id) {
-            return nextProps.post;
-          } 
-        }
-        return post;
-     }
-   );
-
-    this.setState({ posts: mergedPosts });
+    this.setState({ posts: nextProps.posts });
 	}
   
 	render() {
 		const { posts } = this.state;
+    const sorted = this.postSorter(posts);
     const { match, location } = this.props;
     const sortValues = { formSortCriteria: this.state.formSortCriteria, sortHandler: this.handleSelectedSort };
-		return <PostList posts={ posts } 
+		return <PostList posts={ sorted } 
                      match={ match } 
                      location={ location }
                      upVote={ this.handleUpVote }
@@ -104,9 +95,9 @@ PostListLogic.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const { posts, post } = state.postHandler;
+  const { posts } = state.postHandler;
 
-  return { posts, post };
+  return { posts };
 };
 
 export default connect(mapStateToProps)(PostListLogic);
