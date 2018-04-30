@@ -4,9 +4,12 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 
 const PostList = ( props ) =>  {
+  const UP_VOTE = "upVote";
+  const DOWN_VOTE = "downVote";
 	const { posts, match, location, upVote, voteHandler, sortValues } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
   const showAddPost = location.pathname !== '/' && location.pathname === match.url;
+  
 
   const categoryUrl = (postCategory) => {
     return match.url !== '/' ? match.url : postCategory;
@@ -51,10 +54,10 @@ const PostList = ( props ) =>  {
               </NavLink>
               <div className="vote">
                 <button onClick={voteHandler.bind(this, post.id)}
-                        id="upVote">UpVote</button>
+                        id={ UP_VOTE }>UpVote</button>
                 <span>Votes: { post.voteScore }</span>
                 <button onClick={voteHandler.bind(this, post.id)}
-                        id="downVote">DownVote</button>
+                        id={ DOWN_VOTE }>DownVote</button>
               </div>
 		  		</li>
 		  	))}
