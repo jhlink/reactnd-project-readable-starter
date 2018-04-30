@@ -80,6 +80,25 @@ li.comment {
   background: white;
 }
 
+select.sort {
+  margin-left: 1em;
+  border: none;
+  background-color: #B9B9B9;
+  width: 10em;
+  height: 2em;
+  font-size: 1em;
+}
+
+.sort-header {
+  margin: 0 0 .5em;
+  font-size: 1.25em;
+}
+
+.sortblock {
+  display: block;
+  margin-left: 1em;
+}
+
 .addPostForm {
   padding: 8px 0;
   margin: 0 auto;
@@ -174,6 +193,7 @@ li.comment {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 2em;
 }
 
 .postSubheader {
