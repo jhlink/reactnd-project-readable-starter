@@ -15,6 +15,8 @@ const PostForm = (props) => {
     body 
     } = post;  
 
+  const isEditForm = type === "edit";
+
 	return (
 		<div className="column content">
         <h2 className="postFormHeader">{ type } Post about { category } Category</h2>
@@ -29,6 +31,7 @@ const PostForm = (props) => {
                     name="author" 
                     placeholder="Who are you?" 
                     value={ author } 
+                    disabled={ isEditForm ? "disabled":"" }
                     onChange={e => (
                       handlePostChange(e))}  />
             <textarea type="text" 
