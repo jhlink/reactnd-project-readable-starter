@@ -4,7 +4,7 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 
 const PostList = ( props ) =>  {
-	const { posts, match, location, upVote, downVote } = props; 
+	const { posts, match, location, upVote, downVote, sortValues } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
   const showAddPost = location.pathname !== '/' && location.pathname === match.url;
 
@@ -16,11 +16,11 @@ const PostList = ( props ) =>  {
     <div className="column content">
       <div className="horizJust">
         <span/>
-        <select>
-          <option value="voteScoreDesc">Most Popular</option>
-          <option value="voteScoreAsc">Least Popular</option>
-          <option value="timestampDesc">Newest Post</option>
-          <option value="timestampAsc">Oldest Post</option>
+        <select value={ sortValues.formSortCriteria } onChange={sortValues.sortHandler.bind(this)}>
+          <option value={JSON.stringify({voteScore: 'desc'})}>Most Popular</option>
+          <option value={JSON.stringify({voteScore: 'asc'})}>Least Popular</option>
+          <option value={JSON.stringify({timestamp: 'desc'})}>Newest Post</option>
+          <option value={JSON.stringify({timestamp: 'asc'})}>Oldest Post</option>
         </select>
 
         { showAddPost && ( 
