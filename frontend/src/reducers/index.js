@@ -64,7 +64,9 @@ function postHandler (state = {}, action) {
     case POST_VOTE:
       return {
         ...state,
-          post
+        posts: state.posts.map(sPost => {
+          return (sPost.id === post.id) ? post : sPost;
+        })
       };
 
     default :
