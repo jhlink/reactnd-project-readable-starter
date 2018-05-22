@@ -74,14 +74,12 @@ PostDetailViewLogic.propTypes = {
 
 const mapStateToProps = (state, props) => {
   const { comments } = state.commentHandler;
-  const { posts, post } = state.postHandler;
+  const { posts } = state.postHandler;
   const { postId } = props.match.params;
-  //const targetPost = posts ? posts.filter( targetPost => targetPost.id === postId)[0] : {};
-  const fpost = posts ? posts.filter( post => post.id === postId)[0] : {}; 
-  const tpost = post ? post : fpost;
 
-  //console.log(tpost);
-  return { post:tpost, comments } 
+  const post = posts ? posts.filter( post => post.id === postId)[0] : {}; 
+
+  return { post, comments } 
 };
 
 export default connect(mapStateToProps)(PostDetailViewLogic);

@@ -57,7 +57,9 @@ function postHandler (state = {}, action) {
     case PUT_POST:
       return {
         ...state,
-          post
+        posts: state.posts.map(sPost => {
+          return (sPost.id === post.id) ? post : sPost;
+        })
       };
 
     
