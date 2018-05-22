@@ -27,7 +27,7 @@ To accesss the backend server in your code, we have stored the URL to the API se
 
 
 1. Implement Delete Post
-2. Implement add new Comment
+- 2. Implement add new Comment
 3. Implement edit Comment
 4. Implement vote on comment 
 5. Implement delete comment
