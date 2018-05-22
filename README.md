@@ -24,3 +24,13 @@ Information about the API server and how to use it can be found in its [README f
 ## Access The API Server
 
 To accesss the backend server in your code, we have stored the URL to the API server in the environment variable `REACT_APP_BACKEND` which you can access in your code using `process.env.REACT_APP_BACKEND`. You can see this in action in `frontend/src/App.js` in `componentDidMount`.
+
+
+1. Implement Delete Post
+2. Implement add new Comment
+3. Implement edit Comment
+4. Implement vote on comment 
+5. Implement delete comment
+7. Move comment count and other stuff to Post list view
+8. Show 404 when accessing deleted page.
+
