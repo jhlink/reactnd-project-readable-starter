@@ -18,6 +18,8 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2",
     "react-scripts": "1.0.13"
   },
   "scripts": {
