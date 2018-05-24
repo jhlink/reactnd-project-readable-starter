@@ -4,76 +4,76 @@ import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 
 const PostList = ( props ) =>  {
-	const UP_VOTE = 'upVote';
-	const DOWN_VOTE = 'downVote';
-	const { posts, match, location, upVote, voteHandler, sortValues } = props; 
-	const postsToShow = location.pathname === match.url ? posts : [];
-	const showAddPost = location.pathname !== '/' && location.pathname === match.url;
+  const UP_VOTE = 'upVote';
+  const DOWN_VOTE = 'downVote';
+  const { posts, match, location, upVote, voteHandler, sortValues } = props; 
+  const postsToShow = location.pathname === match.url ? posts : [];
+  const showAddPost = location.pathname !== '/' && location.pathname === match.url;
   
 
-	const categoryUrl = (postCategory) => {
-		return match.url !== '/' ? match.url : postCategory;
-	};
+  const categoryUrl = (postCategory) => {
+    return match.url !== '/' ? match.url : postCategory;
+  };
 
-	const jsonify = ( criteria, order ) => {
-		return JSON.stringify({ 
-			criteria,
-			order
-		});
-	};
+  const jsonify = ( criteria, order ) => {
+    return JSON.stringify({ 
+      criteria,
+      order
+    });
+  };
 
-	console.log(sortValues.formSortCriteria);
+  console.log(sortValues.formSortCriteria);
 
-	return (
-		<div className="column content">
-			{ showAddPost && ( 
-				<div className="horizJust">
-					<div className="sortblock"> 
-						<p className="sort-header">Sort By</p>
-						<select value={ JSON.stringify(sortValues.formSortCriteria) } 
-							onChange={sortValues.sortHandler.bind(this)}
-							className="sort">
-							<option value={ jsonify('voteScore', 'desc') }>Most Popular</option>
-							<option value={ jsonify('voteScore', 'asc') }>Least Popular</option>
-							<option value={ jsonify('timestamp', 'desc') }>Newest Post</option>
-							<option value={ jsonify('timestamp', 'asc') }>Oldest Post</option>
-						</select>
-					</div>
-					<NavLink 
-						to={match.url + '/addpost'}
-						className="nav link addpost"
-					>
+  return (
+    <div className="column content">
+      { showAddPost && ( 
+        <div className="horizJust">
+          <div className="sortblock"> 
+            <p className="sort-header">Sort By</p>
+            <select value={ JSON.stringify(sortValues.formSortCriteria) } 
+              onChange={sortValues.sortHandler.bind(this)}
+              className="sort">
+              <option value={ jsonify('voteScore', 'desc') }>Most Popular</option>
+              <option value={ jsonify('voteScore', 'asc') }>Least Popular</option>
+              <option value={ jsonify('timestamp', 'desc') }>Newest Post</option>
+              <option value={ jsonify('timestamp', 'asc') }>Oldest Post</option>
+            </select>
+          </div>
+          <NavLink 
+            to={match.url + '/addpost'}
+            className="nav link addpost"
+          >
             Add Post
-					</NavLink>
-				</div>
-			)}
-			<ul>
-				{postsToShow.map((post) => (
-					<li key={post.id} className="post">
-						<NavLink 
-							to={categoryUrl(post.category) + '/' +  post.id}
-							className="nav link"
-						> { post.title } 
-						</NavLink>
-						<div className="vote">
-							<button onClick={voteHandler.bind(this, post.id)}
-								id={ UP_VOTE }>UpVote</button>
-							<span>Votes: { post.voteScore }</span>
-							<button onClick={voteHandler.bind(this, post.id)}
-								id={ DOWN_VOTE }>DownVote</button>
-						</div>
-					</li>
-				))}
-			</ul>
-			<Switch> 
-				<Route path={match.url + '/:postId'} component={ PostDetailViewLogic }/>
-			</Switch>
-		</div>
-	);
+          </NavLink>
+        </div>
+      )}
+      <ul>
+        {postsToShow.map((post) => (
+          <li key={post.id} className="post">
+            <NavLink 
+              to={categoryUrl(post.category) + '/' +  post.id}
+              className="nav link"
+            > { post.title } 
+            </NavLink>
+            <div className="vote">
+              <button onClick={voteHandler.bind(this, post.id)}
+                id={ UP_VOTE }>UpVote</button>
+              <span>Votes: { post.voteScore }</span>
+              <button onClick={voteHandler.bind(this, post.id)}
+                id={ DOWN_VOTE }>DownVote</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <Switch> 
+        <Route path={match.url + '/:postId'} component={ PostDetailViewLogic }/>
+      </Switch>
+    </div>
+  );
 };
 
 PostList.propTypes = {
-	posts: PropTypes.array.isRequired
+  posts: PropTypes.array.isRequired
 };
 
 export default PostList;
