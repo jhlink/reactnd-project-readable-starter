@@ -4,26 +4,26 @@ import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
 import { PutPost, FetchPost, CreateNewPost } from '../actions';
 import serializeForm from 'form-serialize';
-import uuidv4 from "uuid/v4";
+import uuidv4 from 'uuid/v4';
 import update from 'immutability-helper';
 
 class PostFormLogic extends Component {
 
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
+    this.state = {
       post: {
         deleted: false,
         voteScore: 1,
-        category: "",
-        title: "",
-        body: "",
-        author: ""
-     },
-     type: ""
-		};
-	}
+        category: '',
+        title: '',
+        body: '',
+        author: ''
+      },
+      type: ''
+    };
+  }
 
   handlePostDispatch = ( categoryId ) => {
     if (categoryId) {
@@ -36,12 +36,12 @@ class PostFormLogic extends Component {
     this.setState({
       post: 
       update(this.state.post, 
-              { [postKey]: { 
-                  $set: value
-                  }
-              }
-            )} 
-    )
+        { [postKey]: { 
+          $set: value
+        }
+        }
+      )} 
+    );
   }
 
   handlePostChange = (e) => {
@@ -52,54 +52,54 @@ class PostFormLogic extends Component {
     e.preventDefault();
 
     switch (this.state.type) {
-      case "edit":
-        const postEditedText = {
-          title: this.state.post.title,
-          body: this.state.post.body
-        };
+    case 'edit':
+      const postEditedText = {
+        title: this.state.post.title,
+        body: this.state.post.body
+      };
         
-        this.props.dispatch(PutPost(this.state.post.id, postEditedText, () => {
-          this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
-        }));
+      this.props.dispatch(PutPost(this.state.post.id, postEditedText, () => {
+        this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
+      }));
 
-        break;
+      break;
 
-      case "add":
-      default:
-        const newPostData = {
-          ...this.state.post,
-          id: uuidv4(),
-          timestamp: Date.now()
-        };
+    case 'add':
+    default:
+      const newPostData = {
+        ...this.state.post,
+        id: uuidv4(),
+        timestamp: Date.now()
+      };
 
-        this.props.dispatch(CreateNewPost(newPostData, () => {
-          this.props.history.push('/' + this.state.post.category);
-        }));
+      this.props.dispatch(CreateNewPost(newPostData, () => {
+        this.props.history.push('/' + this.state.post.category);
+      }));
     }
   }
 
   componentWillMount() {
-    const isEditPost = this.props.match.url.includes("editpost") ? "edit" : "add";
+    const isEditPost = this.props.match.url.includes('editpost') ? 'edit' : 'add';
     this.setState({type: isEditPost});
 
   
     switch (isEditPost) {
-      case "edit":
-          if (this.props.post !== undefined) {
-            this.setState(
-               { post: this.props.post }
-            );
-          }
-        break;
+    case 'edit':
+      if (this.props.post !== undefined) {
+        this.setState(
+          { post: this.props.post }
+        );
+      }
+      break;
 
-      case "add":
-      default:
-        const { categoryId } = this.props.match.params;
-        this.handleSectionPostUpdate("category", categoryId);
+    case 'add':
+    default:
+      const { categoryId } = this.props.match.params;
+      this.handleSectionPostUpdate('category', categoryId);
     }
   }
 
-	componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.post === undefined) {
       return;
     }
@@ -109,19 +109,19 @@ class PostFormLogic extends Component {
         { post: nextProps.post }
       );
     }
-	}
+  }
   
-	render() {
+  render() {
     const { post, type } = this.state;
-		return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
-                     handlePostChange={(e) => this.handlePostChange(e) }
-                     post={ post }
-                     type={ type }/>;
-	}
+    return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
+      handlePostChange={(e) => this.handlePostChange(e) }
+      post={ post }
+      type={ type }/>;
+  }
 }
 
 PostFormLogic.propTypes = {
-	post: PropTypes.object
+  post: PropTypes.object
 };
 
 const mapStateToProps = (state, props) => {

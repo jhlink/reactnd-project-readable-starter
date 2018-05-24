@@ -5,23 +5,23 @@ import Post from '../components/Post';
 import { FetchPost, FetchPostComments } from '../actions';
 
 class PostDetailViewLogic extends Component {
-	/* TODO: Ask how if this is what production code looks like
+  /* TODO: Ask how if this is what production code looks like
    *        and if components are initialized with props with lifecycle methods
    */
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
+    this.state = {
       post: {},
-			comments: []
-		};
-	}
-
-  handleCommentsDispatch = ( postId ) => {
-    if (postId) {
-      this.props.dispatch(FetchPostComments(postId));
-    }
+      comments: []
+    };
   }
+
+ handleCommentsDispatch = ( postId ) => {
+   if (postId) {
+     this.props.dispatch(FetchPostComments(postId));
+   }
+ }
 
   isObjectEmpty = ( obj ) => {
     return Object.keys(obj).length === 0 && obj.constructor === Object;
@@ -39,7 +39,7 @@ class PostDetailViewLogic extends Component {
     this.handlePostDispatch(postId);
   }
 
-	componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { postId } = this.props.match.params;
     const newPostId = nextProps.match.params.postId;
 
@@ -58,18 +58,18 @@ class PostDetailViewLogic extends Component {
         {comments: nextProps.comments}
       );
     }
-	}
+  }
   
-	render() {
-		const { post, comments } = this.state;
+  render() {
+    const { post, comments } = this.state;
     const { match, location } = this.props;
-		return <Post post={ post } comments={ comments } match={ match } location={ location }/>;
-	}
+    return <Post post={ post } comments={ comments } match={ match } location={ location }/>;
+  }
 }
 
 PostDetailViewLogic.propTypes = {
-	post: PropTypes.object,
-	comments: PropTypes.array
+  post: PropTypes.object,
+  comments: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => {
@@ -79,7 +79,7 @@ const mapStateToProps = (state, props) => {
 
   const post = posts ? posts.filter( post => post.id === postId)[0] : {}; 
 
-  return { post, comments } 
+  return { post, comments }; 
 };
 
 export default connect(mapStateToProps)(PostDetailViewLogic);

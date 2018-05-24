@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
-import PostListLogic from '../containers/PostListLogic'
+import PostListLogic from '../containers/PostListLogic';
 import PostFormLogic from '../containers/PostFormLogic';
 
 const CategoryList = (props) => {
@@ -9,21 +9,21 @@ const CategoryList = (props) => {
 
 	return (
 		<div>
-      <div className="column menu">
-			  <ul>
-			  	{ categories.map( c => 
-			  		<li key={ c.path }>
-              <NavLink 
-                to={'/' +  c.path}
-                className="nav link"
-              > { c.name } </NavLink>
-			  		</li>
-			  	)}
-			  </ul>
-      </div>
+			<div className="column menu">
+				<ul>
+					{ categories.map( c => 
+						<li key={ c.path }>
+							<NavLink 
+								to={'/' +  c.path}
+								className="nav link"
+							> { c.name } </NavLink>
+						</li>
+					)}
+				</ul>
+			</div>
 
-      <Switch> 
-        {/*
+			<Switch> 
+				{/*
          / TODO: From a production standpoint, this feels wrong. I feel that the AddPost compoenent
          /  would make better logical sense to put in PostListLogic, which is where the NavLink to
          /  AddPost exists. This separation of Route and NavLink components just feels like a huge
@@ -33,9 +33,9 @@ const CategoryList = (props) => {
          /  URL path, is it okay to place the NavLink in a separate component and add the Route
          /  to that component to the parent of that component?
         */}
-        <Route path={`/:categoryId/addpost`} component={ PostFormLogic }/>
-        <Route path={`/:categoryId?`} component={ PostListLogic }/>
-      </Switch>
+				<Route path={'/:categoryId/addpost'} component={ PostFormLogic }/>
+				<Route path={'/:categoryId?'} component={ PostListLogic }/>
+			</Switch>
 		</div>
 	);
 };
