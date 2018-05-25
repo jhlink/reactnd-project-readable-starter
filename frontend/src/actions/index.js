@@ -8,6 +8,7 @@ export const POST_NEW_POST = 'POST_NEW_POST';
 export const GET_POST = 'GET_POST';
 export const PUT_POST = 'PUT_POST';
 export const POST_VOTE = 'POST_VOTE';
+export const POST_NEW_COMMENT = 'POST_NEW_COMMENT';
 
 export const loadCategoryPosts = ( posts ) => {
   return {
@@ -67,6 +68,14 @@ export const postVote = ( post ) => {
   };
 }; 
 
+export const postNewComment = ( comment, cbOnSuccess ) => {
+  cbOnSuccess();
+  return {
+    type: POST_NEW_COMMENT,
+    comment 
+  };
+};
+
 // Thunks 
 
 export const FetchCategories = () => dispatch => {
@@ -107,4 +116,9 @@ export const PutPost = ( postId, postBody, cb ) => dispatch => {
 export const PostVote = ( postId, voteIntent ) => dispatch => {
   return ServerAPI.PostVote(postId, voteIntent)
     .then(post => dispatch(postVote(post)));
+};
+
+export const CreateNewComment = ( commentData, cb ) => dispatch => {
+  return ServerAPI.PostNewComment(commentData)
+    .then(comment => dispatch(postNewComment(comment, cb)));
 };
