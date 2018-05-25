@@ -6,20 +6,20 @@ import { FetchAllPosts, FetchCategoryPosts, PostVote } from '../actions';
 import _ from 'lodash';
 
 class PostListLogic extends Component {
-	/* TODO: Ask how if this is what production code looks like
+  /* TODO: Ask how if this is what production code looks like
    *        and if components are initialized with props with lifecycle methods
    */
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			posts: [],
+    this.state = {
+      posts: [],
       formSortCriteria: { criteria: 'voteScore',
-                          order: 'desc'} 
-		};
+        order: 'desc'} 
+    };
     this.handleVote = this.handleVote.bind(this);
     this.handleSelectedSort = this.handleSelectedSort.bind(this);
-	}
+  }
 
   handlePostDispatch = ( categoryId ) => {
     if (categoryId) {
@@ -45,8 +45,8 @@ class PostListLogic extends Component {
 
   postSorter = (posts) => {
     const nposts = _.orderBy(posts, 
-                            this.state.formSortCriteria.criteria, 
-                            this.state.formSortCriteria.order);
+      this.state.formSortCriteria.criteria, 
+      this.state.formSortCriteria.order);
     return nposts;
   }
 
@@ -56,7 +56,7 @@ class PostListLogic extends Component {
     this.handlePostDispatch(categoryId);
   }
 
-	componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     const { categoryId } = this.props.match.params;
     const newCategoryId = nextProps.match.params.categoryId;
 
@@ -65,23 +65,23 @@ class PostListLogic extends Component {
     }
 
     this.setState({ posts: nextProps.posts });
-	}
+  }
   
-	render() {
-		const { posts } = this.state;
+  render() {
+    const { posts } = this.state;
     const sorted = this.postSorter(posts);
     const { match, location } = this.props;
     const sortValues = { formSortCriteria: this.state.formSortCriteria, sortHandler: this.handleSelectedSort };
-		return <PostList posts={ sorted } 
-                     match={ match } 
-                     location={ location }
-                     voteHandler={ this.handleVote }
-                     sortValues={ sortValues }/>;
-	}
+    return <PostList posts={ sorted } 
+      match={ match } 
+      location={ location }
+      voteHandler={ this.handleVote }
+      sortValues={ sortValues }/>;
+  }
 }
 
 PostListLogic.propTypes = {
-	posts: PropTypes.array
+  posts: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => {
