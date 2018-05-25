@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 import {
-	LOAD_CATEGORY_POSTS,
+  LOAD_CATEGORY_POSTS,
   LOAD_POST_COMMENTS,
   GET_ALL_CATEGORIES,
   GET_ALL_POSTS,
@@ -12,7 +12,7 @@ import {
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
-	const { categories } = action;
+  const { categories } = action;
 
   switch (action.type) {
     case GET_ALL_CATEGORIES:
@@ -37,21 +37,21 @@ function postHandler (state = {}, action) {
       };
 
     case LOAD_CATEGORY_POSTS:
-		  return {
-		  	...state,
+      return {
+        ...state,
         posts
-		  };
+      };
 
     case POST_NEW_POST:
       return {
         ...state,
-          post
+        post
       };
 
     case GET_POST:
       return {
         ...state,
-          post
+        post
       };
 
     case PUT_POST:
