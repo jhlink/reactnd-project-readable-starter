@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostList from '../components/PostList';
 import { FetchAllPosts, FetchCategoryPosts, PostVote } from '../actions';
-import update from 'immutability-helper';
 import _ from 'lodash';
 
 class PostListLogic extends Component {
