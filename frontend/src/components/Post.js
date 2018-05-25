@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CommentList from './CommentList';
+import CommentFormLogic from '../containers/CommentFormLogic';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostFormLogic from '../containers/PostFormLogic';
 
@@ -26,11 +27,11 @@ const Post = (props) => {
           </div>
           <p className="postBody"> { body } + { category } </p>  
           <div className="postVoteScore"> Vote Score:  { voteScore } </div>
-          <div className="commentSectoin">
+          <div className="commentSection">
             <NavLink 
               to={match.url + '/addcomment'}
               className="nav link edit"
-            > Edit  
+            > Post Comment  
             </NavLink>
             <CommentList comments={ comments }/>
           </div>
@@ -40,6 +41,7 @@ const Post = (props) => {
         <Route path={match.url + '/editpost'} render={props => (
           <PostFormLogic post={props.post} {...props}/>  
         )}/>
+        <Route path={match.url + '/addcomment'} component={ CommentFormLogic }/>
       </Switch>
     </div>
   );
