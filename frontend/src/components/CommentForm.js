@@ -44,7 +44,8 @@ const CommentForm = (props) => {
 };
 
 CommentForm.propTypes = {
-  handleCommentSubmit: PropTypes.func.isRequired
+  handleCommentSubmit: PropTypes.func.isRequired,
+  handleCommentChange: PropTypes.func.isRequired
 };
 
 export default CommentForm;
