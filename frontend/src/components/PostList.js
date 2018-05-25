@@ -22,8 +22,6 @@ const PostList = ( props ) =>  {
     });
   };
 
-  console.log(sortValues.formSortCriteria);
-
   return (
     <div className="column content">
       { showAddPost && ( 
