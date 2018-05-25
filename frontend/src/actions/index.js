@@ -10,10 +10,10 @@ export const PUT_POST = 'PUT_POST';
 export const POST_VOTE = 'POST_VOTE';
 
 export const loadCategoryPosts = ( posts ) => {
-	return {
-		type: LOAD_CATEGORY_POSTS,
-	  posts	
-	};
+  return {
+    type: LOAD_CATEGORY_POSTS,
+    posts	
+  };
 };
 
 export const getCategories = ( categories ) => {
@@ -47,16 +47,16 @@ export const loadPostComments = ( comments ) => {
 export const postNewPost = ( post, cbOnSuccess ) => {
   cbOnSuccess();
   return {
-      type: POST_NEW_POST,
-      post 
+    type: POST_NEW_POST,
+    post 
   };
 };
 
 export const editPost = ( post, cbOnSuccess ) => {
   cbOnSuccess();
   return {
-      type: PUT_POST,
-      post 
+    type: PUT_POST,
+    post 
   };
 };
 
@@ -71,22 +71,22 @@ export const postVote = ( post ) => {
 
 export const FetchCategories = () => dispatch => {
   return ServerAPI.GetCategories()
-    .then(categories => dispatch(getCategories(categories)))
+    .then(categories => dispatch(getCategories(categories)));
 };
 
 export const FetchAllPosts = () => dispatch => {
   return ServerAPI.GetPosts()
-    .then(posts => dispatch(getPosts(posts)))
+    .then(posts => dispatch(getPosts(posts)));
 };
 
 export const FetchCategoryPosts = ( categoryId ) => dispatch => {
   return ServerAPI.GetCategoryPosts(categoryId)
-    .then(categoryPosts => dispatch(loadCategoryPosts(categoryPosts)))
+    .then(categoryPosts => dispatch(loadCategoryPosts(categoryPosts)));
 };
 
 export const FetchPostComments = ( postId ) => dispatch => {
   return ServerAPI.GetPostComments(postId)
-    .then(postComments => dispatch(loadPostComments(postComments)))
+    .then(postComments => dispatch(loadPostComments(postComments)));
 };
 
 export const CreateNewPost = ( postData, cb ) => dispatch => {
