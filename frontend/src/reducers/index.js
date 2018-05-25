@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import update from 'immutability-helper';
 
 import {
   LOAD_CATEGORY_POSTS,
@@ -8,7 +9,8 @@ import {
   POST_NEW_POST,
   GET_POST,
   PUT_POST,
-  POST_VOTE
+  POST_VOTE,
+  POST_NEW_COMMENT
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -77,13 +79,20 @@ function postHandler (state = {}, action) {
 }
 
 function commentHandler (state = {}, action) {
-  const { comments } = action;
+  const { comments, comment } = action;
 
   switch (action.type) {
     case LOAD_POST_COMMENTS:
       return {
         ...state,
         comments
+      };
+
+    case POST_NEW_COMMENT:
+      return {
+        ...state,
+        comments: update(comments, 
+          {$push: [ comment ]})
       };
   
     default:
