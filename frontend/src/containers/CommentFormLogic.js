@@ -70,23 +70,20 @@ class CommentFormLogic extends Component {
       case 'addcomment':
       default: {
         const newCommentData = {
-          parentId: this.state.parentId,
-          body: this.state.body,
-          author: this.state.author,
+          ...this.state.comment,
           id: uuidv4(),
           timestamp: Date.now()
         };
 
         this.props.dispatch(CreateNewComment(newCommentData, () => {
-          const rootPostPath = '/' + this.props.match.params.category + '/' + this.props.match.params.postId;
-          console.log(rootPostPath);
-          //this.props.history.push(rootPostPath);
+          const rootPostPath = '/' + this.props.match.params.category + '/' + this.props.match.params.parentId;
+          this.props.history.push(rootPostPath);
         }));
       }
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const isEditPost = 'addcomment'; //this.props.match.url.includes('editpost') ? 'edit' : 'add';
     this.setState({type: isEditPost});
 
@@ -113,6 +110,7 @@ class CommentFormLogic extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps); 
     if (nextProps.comment === undefined) {
       return;
     }
@@ -138,8 +136,13 @@ CommentFormLogic.propTypes = {
   comment: PropTypes.object
 };
 
-const mapStateToProps = (state) => {
-  const { comment } = state.commentHandler;
+const mapStateToProps = (state, props) => {
+  const { comments } = state.commentHandler;
+  const { parentId } = props.match.params;
+  if (comments === undefined) {
+    return {};
+  }
+  const comment = comments.filter(comment => comment.id === parentId)[0];
   return { comment };
 };
 
