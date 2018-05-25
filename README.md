@@ -34,3 +34,5 @@ To accesss the backend server in your code, we have stored the URL to the API se
 7. Move comment count and other stuff to Post list view
 8. Show 404 when accessing deleted page.
 
+Stretch Goals
+-- Replace Immutability-Helper and lodash with Facebook's Immutable.js
