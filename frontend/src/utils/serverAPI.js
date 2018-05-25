@@ -67,6 +67,13 @@ export const GetPostComments = (post) =>
   }).then((res) => res.json());
 
 //  POST /comments
+export const PostNewComment = (commentData) =>
+  fetch(`${API_HOST}/comments`, {
+    headers: reqHeaders,
+    method: 'POST',
+    body: JSON.stringify(commentData)
+  }).then((res) => res.json());
+
 //    USAGE:
 //      Add a comment to a post
 //
