@@ -52,29 +52,29 @@ class PostFormLogic extends Component {
     e.preventDefault();
 
     switch (this.state.type) {
-    case 'edit':
-      const postEditedText = {
-        title: this.state.post.title,
-        body: this.state.post.body
-      };
+      case 'edit':
+        const postEditedText = {
+          title: this.state.post.title,
+          body: this.state.post.body
+        };
         
-      this.props.dispatch(PutPost(this.state.post.id, postEditedText, () => {
-        this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
-      }));
+        this.props.dispatch(PutPost(this.state.post.id, postEditedText, () => {
+          this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
+        }));
 
-      break;
+        break;
 
-    case 'add':
-    default:
-      const newPostData = {
-        ...this.state.post,
-        id: uuidv4(),
-        timestamp: Date.now()
-      };
+      case 'add':
+      default:
+        const newPostData = {
+          ...this.state.post,
+          id: uuidv4(),
+          timestamp: Date.now()
+        };
 
-      this.props.dispatch(CreateNewPost(newPostData, () => {
-        this.props.history.push('/' + this.state.post.category);
-      }));
+        this.props.dispatch(CreateNewPost(newPostData, () => {
+          this.props.history.push('/' + this.state.post.category);
+        }));
     }
   }
 
@@ -84,18 +84,18 @@ class PostFormLogic extends Component {
 
   
     switch (isEditPost) {
-    case 'edit':
-      if (this.props.post !== undefined) {
-        this.setState(
-          { post: this.props.post }
-        );
-      }
-      break;
+      case 'edit':
+        if (this.props.post !== undefined) {
+          this.setState(
+            { post: this.props.post }
+          );
+        }
+        break;
 
-    case 'add':
-    default:
-      const { categoryId } = this.props.match.params;
-      this.handleSectionPostUpdate('category', categoryId);
+      case 'add':
+      default:
+        const { categoryId } = this.props.match.params;
+        this.handleSectionPostUpdate('category', categoryId);
     }
   }
 
