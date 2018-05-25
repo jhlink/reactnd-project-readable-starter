@@ -41,7 +41,7 @@ const Post = (props) => {
         <Route path={match.url + '/editpost'} render={props => (
           <PostFormLogic post={props.post} {...props}/>  
         )}/>
-        <Route path={match.url + '/addcomment'} component={ CommentFormLogic }/>
+        <Route path={'/:category/:parentId/addcomment'} component={ CommentFormLogic }/>
       </Switch>
     </div>
   );
