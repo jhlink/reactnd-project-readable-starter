@@ -124,7 +124,7 @@ PostFormLogic.propTypes = {
   post: PropTypes.object
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const { post } = state.postHandler;
   return { post };
 };
