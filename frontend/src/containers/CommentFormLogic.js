@@ -20,7 +20,8 @@ class CommentFormLogic extends Component {
         category: '',
         title: '',
         body: '',
-        author: ''
+        author: '',
+        parentId: ''
       },
       type: ''
     };
@@ -46,7 +47,7 @@ class CommentFormLogic extends Component {
   }
 
   handleCommentChange = (e) => {
-    this.handleSectionPostUpdate(e.target.name, e.target.value);
+    this.handleSectionCommentUpdate(e.target.name, e.target.value);
   }
   
   handleCommentSubmit = (e) => {
@@ -66,23 +67,27 @@ class CommentFormLogic extends Component {
         break;
       }
 
-      case 'add':
+      case 'addcomment':
       default: {
         const newCommentData = {
-          ...this.state.comment,
+          parentId: this.state.parentId,
+          body: this.state.body,
+          author: this.state.author,
           id: uuidv4(),
           timestamp: Date.now()
         };
 
         this.props.dispatch(CreateNewComment(newCommentData, () => {
-          this.props.history.push('/' + this.state.comment.category);
+          const rootPostPath = '/' + this.props.match.params.category + '/' + this.props.match.params.postId;
+          console.log(rootPostPath);
+          //this.props.history.push(rootPostPath);
         }));
       }
     }
   }
 
-  componentWillMount() {
-    const isEditPost = false; //this.props.match.url.includes('editpost') ? 'edit' : 'add';
+  componentDidMount() {
+    const isEditPost = 'addcomment'; //this.props.match.url.includes('editpost') ? 'edit' : 'add';
     this.setState({type: isEditPost});
 
   
@@ -95,10 +100,15 @@ class CommentFormLogic extends Component {
         }
         break;
 
-      case 'add':
-      default:
-        //const { categoryId } = this.props.match.params;
-        //this.handleSectionPostUpdate('category', categoryId);
+      case 'addcomment':
+      default: {
+        const { category, parentId } = this.props.match.params;
+        this.setState({
+          ...this.state.comment,
+          category,
+          parentId
+        });
+      }
     }
   }
 
@@ -116,7 +126,8 @@ class CommentFormLogic extends Component {
   
   render() {
     const { comment, type } = this.state;
-    return <CommentForm handleCommentSubmit={(e) => this.handleCommentSubmit(e) }
+    return <CommentForm 
+      handleCommentSubmit={(e) => this.handleCommentSubmit(e) }
       handleCommentChange={(e) => this.handleCommentChange(e) }
       comment={ comment }
       type={ type }/>;
