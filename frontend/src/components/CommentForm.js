@@ -10,7 +10,6 @@ const CommentForm = (props) => {
 
   const {
     category,
-    title, 
     author, 
     body 
   } = comment;  
@@ -19,12 +18,6 @@ const CommentForm = (props) => {
     <div className="column content">
       <h2 className="postFormHeader">{ type } Comment about { category } Category</h2>
       <form className="addPostForm" onSubmit={ handleCommentSubmit }>
-        <input type="text" 
-          name="title" 
-          placeholder="Title" 
-          value={ title } 
-          onChange={e => (
-            handleCommentChange(e))} />
         <input type="text" 
           name="author" 
           placeholder="Who are you?" 
