@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Comment = (props) => { 
-  const { id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted } = props.comment;
+  const { timestamp, body, author, voteScore, deleted, parentDeleted } = props.comment;
   const hideFromDelete = parentDeleted || deleted;
   const formattedDated = new Date(timestamp).toLocaleString();
 
