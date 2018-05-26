@@ -16,9 +16,9 @@ class CommentFormLogic extends Component {
     this.state = {
       comment: {
         deleted: false,
+        parentDeleted: false,
         voteScore: 1,
         category: '',
-        title: '',
         body: '',
         author: '',
         parentId: ''
