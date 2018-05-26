@@ -6,48 +6,48 @@ const PostForm = (props) => {
     type,
     handlePostSubmit, 
     handlePostChange 
-    } = props;
+  } = props;
 
   const {
     category,
     title, 
     author, 
     body 
-    } = post;  
+  } = post;  
 
-  const isEditForm = type === "edit";
+  const isEditForm = type === 'edit';
 
-	return (
-		<div className="column content">
-        <h2 className="postFormHeader">{ type } Post about { category } Category</h2>
-        <form className="addPostForm" onSubmit={ handlePostSubmit }>
-            <input type="text" 
-                    name="title" 
-                    placeholder="Title" 
-                    value={ title } 
-                    onChange={e => (
-                      handlePostChange(e))} />
-            <input type="text" 
-                    name="author" 
-                    placeholder="Who are you?" 
-                    value={ author } 
-                    disabled={ isEditForm ? "disabled":"" }
-                    onChange={e => (
-                      handlePostChange(e))}  />
-            <textarea type="text" 
-                        name="body" 
-                        placeholder="Enter text here..." 
-                        value={ body } 
-                        onChange={e => (
-                          handlePostChange(e))} />
-            <button>Submit</button>
-        </form>
-		</div>
-	);
+  return (
+    <div className="column content">
+      <h2 className="postFormHeader">{ type } Post about { category } Category</h2>
+      <form className="addPostForm" onSubmit={ handlePostSubmit }>
+        <input type="text" 
+          name="title" 
+          placeholder="Title" 
+          value={ title } 
+          onChange={e => (
+            handlePostChange(e))} />
+        <input type="text" 
+          name="author" 
+          placeholder="Who are you?" 
+          value={ author } 
+          disabled={ isEditForm ? 'disabled':'' }
+          onChange={e => (
+            handlePostChange(e))}  />
+        <textarea type="text" 
+          name="body" 
+          placeholder="Enter text here..." 
+          value={ body } 
+          onChange={e => (
+            handlePostChange(e))} />
+        <button>Submit</button>
+      </form>
+    </div>
+  );
 };
 
 PostForm.propTypes = {
-	handlePostSubmit: PropTypes.func.isRequired
+  handlePostSubmit: PropTypes.func.isRequired
 };
 
 export default PostForm;
