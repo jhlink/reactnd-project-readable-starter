@@ -9,6 +9,7 @@ const PostList = ( props ) =>  {
   const { posts, match, location, upVote, voteHandler, sortValues } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
   const showAddPost = location.pathname !== '/' && location.pathname === match.url;
+  const isEmpty = postsToShow.length === 0 ? {display: 'none'} : {};
   
 
   const categoryUrl = (postCategory) => {
@@ -45,7 +46,7 @@ const PostList = ( props ) =>  {
           </NavLink>
         </div>
       )}
-      <ul>
+      <ul style={ isEmpty }>
         {postsToShow.map((post) => (
           <li key={post.id} className="post">
             <NavLink 
