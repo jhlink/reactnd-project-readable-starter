@@ -11,6 +11,7 @@ const Post = (props) => {
   const hideFromDelete = deleted ? 'none' : 'block';
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
+  const commentListRelativePos = location.pathname === match.url + '/addcomment' ? { top: '25em' } : { top: '0em' };
 
   return (
     <div>
@@ -35,7 +36,7 @@ const Post = (props) => {
             > Post Comment  
             </NavLink>
           </div>
-          <CommentList comments={ comments }/>
+          <CommentList comments={ comments } positionStyle={ commentListRelativePos }/>
         </div>
       )}
       <Switch>
