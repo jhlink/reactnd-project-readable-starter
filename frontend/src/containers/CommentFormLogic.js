@@ -27,12 +27,6 @@ class CommentFormLogic extends Component {
     };
   }
 
-  handleCommentDispatch = ( categoryId ) => {
-    if (categoryId) {
-      console.log(categoryId);
-    }
-  }
-
   handleSectionCommentUpdate = ( property, value ) => {
     const commentKey = property;
     this.setState({

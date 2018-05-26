@@ -25,12 +25,6 @@ class PostFormLogic extends Component {
     };
   }
 
-  handlePostDispatch = ( categoryId ) => {
-    if (categoryId) {
-      console.log(categoryId);
-    }
-  }
-
   handleSectionPostUpdate = ( property, value ) => {
     const postKey = property;
     this.setState({
