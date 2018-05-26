@@ -8,7 +8,6 @@ import PostFormLogic from '../containers/PostFormLogic';
 const Post = (props) => {
   const { timestamp, title, body, author, category, voteScore, deleted } = props.post;
   const { comments, match, location } = props;
-  const hideFromDelete = deleted ? 'none' : 'block';
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
   const commentListRelativePos = location.pathname === match.url + '/addcomment' ? { top: '25em' } : { top: '0em' };
@@ -16,7 +15,7 @@ const Post = (props) => {
   return (
     <div>
       { isEditPost && (
-        <div display={ hideFromDelete } >
+        <div >
           <h2 className="postHeader"> { title } </h2> 
           <div className="horizJust header">
             <h3 className="postSubheader"> by {author } <br/> { formattedDated } </h3>
