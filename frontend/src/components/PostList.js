@@ -26,7 +26,7 @@ const PostList = ( props ) =>  {
   return (
     <div className="column content">
       { showAddPost && ( 
-        <div className="horizJust">
+        <div className="horizJust header">
           <div className="sortblock"> 
             <p className="sort-header">Sort By</p>
             <select value={ JSON.stringify(sortValues.formSortCriteria) } 
@@ -57,7 +57,7 @@ const PostList = ( props ) =>  {
             <div className="vote">
               <button onClick={voteHandler.bind(this, post.id)}
                 id={ UP_VOTE }>UpVote</button>
-              <span>Votes: { post.voteScore }</span>
+              <span>Votes { post.voteScore }</span>
               <button onClick={voteHandler.bind(this, post.id)}
                 id={ DOWN_VOTE }>DownVote</button>
             </div>

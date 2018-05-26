@@ -15,10 +15,10 @@ const Post = (props) => {
   return (
     <div>
       { isEditPost && (
-        <div display={ hideFromDelete } className="column content">
+        <div display={ hideFromDelete } >
           <h2 className="postHeader"> { title } </h2> 
-          <div className="horizJust">
-            <h3 className="postSubheader"> by {author } - { formattedDated } </h3>
+          <div className="horizJust header">
+            <h3 className="postSubheader"> by {author } <br/> { formattedDated } </h3>
             <NavLink 
               to={match.url + '/editpost'}
               className="nav link edit"
@@ -27,14 +27,15 @@ const Post = (props) => {
           </div>
           <p className="postBody"> { body } + { category } </p>  
           <div className="postVoteScore"> Vote Score:  { voteScore } </div>
-          <div className="commentSection">
+          <div className="horizJust header">
+            <span/>
             <NavLink 
               to={match.url + '/addcomment'}
-              className="nav link edit"
+              className="nav link comment"
             > Post Comment  
             </NavLink>
-            <CommentList comments={ comments }/>
           </div>
+          <CommentList comments={ comments }/>
         </div>
       )}
       <Switch>
