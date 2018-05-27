@@ -14,6 +14,8 @@ const CommentForm = (props) => {
     body 
   } = comment;  
 
+  const isEditForm = type === 'editcomment';
+
   return (
     <div className="main-body">
       <h2 className="uppercase">{ type } Comment about { category } Category</h2>
@@ -22,6 +24,7 @@ const CommentForm = (props) => {
           name="author" 
           placeholder="Who are you?" 
           value={ author } 
+          disabled={ isEditForm ? 'disabled' : '' }
           onChange={e => (
             handleCommentChange(e))}  />
         <textarea type="text" 
