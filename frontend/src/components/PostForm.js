@@ -20,7 +20,7 @@ const PostForm = (props) => {
   return (
     <div className="main-body">
       <h2 className="uppercase">{ type } Post about { category } Category</h2>
-      <form className="addPostForm" onSubmit={ handlePostSubmit }>
+      <form className="form-style" onSubmit={ handlePostSubmit }>
         <input type="text" 
           name="title" 
           placeholder="Title" 

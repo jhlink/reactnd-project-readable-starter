@@ -61,18 +61,13 @@ select.sort {
   font-size: 1em;
 }
 
-.sort-header {
-  margin: 0 0 .5em;
-  font-size: 1.25em;
-  padding-left: 1em;
-}
 
-.addPostForm {
+.form-style {
   padding: 8px 0;
   margin: 0 auto;
 }
 
-.addPostForm input {
+.form-style input {
   display: block;
   padding: 5px 10px;
   margin-bottom: 10px;
@@ -83,7 +78,7 @@ select.sort {
   width: 60%;
 }
 
-.addPostForm textarea {
+.form-style textarea {
   display: block;
   padding: 5px 10px;
   margin-top: 2em;
@@ -95,7 +90,7 @@ select.sort {
   border: 1px solid #ccc;
 }
 
-.addPostForm button {
+.form-style button {
   margin: 1em;
   margin-right: 20%;
   background: #ccc;
@@ -107,12 +102,8 @@ select.sort {
   cursor: pointer;
 }
 
-.addPostForm button:hover {
+.form-style button:hover {
   background-color: #999;
-}
-
-.active {
-  color: orange;
 }
 
 
@@ -149,6 +140,12 @@ select.sort {
 }
 
 /* Container Organization */ 
+
+.sort-header {
+  margin: 0 0 .5em;
+  font-size: 1.25em;
+  padding-left: 1em;
+}
 
 .body-layout {
   display: flex;
@@ -211,6 +208,10 @@ select.sort {
 }
 
 /* Container Styling */ 
+
+.active {
+  color: orange;
+}
 
 .main-body {
   padding-left: 1em;
