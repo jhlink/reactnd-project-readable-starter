@@ -11,7 +11,8 @@ import {
   PUT_POST,
   POST_VOTE,
   POST_NEW_COMMENT,
-  PUT_COMMENT
+  PUT_COMMENT,
+  GET_COMMENT
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
