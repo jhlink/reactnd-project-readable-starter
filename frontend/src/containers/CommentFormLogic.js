@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CommentForm from '../components/CommentForm';
 import { connect } from 'react-redux';
 //import { PutPost, FetchPost, CreateNewPost } from '../actions';
-import { CreateNewComment } from '../actions';
+import { CreateNewComment, PutComment } from '../actions';
 //import serializeForm from 'form-serialize';
 import uuidv4 from 'uuid/v4';
 import update from 'immutability-helper';
@@ -48,16 +48,15 @@ class CommentFormLogic extends Component {
     e.preventDefault();
 
     switch (this.state.type) {
-      case 'edit': {
-      //const postEditedText = {
-      //  title: this.state.post.title,
-      //  body: this.state.post.body
-      //};
-      //  const nothing = 'nothing';
+      case 'editcomment': {
+        const commentEditedText = {
+          timestamp: Date.now(),
+          body: this.state.comment.body
+        };
             
-        //this.props.dispatch(PutPost(this.state.post.id, postEditedText, () => {
-        //  this.props.history.push('/' + this.state.post.category + '/' + this.state.post.id);
-        //}));
+        this.props.dispatch(PutComment(this.state.comment.id, commentEditedText, () => {
+          this.props.history.push('/' + this.state.comment.category + '/' + this.state.comment.id);
+        }));
         break;
       }
 
@@ -78,14 +77,18 @@ class CommentFormLogic extends Component {
   }
 
   componentWillMount() {
-    const isEditPost = 'addcomment'; //this.props.match.url.includes('editpost') ? 'edit' : 'add';
+    const isEditPost = this.props.match.url.includes('editcomment') ? 'editcomment' : 'addcomment';
     this.setState({type: isEditPost});
+    console.log(this.props.comment);
 
     switch (isEditPost) {
-      case 'edit':
+      case 'editcomment':
         if (this.props.comment !== undefined) {
+          console.log(this.props.comment);
           this.setState(
-            { comment: this.props.comment }
+            { comment: 
+              this.props.comment,
+            }
           );
         }
         break;
@@ -105,7 +108,13 @@ class CommentFormLogic extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps); 
+
+    if (nextProps.match !== undefined) {
+      const isEditPost = nextProps.match.url.includes('editcomment') ? 'editcomment' : 'addcomment';
+      if (this.state.type !== isEditPost) {
+        this.setState({type: isEditPost});
+      }
+    }
     if (nextProps.comment === undefined) {
       return;
     }
@@ -131,13 +140,8 @@ CommentFormLogic.propTypes = {
   comment: PropTypes.object
 };
 
-const mapStateToProps = (state, props) => {
-  const { comments } = state.commentHandler;
-  const { parentId } = props.match.params;
-  if (comments === undefined) {
-    return {};
-  }
-  const comment = comments.filter(comment => comment.id === parentId)[0];
+const mapStateToProps = (state) => {
+  const { comment } = state.commentHandler;
   return { comment };
 };
 
