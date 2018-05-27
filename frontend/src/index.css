@@ -71,13 +71,6 @@ li.comment {
   overflow-wrap: break-word;
 }
 
-.nav.link.edit {
-  margin: 0;
-  text-align: right;
-  font-size: 1em;
-  border: solid black .125em;
-}
-
 .nav.link.addpost {
   flex-direction: row-reverse;
   font-size: 1em;
