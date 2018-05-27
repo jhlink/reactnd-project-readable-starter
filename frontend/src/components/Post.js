@@ -10,12 +10,15 @@ const Post = (props) => {
   const { comments, match, location } = props;
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
-  const commentListRelativePos = location.pathname === match.url + '/addcomment' ? { top: '25em' } : { top: '0em' };
+
+  const isAddComment = location.pathname === match.url + '/addcomment';
+  const isEditComment = location.pathname === match.url + '/editcomment';
+  const commentListRelativePos = isEditComment || isAddComment ? { top: '25em' } : { top: '0em' };
 
   return (
-    <div>
+    <div className="post-structure">
       { isEditPost && (
-        <div >
+        <div className="container-post">
           <h2 className="postHeader"> { title } </h2> 
           <div className="horizJust header">
             <h3 className="postSubheader"> by {author } <br/> { formattedDated } </h3>
@@ -35,14 +38,22 @@ const Post = (props) => {
             > Post Comment  
             </NavLink>
           </div>
-          <CommentList comments={ comments } positionStyle={ commentListRelativePos }/>
         </div>
       )}
-      <Switch>
+      { isEditPost && (
+        <div className="container-comments">
+          <CommentList comments={ comments } 
+            positionStyle={ commentListRelativePos }
+            match={ match }
+          />
+        </div>
+      )}
+      <Switch className="container-forms">
         <Route path={match.url + '/editpost'} render={props => (
           <PostFormLogic post={props.post} {...props}/>  
         )}/>
         <Route path={'/:category/:parentId/addcomment'} component={ CommentFormLogic }/>
+        <Route path={'/:category/:parentId/editcomment'} component={ CommentFormLogic }/>
       </Switch>
     </div>
   );

@@ -165,7 +165,6 @@ select.sort {
   color: orange;
 }
 
-
 .column.menu {
   width: 10em;
 }
@@ -176,15 +175,10 @@ select.sort {
   margin-top: 1em;
 }
 
-.column.content.commentform {
-  top: 21em; 
-  position: absolute;
-}
-
-.comments {
+.container-comments {
   margin-top: 2em;
   width: 100%;
-  position: relative;
+  order: 2;
 }
 
 .comment.content {
@@ -200,6 +194,19 @@ select.sort {
 
 .commentBody {
   font-size: 1em;
+}
+
+.container-post {
+  order: 0;
+}
+
+.container-forms {
+  order: 1;
+}
+
+.post-structure {
+  display: flex;
+  flex-direction: column;
 }
 
 .postHeader {
