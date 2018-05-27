@@ -75,8 +75,10 @@ export const PostNewComment = (commentData) =>
   }).then((res) => res.json());
 
 //  GET /comments/:id
-//    USAGE:
-//      Get the details for a single comment
+export const GetComment = (commentId) => 
+  fetch(`${API_HOST}/comments/${commentId}`, {
+    headers:  reqHeaders
+  }).then((res) => res.json());
 
 //  POST /comments/:id
 //    USAGE:
