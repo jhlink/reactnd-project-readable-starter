@@ -78,14 +78,6 @@ li.comment {
   border: solid black .125em;
 }
 
-.nav.link.comment {
-  margin-top: 1em;
-  margin-right: 1em;
-  text-align: right;
-  font-size: 1em;
-  border: solid black .125em;
-}
-
 .nav.link.addpost {
   flex-direction: row-reverse;
   font-size: 1em;
@@ -242,6 +234,15 @@ select.sort {
   max-width: 80%;
 }
 
+.right-align {
+  align-items: flex-end;
+}
+
+.vertical-center {
+  margin: 0;
+  align-self: middle;
+}
+
 .structure-flex-col {
   display: flex;
   flex-direction: column;
@@ -266,6 +267,13 @@ select.sort {
   align-self: flex-end;
   font-size: 1em;
   margin: .75em .75em .5em 0;
+  border: solid black .125em;
+}
+
+.post {
+  margin-top: 1em;
+  margin-right: 1em;
+  font-size: 1em;
   border: solid black .125em;
 }
 

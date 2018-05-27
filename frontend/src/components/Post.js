@@ -29,12 +29,11 @@ const Post = (props) => {
             </NavLink>
           </div>
           <p className="body-style"> { body } + { category } </p>  
-          <div className="postVoteScore"> Vote Score:  { voteScore } </div>
-          <div className="structure-flex-row">
-            <span/>
+          <div className="structure-flex-col right-align">
+            <label className="vote-score"> Vote Score:  { voteScore } </label>
             <NavLink 
               to={match.url + '/addcomment'}
-              className="nav link comment"
+              className="nav-link post"
             > Post Comment  
             </NavLink>
           </div>
