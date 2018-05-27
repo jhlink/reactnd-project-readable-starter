@@ -10,7 +10,8 @@ import {
   GET_POST,
   PUT_POST,
   POST_VOTE,
-  POST_NEW_COMMENT
+  POST_NEW_COMMENT,
+  PUT_COMMENT
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -53,8 +54,7 @@ function postHandler (state = {}, action) {
     case GET_POST:
       return {
         ...state,
-        post
-      };
+      }; 
 
     case PUT_POST:
       return {
@@ -93,6 +93,14 @@ function commentHandler (state = {}, action) {
         ...state,
         comments: update(state.comments, 
           {$push: [ comment ]})
+      };
+
+    case PUT_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.map(sComment => {
+          return (sComment.id === comment.id) ? comment : sComment;
+        })
       };
   
     default:
