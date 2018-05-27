@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Comment = (props) => { 
   const { comment, match } = props;
-  const { timestamp, body, author, voteScore, deleted, parentDeleted } = comment;
+  const { id, timestamp, body, author, voteScore, deleted, parentDeleted } = comment;
   const formattedDated = new Date(timestamp).toLocaleString();
 
   return (
@@ -15,7 +15,7 @@ const Comment = (props) => {
       </div>
       <div className="structure-flex-col">
         <NavLink 
-          to={match.url + '/editcomment'}
+          to={match.url + '/' + id + '/editcomment'}
           className="nav-link edit"
         > Edit  
         </NavLink>
