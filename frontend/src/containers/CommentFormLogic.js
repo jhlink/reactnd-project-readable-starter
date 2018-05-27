@@ -81,7 +81,6 @@ class CommentFormLogic extends Component {
     const isEditPost = 'addcomment'; //this.props.match.url.includes('editpost') ? 'edit' : 'add';
     this.setState({type: isEditPost});
 
-  
     switch (isEditPost) {
       case 'edit':
         if (this.props.comment !== undefined) {
@@ -94,10 +93,12 @@ class CommentFormLogic extends Component {
       case 'addcomment':
       default: {
         const { category, parentId } = this.props.match.params;
-        this.setState({
-          ...this.state.comment,
-          category,
-          parentId
+        this.setState({ 
+          comment: {
+            ...this.state.comment,
+            category,
+            parentId
+          }
         });
       }
     }
