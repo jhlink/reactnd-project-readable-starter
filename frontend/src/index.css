@@ -204,9 +204,13 @@ select.sort {
   order: 1;
 }
 
-.structure-post {
+.structure-flex {
   display: flex;
   flex-direction: column;
+}
+
+.structure-post {
+
 }
 
 .postHeader {
@@ -220,6 +224,11 @@ select.sort {
   width: inherit;
   align-items: flex-start;
   margin-bottom: 2em;
+}
+
+.structure-comment {
+  display: flex;
+  flex-direction: column;
 }
 
 .horizJust.header {
