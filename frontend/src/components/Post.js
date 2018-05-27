@@ -52,7 +52,7 @@ const Post = (props) => {
           <PostFormLogic post={props.post} {...props}/>  
         )}/>
         <Route path={'/:category/:parentId/addcomment'} component={ CommentFormLogic }/>
-        <Route path={'/:category/:parentId/editcomment'} component={ CommentFormLogic }/>
+        <Route path={'/:category/:parentId/:commentId/editcomment'} component={ CommentFormLogic }/>
       </Switch>
     </div>
   );
