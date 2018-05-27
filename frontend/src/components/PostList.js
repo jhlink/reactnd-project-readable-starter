@@ -54,7 +54,7 @@ const PostList = ( props ) =>  {
               className="nav-link item-width"
             > { post.title } 
             </NavLink>
-            <Voter item={post}
+            <Voter item={ post }
               voteHandler={ voteHandler }/>
           </li>
         ))}
