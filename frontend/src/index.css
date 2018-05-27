@@ -171,13 +171,6 @@ select.sort {
   text-transform: uppercase;
 }
 
-.postVoteScore {
-  font-weight: bold;
-  font-size: 1em;
-  text-align: right;
-  margin: 1em;
-}
-
 /* Text Styling */ 
 
 .subtitle-style {
