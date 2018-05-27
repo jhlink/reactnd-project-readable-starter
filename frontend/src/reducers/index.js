@@ -92,7 +92,8 @@ function commentHandler (state = {}, action) {
       return {
         ...state,
         comments: update(state.comments, 
-          {$push: [ comment ]})
+          {$push: [ comment ]}),
+        comment
       };
 
     case PUT_COMMENT:
