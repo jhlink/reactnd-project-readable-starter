@@ -56,7 +56,7 @@ const PostList = ( props ) =>  {
             <div className="vote">
               <button onClick={voteHandler.bind(this, post.id)}
                 id={ UP_VOTE }>UpVote</button>
-              <span>Votes { post.voteScore }</span>
+              <label className="ui-vote-score">Votes { post.voteScore }</label>
               <button onClick={voteHandler.bind(this, post.id)}
                 id={ DOWN_VOTE }>DownVote</button>
             </div>
