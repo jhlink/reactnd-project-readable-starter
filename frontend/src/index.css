@@ -115,11 +115,6 @@ select.sort {
   color: orange;
 }
 
-.column.content {
-  padding-left: 1em;
-  width: 40em; 
-  margin-top: 1em;
-}
 
 /* Text Styling */ 
 
@@ -216,6 +211,12 @@ select.sort {
 }
 
 /* Container Styling */ 
+
+.main-body {
+  padding-left: 1em;
+  width: 40em; 
+  margin-top: 1em;
+}
 
 .edit {
   align-self: flex-end;

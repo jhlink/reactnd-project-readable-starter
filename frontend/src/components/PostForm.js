@@ -18,7 +18,7 @@ const PostForm = (props) => {
   const isEditForm = type === 'edit';
 
   return (
-    <div className="column content">
+    <div className="main-body">
       <h2 className="uppercase">{ type } Post about { category } Category</h2>
       <form className="addPostForm" onSubmit={ handlePostSubmit }>
         <input type="text" 

@@ -24,7 +24,7 @@ const PostList = ( props ) =>  {
   };
 
   return (
-    <div className="column content">
+    <div className="main-body">
       { showAddPost && ( 
         <div className="structure-flex-row">
           <div className="structure-flex-col"> 
