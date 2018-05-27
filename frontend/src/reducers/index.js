@@ -105,6 +105,12 @@ function commentHandler (state = {}, action) {
           return (sComment.id === comment.id) ? comment : sComment;
         })
       };
+
+    case GET_COMMENT:
+      return {
+        ...state,
+        comment 
+      }; 
   
     default:
       return state;
