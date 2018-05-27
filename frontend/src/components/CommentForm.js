@@ -15,7 +15,7 @@ const CommentForm = (props) => {
   } = comment;  
 
   return (
-    <div className="column content commentform">
+    <div className="column content">
       <h2 className="postFormHeader">{ type } Comment about { category } Category</h2>
       <form className="addPostForm" onSubmit={ handleCommentSubmit }>
         <input type="text" 
