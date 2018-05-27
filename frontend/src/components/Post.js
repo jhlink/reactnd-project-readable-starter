@@ -11,10 +11,6 @@ const Post = (props) => {
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
 
-  const isAddComment = location.pathname === match.url + '/addcomment';
-  const isEditComment = location.pathname === match.url + '/editcomment';
-  const commentListRelativePos = isEditComment || isAddComment ? { top: '25em' } : { top: '0em' };
-
   return (
     <div className="structure-flex-col">
       { isEditPost && (
@@ -42,7 +38,6 @@ const Post = (props) => {
       { isEditPost && (
         <div className="container-comments">
           <CommentList comments={ comments } 
-            positionStyle={ commentListRelativePos }
             match={ match }
           />
         </div>
