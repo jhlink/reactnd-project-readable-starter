@@ -71,13 +71,6 @@ li.comment {
   overflow-wrap: break-word;
 }
 
-.nav.link.addpost {
-  flex-direction: row-reverse;
-  font-size: 1em;
-  border: solid black .125em;
-  background: white;
-}
-
 select.sort {
   margin-left: 1em;
   border: none;
