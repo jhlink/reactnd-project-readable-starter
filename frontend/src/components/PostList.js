@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
+import Voter from './Voter';
 
 const PostList = ( props ) =>  {
   const UP_VOTE = 'upVote';
   const DOWN_VOTE = 'downVote';
-  const { posts, match, location, upVote, voteHandler, sortValues } = props; 
+  const { posts, match, location, voteHandler, sortValues } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
   const showAddPost = location.pathname !== '/' && location.pathname === match.url;
   const isEmpty = postsToShow.length === 0 ? {display: 'none'} : {};
@@ -53,13 +54,8 @@ const PostList = ( props ) =>  {
               className="nav-link item-width"
             > { post.title } 
             </NavLink>
-            <div className="vote">
-              <button onClick={voteHandler.bind(this, post.id)}
-                id={ UP_VOTE }>UpVote</button>
-              <label className="ui-vote-score">Votes { post.voteScore }</label>
-              <button onClick={voteHandler.bind(this, post.id)}
-                id={ DOWN_VOTE }>DownVote</button>
-            </div>
+            <Voter item={post}
+              voteHandler={ voteHandler }/>
           </li>
         ))}
       </ul>

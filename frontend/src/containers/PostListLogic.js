@@ -72,6 +72,7 @@ class PostListLogic extends Component {
     const sorted = this.postSorter(posts);
     const { match, location } = this.props;
     const sortValues = { formSortCriteria: this.state.formSortCriteria, sortHandler: this.handleSelectedSort };
+
     return <PostList posts={ sorted } 
       match={ match } 
       location={ location }
