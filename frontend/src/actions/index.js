@@ -9,7 +9,7 @@ export const GET_POST = 'GET_POST';
 export const PUT_POST = 'PUT_POST';
 export const POST_VOTE = 'POST_VOTE';
 export const POST_NEW_COMMENT = 'POST_NEW_COMMENT';
-export const PUT_COMMENT = 'PUT_';
+export const PUT_COMMENT = 'PUT_COMMENT';
 
 export const loadCategoryPosts = ( posts ) => {
   return {
