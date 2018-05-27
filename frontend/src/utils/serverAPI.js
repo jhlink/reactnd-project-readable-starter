@@ -74,16 +74,6 @@ export const PostNewComment = (commentData) =>
     body: JSON.stringify(commentData)
   }).then((res) => res.json());
 
-//    USAGE:
-//      Add a comment to a post
-//
-//    PARAMS:
-//      id: Any unique ID. As with posts, UUID is probably the best here.
-//      timestamp: timestamp. Get this however you want.
-//      body: String
-//      author: String
-//      parentId: Should match a post id in the database.
-
 //  GET /comments/:id
 //    USAGE:
 //      Get the details for a single comment
@@ -92,6 +82,12 @@ export const PostNewComment = (commentData) =>
 //    USAGE:
 //      Used for voting on a comment.
 
+export const PutComment = (commentId, commentData) => 
+  fetch(`${API_HOST}/comments/${commentId}`, {
+    headers: reqHeaders,
+    method: 'PUT',
+    body: JSON.stringify(commentData)
+  }).then((res) => res.json());
 //  PUT /comments/:id
 //    USAGE:
 //      Edit the details of an existing comment
