@@ -19,7 +19,7 @@ const PostForm = (props) => {
 
   return (
     <div className="column content">
-      <h2 className="postFormHeader">{ type } Post about { category } Category</h2>
+      <h2 className="uppercase">{ type } Post about { category } Category</h2>
       <form className="addPostForm" onSubmit={ handlePostSubmit }>
         <input type="text" 
           name="title" 

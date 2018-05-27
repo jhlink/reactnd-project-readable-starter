@@ -36,7 +36,6 @@ li.comment {
   margin-left: 1em;
 }
 
-
 .vote {
   display: flex;
   justify-content: space-between;
@@ -127,10 +126,6 @@ select.sort {
   margin-left: 1em;
 }
 
-.postFormHeader {
-  text-transform: uppercase;
-}
-
 /* Text Styling */ 
 
 .subtitle-style {
@@ -145,6 +140,10 @@ select.sort {
   margin-left: .5em;
   margin-bottom: .5em;
   text-indent: 2em;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .title-style {
