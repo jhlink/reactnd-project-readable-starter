@@ -55,6 +55,7 @@ function postHandler (state = {}, action) {
     case GET_POST:
       return {
         ...state,
+        post
       }; 
 
     case PUT_POST:
