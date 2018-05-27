@@ -157,10 +157,6 @@ select.sort {
   background-color: #999;
 }
 
-.postFormHeader {
-  text-transform: uppercase;
-}
-
 .active {
   color: orange;
 }
@@ -180,12 +176,6 @@ select.sort {
   margin-left: 1em;
 }
 
-.postHeader {
-  font-size: 2;
-  font-weight: 300;
-  margin: 0;
-}
-
 .horizJust {
   display: flex;
   width: inherit;
@@ -199,22 +189,11 @@ select.sort {
   margin: 0;
 }
 
-.postSubheader {
-  font-size: 1em;
-  font-weight: 300;
-  margin-left: 4em;
-  width: 30em;
-  overflow: hidden;
-  overflow-wrap: break-word;
+.postFormHeader {
+  text-transform: uppercase;
 }
 
-.postBody {
-  font-size: 1em;
-  margin-left: 2em;
-  margin-bottom: .5em;
-}
-
-.postVoteScore, .commentVoteScore  {
+.postVoteScore {
   font-weight: bold;
   font-size: 1em;
   text-align: right;
@@ -222,6 +201,7 @@ select.sort {
 }
 
 /* Text Styling */ 
+
 .subtitle-style {
   font-size: 1em;
   font-weight: 300;
@@ -234,6 +214,12 @@ select.sort {
   margin-left: .5em;
   margin-bottom: .5em;
   text-indent: 2em;
+}
+
+.title-style {
+  font-size: 2;
+  font-weight: 300;
+  margin: 0;
 }
 
 /* Container Organization */ 

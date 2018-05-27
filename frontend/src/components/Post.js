@@ -16,21 +16,21 @@ const Post = (props) => {
   const commentListRelativePos = isEditComment || isAddComment ? { top: '25em' } : { top: '0em' };
 
   return (
-    <div className="structure-flex">
+    <div className="structure-flex-col">
       { isEditPost && (
         <div className="container-post">
-          <h2 className="postHeader"> { title } </h2> 
-          <div className="horizJust header">
-            <h3 className="postSubheader"> by {author } <br/> { formattedDated } </h3>
+          <h2 className="title-style"> { title } </h2> 
+          <div className="structure-flex-row">
+            <h3 className="subtitle-style"> by {author } <br/> { formattedDated } </h3>
             <NavLink 
               to={match.url + '/editpost'}
-              className="nav link edit"
+              className="nav-link edit"
             > Edit  
             </NavLink>
           </div>
-          <p className="postBody"> { body } + { category } </p>  
+          <p className="body-style"> { body } + { category } </p>  
           <div className="postVoteScore"> Vote Score:  { voteScore } </div>
-          <div className="horizJust header">
+          <div className="structure-flex-row">
             <span/>
             <NavLink 
               to={match.url + '/addcomment'}
