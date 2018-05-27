@@ -252,11 +252,6 @@ select.sort {
   order: 1;
 }
 
-.structure-flex {
-  display: flex;
-  flex-direction: column;
-}
-
 .child-flex {
   max-width: 80%;
 }
