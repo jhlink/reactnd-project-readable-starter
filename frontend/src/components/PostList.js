@@ -26,9 +26,9 @@ const PostList = ( props ) =>  {
   return (
     <div className="column content">
       { showAddPost && ( 
-        <div className="horizJust header">
-          <div className="sortblock"> 
-            <p className="sort-header">Sort By</p>
+        <div className="structure-flex-row">
+          <div className="structure-flex-col"> 
+            <h2 className="sort-header">Sort By</h2>
             <select value={ JSON.stringify(sortValues.formSortCriteria) } 
               onChange={sortValues.sortHandler.bind(this)}
               className="sort">
@@ -40,8 +40,7 @@ const PostList = ( props ) =>  {
           </div>
           <NavLink 
             to={match.url + '/addpost'}
-            className="nav link addpost"
-          >
+            className="nav-link post">
             Add Post
           </NavLink>
         </div>
@@ -51,7 +50,7 @@ const PostList = ( props ) =>  {
           <li key={post.id} className="post">
             <NavLink 
               to={categoryUrl(post.category) + '/' +  post.id}
-              className="nav link"
+              className="nav-link item-width"
             > { post.title } 
             </NavLink>
             <div className="vote">

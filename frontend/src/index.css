@@ -6,9 +6,9 @@ body {
 }
 
 ul {
-  padding-left: 1em;
-  text-align: left;
-  margin-right: 0;
+  padding-left: 0;
+  margin-left: 1em;
+  margin-top: 2em;
 }
 
 li {
@@ -17,8 +17,8 @@ li {
   color:  black;
   background-color: white;
   cursor: pointer;
-  margin-top: -1px;
-  border: 1px solid black;
+  border: 0 solid black;
+  border-width: 1px 1px 0 0;
 }
 
 li.post {
@@ -39,20 +39,6 @@ li.comment {
 .header.category {
   text-align: left;
   margin: 1em .5em .4em;
-}
-
-.nav {
-  overflow: hidden;
-  overflow-wrap: break-word;
-  display: block;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav.link {
-  text-decoration: none;
-  padding: .5em 1em;
-  max-width: 60%;
 }
 
 .vote {
@@ -84,11 +70,6 @@ select.sort {
   margin: 0 0 .5em;
   font-size: 1.25em;
   padding-left: 1em;
-}
-
-.sortblock {
-  display: block;
-  margin-left: 1em;
 }
 
 .addPostForm {
@@ -139,10 +120,6 @@ select.sort {
   color: orange;
 }
 
-.column.menu {
-  width: 10em;
-}
-
 .column.content {
   padding-left: 1em;
   width: 40em; 
@@ -154,18 +131,6 @@ select.sort {
   margin-left: 1em;
 }
 
-.horizJust {
-  display: flex;
-  width: inherit;
-  align-items: flex-start;
-  margin-bottom: 2em;
-}
-
-.horizJust.header {
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-}
 
 .postFormHeader {
   text-transform: uppercase;
@@ -195,8 +160,24 @@ select.sort {
 
 /* Container Organization */ 
 
+.body-layout {
+  display: flex;
+  width: inherit;
+  align-items: flex-start;
+  margin-bottom: 2em;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: .5em 1em;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container-comments {
-  margin-top: 2em;
   width: 100%;
   order: 2;
 }
@@ -211,6 +192,11 @@ select.sort {
 
 .child-flex {
   max-width: 80%;
+}
+
+.list-tight {
+  border: 0 solid black;
+  border-width: 0 0 1px 1px;
 }
 
 .right-align {
@@ -234,11 +220,6 @@ select.sort {
   justify-content: space-between;
 }
 
-.nav-link {
-  text-decoration: none;
-  padding: .5em 1em;
-  width: fit-content;
-}
 
 /* Container Styling */ 
 
@@ -250,10 +231,14 @@ select.sort {
 }
 
 .post {
-  margin-top: 1em;
-  margin-right: 1em;
+  margin: 1em 1em 1em 0;
   font-size: 1em;
   border: solid black .125em;
+}
+
+.item-width {
+  max-width: 55%;
+  width: fit-content;
 }
 
 .vote-score {

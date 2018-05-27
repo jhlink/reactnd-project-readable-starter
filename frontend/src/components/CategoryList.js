@@ -8,14 +8,14 @@ const CategoryList = (props) => {
   const { categories } = props;
 
   return (
-    <div className="horizJust">
-      <div className="column menu">
-        <ul>
+    <div className="body-layout">
+      <div>
+        <ul className="list-tight">
           { categories.map( c => 
-            <li key={ c.path }>
+            <li key={ c.path } >
               <NavLink 
                 to={'/' +  c.path}
-                className="nav link"
+                className="nav-link"
               > { c.name } </NavLink>
             </li>
           )}
