@@ -5,23 +5,22 @@ import { NavLink } from 'react-router-dom';
 const Comment = (props) => { 
   const { comment, match } = props;
   const { timestamp, body, author, voteScore, deleted, parentDeleted } = comment;
-  const hideFromDelete = parentDeleted || deleted;
   const formattedDated = new Date(timestamp).toLocaleString();
 
   return (
-    <div display={ hideFromDelete } className="comment content">
-      <div className="horizJust header">
-        <div>
-          <p className="commentBody"> { body } </p>  
-          <h3 className="commentAuthor"> by {author } - { formattedDated } </h3>
-        </div>
+    <div className="structure-flex-row">
+      <div className="structure-flex-col child-flex">
+        <p className="body-style"> { body } </p>  
+        <label className="subtitle-style"> by {author } <br/> { formattedDated } </label>
+      </div>
+      <div className="structure-flex-col">
         <NavLink 
           to={match.url + '/editcomment'}
-          className="nav link edit"
+          className="nav-link edit"
         > Edit  
         </NavLink>
+        <div className="vote-score"> Vote Score:  { voteScore } </div>
       </div>
-      <div className="commentVoteScore"> Vote Score:  { voteScore } </div>
     </div>
   );
 };
