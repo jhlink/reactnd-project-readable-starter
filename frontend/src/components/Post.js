@@ -16,7 +16,7 @@ const Post = (props) => {
   const commentListRelativePos = isEditComment || isAddComment ? { top: '25em' } : { top: '0em' };
 
   return (
-    <div className="post-structure">
+    <div className="structure-post">
       { isEditPost && (
         <div className="container-post">
           <h2 className="postHeader"> { title } </h2> 

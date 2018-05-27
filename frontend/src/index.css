@@ -204,7 +204,7 @@ select.sort {
   order: 1;
 }
 
-.post-structure {
+.structure-post {
   display: flex;
   flex-direction: column;
 }
