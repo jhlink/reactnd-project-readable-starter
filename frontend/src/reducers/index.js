@@ -12,7 +12,8 @@ import {
   POST_VOTE_POST,
   POST_NEW_COMMENT,
   PUT_COMMENT,
-  GET_COMMENT
+  GET_COMMENT,
+  POST_VOTE_COMMENT
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -111,7 +112,15 @@ function commentHandler (state = {}, action) {
         ...state,
         comment 
       }; 
-  
+
+    case POST_VOTE_COMMENT:
+      return {
+        ...state,
+        comments: state.comments.map(sComment => {
+          return (sComment.id === comment.id) ? comment : sComment;
+        })
+      }; 
+
     default:
       return state;
   }
