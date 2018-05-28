@@ -7,6 +7,7 @@ import Voter from './Voter';
 const PostList = ( props ) =>  {
   const { posts, match, location, voteHandler, sortValues } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
+  const postsNotDeleted = postsToShow.filter(post => !post.deleted); 
   const showAddPost = location.pathname !== '/' && location.pathname === match.url;
   const isEmpty = postsToShow.length === 0 ? {display: 'none'} : {};
 
@@ -44,7 +45,7 @@ const PostList = ( props ) =>  {
         </div>
       )}
       <ul style={ isEmpty }>
-        {postsToShow.map((post) => (
+        {postsNotDeleted.map((post) => (
           <li key={post.id} className="post">
             <NavLink 
               to={categoryUrl(post.category) + '/' +  post.id}
