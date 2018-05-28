@@ -4,10 +4,11 @@ import Comment from './Comment';
 
 const CommentList = (props) => {
   const { comments, match, voteHandler, deleteHandler } = props;
+  const commentsNotDeleted = comments.filter(comment => !comment.deleted);
 
   return (
     <ul>
-      {comments.map((comment) => (
+      {commentsNotDeleted.map((comment) => (
         <li key={ comment.id } className="comment">
           <Comment comment={ comment }
             match={ match }
