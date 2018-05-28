@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Voter from './Voter';
+import EditDeleteBlock from './EditDeleteBlock';
 
 const Comment = (props) => { 
-  const { comment, match, voteHandler } = props;
+  const { comment, match, voteHandler, deleteHandler } = props;
   const { id, timestamp, body, author, voteScore, deleted, parentDeleted } = comment;
   const formattedDated = new Date(timestamp).toLocaleString();
 
@@ -15,11 +16,11 @@ const Comment = (props) => {
         <label className="subtitle-style"> by {author } <br/> { formattedDated } </label>
       </div>
       <div className="structure-flex-col">
-        <NavLink 
-          to={match.url + '/' + id + '/editcomment'}
+        <EditDeleteBlock 
+          editLinkpath={ match.url + '/' + id + '/editcomment' }
+          deleteHandler={ deleteHandler }
           className="nav-link edit"
-        > Edit  
-        </NavLink>
+        />   
         <Voter item={ comment } voteHandler={ voteHandler }/>
       </div>
     </div>
