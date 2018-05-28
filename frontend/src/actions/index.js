@@ -111,8 +111,7 @@ export const deletePost = ( post, cbOnSuccess ) => {
   };
 };
 
-export const deleteComment = ( comment, cbOnSuccess ) => {
-  cbOnSuccess();
+export const deleteComment = ( comment ) => {
   return {
     type: DELETE_COMMENT,
     comment 
@@ -186,7 +185,7 @@ export const DeletePost = ( postId, cb ) => dispatch => {
     .then(post => dispatch(deletePost(post, cb)));
 };
 
-export const DeleteComment = ( commentId, cb) => dispatch => {
+export const DeleteComment = ( commentId ) => dispatch => {
   return ServerAPI.DeleteComment(commentId)
-    .then(comment => dispatch(deletePost(comment, cb)));
+    .then(comment => dispatch(deletePost(comment)));
 };
