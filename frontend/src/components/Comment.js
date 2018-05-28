@@ -16,7 +16,7 @@ const Comment = (props) => {
       </div>
       <div className="structure-flex-col">
         <EditDeleteBlock 
-          editLinkpath={ match.url + '/' + id + '/editcomment' }
+          editLinkPath={ match.url + '/' + id + '/editcomment' }
           deleteHandler={ deleteHandler }
           className="nav-link edit"
         />   
