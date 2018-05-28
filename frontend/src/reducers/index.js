@@ -73,7 +73,8 @@ function postHandler (state = {}, action) {
         ...state,
         posts: state.posts.map(sPost => {
           return (sPost.id === post.id) ? post : sPost;
-        })
+        }),
+        post
       };
 
     default :

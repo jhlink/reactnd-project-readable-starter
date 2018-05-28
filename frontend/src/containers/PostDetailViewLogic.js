@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Post from '../components/Post';
-import { FetchPost } from '../actions';
+import { FetchPost, SendVoteForPost } from '../actions';
 
 class PostDetailViewLogic extends Component {
   /* TODO: Ask how if this is what production code looks like
@@ -14,6 +14,8 @@ class PostDetailViewLogic extends Component {
     this.state = {
       post: {}
     };
+
+    this.handleVote = this.handleVote.bind(this);
   }
 
 
@@ -27,19 +29,18 @@ class PostDetailViewLogic extends Component {
     }
   }
 
+  handleVote = (postId, e) => {
+    e.preventDefault();
+    const voteType = { option: e.target.id };
+    this.props.dispatch(SendVoteForPost(postId, voteType));
+  }
+
   componentWillMount() {
     const { postId } = this.props.match.params;
     this.handlePostDispatch(postId);
   }
 
   componentWillReceiveProps(nextProps) {
-    const { postId } = this.props.match.params;
-    const newPostId = nextProps.match.params.postId;
-
-    if (postId !== newPostId) {
-      this.handleCommentsDispatch(newPostId);
-    }
-
     if (nextProps.post) {
       this.setState(
         { post: nextProps.post }
@@ -50,7 +51,9 @@ class PostDetailViewLogic extends Component {
   render() {
     const { post } = this.state;
     const { match, location } = this.props;
-    return <Post post={ post } 
+    return <Post 
+      post={ post } 
+      voteHandler={ this.handleVote }
       match={ match } 
       location={ location }/>;
   }
@@ -61,10 +64,7 @@ PostDetailViewLogic.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const { posts } = state.postHandler;
-  const { postId } = props.match.params;
-
-  const post = posts ? posts.filter( post => post.id === postId)[0] : {}; 
+  const { post } = state.postHandler;
 
   return { post }; 
 };

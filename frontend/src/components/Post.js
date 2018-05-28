@@ -4,10 +4,11 @@ import CommentListLogic from '../containers/CommentListLogic';
 import CommentFormLogic from '../containers/CommentFormLogic';
 import { Route, Switch, NavLink } from 'react-router-dom'; 
 import PostFormLogic from '../containers/PostFormLogic';
+import Voter from './Voter';
 
 const Post = (props) => {
-  const { id, timestamp, title, body, author, category, voteScore, deleted } = props.post;
-  const { match, location } = props;
+  const { post, match, location, voteHandler } = props;
+  const { id, timestamp, title, body, author, category, voteScore, deleted } = post;
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
 
@@ -26,7 +27,9 @@ const Post = (props) => {
           </div>
           <p className="body-style"> { body } + { category } </p>  
           <div className="structure-flex-col right-align">
-            <label className="vote-score"> Vote Score:  { voteScore } </label>
+            <Voter 
+              item={ post }
+              voteHandler={ voteHandler }/> 
             <NavLink 
               to={match.url + '/addcomment'}
               className="nav-link post"
