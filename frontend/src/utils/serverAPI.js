@@ -81,22 +81,22 @@ export const GetComment = (commentId) =>
   }).then((res) => res.json());
 
 //  POST /comments/:id
+export const PostVoteForComment = (commentId, voteIntent) =>
+  fetch(`${API_HOST}/comments/${commentId}`, {
+    headers: reqHeaders,
+    method: 'POST',
+    body: JSON.stringify(voteIntent)
+  }).then((res) => res.json());
 //    USAGE:
 //      Used for voting on a comment.
 
+//  PUT /comments/:id
 export const PutComment = (commentId, commentData) => 
   fetch(`${API_HOST}/comments/${commentId}`, {
     headers: reqHeaders,
     method: 'PUT',
     body: JSON.stringify(commentData)
   }).then((res) => res.json());
-//  PUT /comments/:id
-//    USAGE:
-//      Edit the details of an existing comment
-//
-//    PARAMS:
-//      timestamp: timestamp. Get this however you want.
-//      body: String
 
 //  DELETE /comments/:id
 //    USAGE:
