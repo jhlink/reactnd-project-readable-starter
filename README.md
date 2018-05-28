@@ -27,8 +27,7 @@ To accesss the backend server in your code, we have stored the URL to the API se
 
 
 1. Implement Delete Post
-- 3. Implement edit Comment
-4. Implement vote on comment 
+-4. Implement vote on comment 
 5. Implement delete comment
 7. Move comment count and other stuff to Post list view
 8. Show 404 when accessing deleted page.
