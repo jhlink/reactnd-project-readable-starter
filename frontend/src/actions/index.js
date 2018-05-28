@@ -11,6 +11,7 @@ export const POST_VOTE_POST = 'POST_VOTE_POST';
 export const POST_NEW_COMMENT = 'POST_NEW_COMMENT';
 export const PUT_COMMENT = 'PUT_COMMENT';
 export const GET_COMMENT = 'GET_COMMENT';
+export const POST_VOTE_COMMENT = 'POST_VOTE_COMMENT';
 
 export const loadCategoryPosts = ( posts ) => {
   return {
@@ -69,6 +70,14 @@ export const sendVotePost = ( post ) => {
     post
   };
 }; 
+
+export const sendVoteComment = ( comment ) => {
+  return {
+    type: POST_VOTE_COMMENT,
+    comment
+  };
+}; 
+
 
 export const postNewComment = ( comment, cbOnSuccess ) => {
   cbOnSuccess();
@@ -148,4 +157,9 @@ export const PutComment = ( commentId, commentBody, cb ) => dispatch => {
 export const FetchComment = ( commentId ) => dispatch => {
   return ServerAPI.GetComment(commentId)
     .then(comment => dispatch(getComment(comment)));
+};
+
+export const SendVoteForComment = ( commentId, voteIntent ) => dispatch => {
+  return ServerAPI.PostVoteForComment(commentId, voteIntent)
+    .then(comment => dispatch(sendVoteComment(comment)));
 };
