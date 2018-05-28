@@ -37,7 +37,9 @@ const Post = (props) => {
       )}
       { isEditPost && (
         <div className="container-comments">
-          <CommentListLogic postId={ id } />
+          <CommentListLogic 
+            postId={ id }
+            match={ match }/>
         </div>
       )}
       <Switch className="container-forms">
