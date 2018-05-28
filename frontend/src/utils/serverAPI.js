@@ -103,7 +103,7 @@ export const PutComment = (commentId, commentData) =>
 
 //  DELETE /comments/:id
 export const DeleteComment = (commentId) => 
-  fetch(`${API_HOST}/posts/${commentId}`, {
+  fetch(`${API_HOST}/comments/${commentId}`, {
     headers: reqHeaders,
     method: 'DELETE',
   }).then((res) => res.json());
