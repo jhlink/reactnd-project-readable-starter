@@ -26,15 +26,20 @@ class CommentListLogic extends Component {
     this.props.dispatch(SendVoteForComment(commentId, voteType));
   }
 
-  componentWillMount() {
-    const { postId } = this.props;
-    this.handleCommentsDispatch(postId);
-  }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ 
-      comments: nextProps.comments 
-    });
+    const { postId } = this.props;
+    const newPostId = nextProps.postId;
+
+    if (postId !== newPostId) {
+      this.handleCommentsDispatch(newPostId);
+    }
+
+    if (nextProps.comments && nextProps.comments.length > 0) {
+      this.setState(
+        {comments: nextProps.comments}
+      );
+    }
   }
   
   render() {
@@ -53,8 +58,7 @@ CommentListLogic.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const { comments } = state.commentsHandler;
-
+  const { comments } = state.commentHandler;
   return { comments };
 };
 
