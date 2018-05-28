@@ -103,14 +103,16 @@ export const getComment = ( comment ) => {
   };
 };
 
-export const deletePost = ( post ) => {
+export const deletePost = ( post, cbOnSuccess ) => {
+  cbOnSuccess();
   return {
     type: DELETE_POST,
     post 
   };
 };
 
-export const deleteComment = ( comment ) => {
+export const deleteComment = ( comment, cbOnSuccess ) => {
+  cbOnSuccess();
   return {
     type: DELETE_COMMENT,
     comment 
@@ -179,12 +181,12 @@ export const SendVoteForComment = ( commentId, voteIntent ) => dispatch => {
     .then(comment => dispatch(sendVoteComment(comment)));
 };
 
-export const DeletePost = ( postId ) => dispatch => {
+export const DeletePost = ( postId, cb ) => dispatch => {
   return ServerAPI.DeletePost(postId)
-    .then(post => dispatch(deletePost(post)));
+    .then(post => dispatch(deletePost(post, cb)));
 };
 
-export const DeleteComment = ( commentId ) => dispatch => {
+export const DeleteComment = ( commentId, cb) => dispatch => {
   return ServerAPI.DeleteComment(commentId)
-    .then(comment => dispatch(deletePost(comment)));
+    .then(comment => dispatch(deletePost(comment, cb)));
 };
