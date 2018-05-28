@@ -6,7 +6,7 @@ const EditDeleteBlock = (props) => {
   const { editLinkPath, deleteHandler } = props;
   
   return  (
-    <div className="structure-flex-row"> 
+    <div id="editdeleteblock" className="structure-flex-row"> 
       <NavLink 
         to={editLinkPath}
         className="nav-link edit">
