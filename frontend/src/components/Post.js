@@ -5,9 +5,10 @@ import CommentFormLogic from '../containers/CommentFormLogic';
 import { Route, Switch, NavLink } from 'react-router-dom'; 
 import PostFormLogic from '../containers/PostFormLogic';
 import Voter from './Voter';
+import EditDeleteBlock from './EditDeleteBlock';
 
 const Post = (props) => {
-  const { post, match, location, voteHandler } = props;
+  const { post, match, location, voteHandler, deleteHandler } = props;
   const { id, timestamp, title, body, author, category, voteScore, deleted } = post;
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
@@ -19,11 +20,10 @@ const Post = (props) => {
           <h2 className="title-style"> { title } </h2> 
           <div className="structure-flex-row">
             <h3 className="subtitle-style"> by {author } <br/> { formattedDated } </h3>
-            <NavLink 
-              to={match.url + '/editpost'}
-              className="nav-link edit"
-            > Edit  
-            </NavLink>
+            <EditDeleteBlock 
+              editLinkPath={match.url + '/editpost'}
+              deleteHandler={ deleteHandler }
+            />
           </div>
           <p className="body-style"> { body } + { category } </p>  
           <div className="structure-flex-col right-align">
