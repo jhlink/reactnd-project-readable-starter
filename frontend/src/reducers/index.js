@@ -14,7 +14,8 @@ import {
   POST_NEW_POST,
   POST_VOTE_POST,
   POST_VOTE_COMMENT,
-  DELETE_POST
+  DELETE_POST,
+  DELETE_COMMENT
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -116,6 +117,12 @@ function commentHandler (state = {}, action) {
       };
 
     case GET_COMMENT:
+      return {
+        ...state,
+        comment 
+      }; 
+
+    case DELETE_COMMENT:
       return {
         ...state,
         comment 
