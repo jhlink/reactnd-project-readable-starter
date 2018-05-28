@@ -14,11 +14,13 @@ const CommentForm = (props) => {
     body 
   } = comment;  
 
-  const isEditForm = type === 'editcomment';
+  const TYPE_EDIT = 'editcomment';
+  const isEditForm = type === TYPE_EDIT;
+  const typeHeader = isEditForm ? 'edit' : 'add';  
 
   return (
     <div className="main-body">
-      <h2 className="uppercase">{ type } Comment about { category } Category</h2>
+      <h2 className="uppercase">{ typeHeader } Comment about { category } Category</h2>
       <form className="form-style" onSubmit={ handleCommentSubmit }>
         <input type="text" 
           name="author" 
