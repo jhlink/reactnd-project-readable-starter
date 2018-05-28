@@ -38,7 +38,9 @@ class PostDetailViewLogic extends Component {
 
   handleDelete = (e) => {
     e.preventDefault();
-    this.props.dispatch(DeletePost(this.state.post.id));
+    this.props.dispatch(DeletePost(this.state.post.id, () => {
+      this.props.history.push('/' + this.state.post.category);
+    }));
   }
 
   componentWillMount() {
