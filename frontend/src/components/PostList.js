@@ -5,13 +5,10 @@ import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 import Voter from './Voter';
 
 const PostList = ( props ) =>  {
-  const UP_VOTE = 'upVote';
-  const DOWN_VOTE = 'downVote';
   const { posts, match, location, voteHandler, sortValues } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
   const showAddPost = location.pathname !== '/' && location.pathname === match.url;
   const isEmpty = postsToShow.length === 0 ? {display: 'none'} : {};
-  
 
   const categoryUrl = (postCategory) => {
     return match.url !== '/' ? match.url : postCategory;
