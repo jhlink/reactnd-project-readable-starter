@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CommentList from '../components/CommentList';
-import { FetchPostComments, SendVoteForComment } from '../actions';
+import { FetchPostComments, SendVoteForComment, DeleteComment } from '../actions';
 
 class CommentListLogic extends Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class CommentListLogic extends Component {
       comments: []
     };
     this.handleVote = this.handleVote.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
  handleCommentsDispatch = ( postId ) => {
@@ -26,6 +27,10 @@ class CommentListLogic extends Component {
     this.props.dispatch(SendVoteForComment(commentId, voteType));
   }
 
+  handleDelete = ( commentId, e ) => {
+    e.preventDefault();
+    this.props.dispatch(DeleteComment(commentId));
+  }
 
   componentWillReceiveProps(nextProps) {
     const { postId } = this.props;
@@ -49,7 +54,8 @@ class CommentListLogic extends Component {
     return <CommentList 
       comments={ comments } 
       match={ match }
-      voteHandler={ this.handleVote }/>;
+      voteHandler={ this.handleVote }
+      deleteHandler={ this.handleDelete }/>;
   }
 }
 

@@ -130,8 +130,7 @@ function commentHandler (state = {}, action) {
         ...state,
         comments: state.comments.map(sComment => {
           return (sComment.id === comment.id) ? comment : sComment;
-        }),
-        comment 
+        })
       }; 
 
     case POST_VOTE_COMMENT:

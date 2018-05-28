@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Comment from './Comment';
 
 const CommentList = (props) => {
-  const { comments, match, voteHandler } = props;
+  const { comments, match, voteHandler, deleteHandler } = props;
 
   return (
     <ul>
@@ -11,7 +11,8 @@ const CommentList = (props) => {
         <li key={ comment.id } className="comment">
           <Comment comment={ comment }
             match={ match }
-            voteHandler={ voteHandler }/>
+            voteHandler={ voteHandler }
+            deleteHandler={ deleteHandler }/>
         </li>
       ))}
     </ul>
