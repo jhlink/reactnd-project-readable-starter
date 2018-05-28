@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CommentList from './CommentList';
+import CommentListLogic from '../containers/CommentListLogic';
 import CommentFormLogic from '../containers/CommentFormLogic';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom'; 
 import PostFormLogic from '../containers/PostFormLogic';
 
 const Post = (props) => {
-  const { timestamp, title, body, author, category, voteScore, deleted } = props.post;
-  const { comments, match, location } = props;
+  const { id, timestamp, title, body, author, category, voteScore, deleted } = props.post;
+  const { match, location } = props;
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
 
@@ -37,9 +37,7 @@ const Post = (props) => {
       )}
       { isEditPost && (
         <div className="container-comments">
-          <CommentList comments={ comments } 
-            match={ match }
-          />
+          <CommentListLogic postId={ id } />
         </div>
       )}
       <Switch className="container-forms">
