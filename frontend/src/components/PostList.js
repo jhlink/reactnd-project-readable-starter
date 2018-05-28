@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
+import EditDeleteBlock from './EditDeleteBlock';
 import Voter from './Voter';
 
 const PostList = ( props ) =>  {
-  const { posts, match, location, voteHandler, sortValues } = props; 
+  const { posts, match, location, voteHandler, deleteHandler, sortValues } = props; 
   const postsToShow = location.pathname === match.url ? posts : [];
   const postsNotDeleted = postsToShow.filter(post => !post.deleted); 
   const showAddPost = location.pathname !== '/' && location.pathname === match.url;
@@ -52,8 +53,13 @@ const PostList = ( props ) =>  {
               className="nav-link item-width"
             > { post.title } 
             </NavLink>
-            <Voter item={ post }
-              voteHandler={ voteHandler }/>
+            <div className="structure-flex-col">
+              <EditDeleteBlock 
+                editLinkPath={match.url + '/' + post.id}
+                deleteHandler={ (e) => { deleteHandler(post.id, e); }}/>
+              <Voter item={ post }
+                voteHandler={ voteHandler }/>
+            </div>
           </li>
         ))}
       </ul>

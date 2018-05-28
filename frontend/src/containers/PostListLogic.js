@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostList from '../components/PostList';
-import { FetchAllPosts, FetchCategoryPosts, SendVoteForPost } from '../actions';
+import { FetchAllPosts, FetchCategoryPosts, SendVoteForPost, DeletePost } from '../actions';
 import _ from 'lodash';
 
 class PostListLogic extends Component {
@@ -19,6 +19,7 @@ class PostListLogic extends Component {
     };
     this.handleVote = this.handleVote.bind(this);
     this.handleSelectedSort = this.handleSelectedSort.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handlePostDispatch = ( categoryId ) => {
@@ -34,6 +35,11 @@ class PostListLogic extends Component {
     const voteType = { option: e.target.id };
     console.log(voteType);
     this.props.dispatch(SendVoteForPost(postId, voteType));
+  }
+
+  handleDelete = (postId, e) => {
+    e.preventDefault();
+    this.props.dispatch(DeletePost(postId, () => {}));
   }
 
   handleSelectedSort = ( e ) => {
@@ -77,6 +83,7 @@ class PostListLogic extends Component {
       match={ match } 
       location={ location }
       voteHandler={ this.handleVote }
+      deleteHandler={ this.handleDelete }
       sortValues={ sortValues }/>;
   }
 }
