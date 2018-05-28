@@ -51,6 +51,7 @@ class CommentFormLogic extends Component {
   
   handleCommentSubmit = (e) => {
     e.preventDefault();
+    const rootPostPath = '/' + this.props.match.params.category + '/' + this.props.match.params.parentId;
 
     switch (this.state.type) {
       case TYPE_EDIT: {
@@ -58,9 +59,9 @@ class CommentFormLogic extends Component {
           timestamp: Date.now(),
           body: this.state.comment.body
         };
-            
+
         this.props.dispatch(PutComment(this.state.comment.id, commentEditedText, () => {
-          this.props.history.push('/' + this.state.comment.category + '/' + this.state.comment.id);
+          this.props.history.push(rootPostPath);
         }));
         break;
       }
@@ -74,7 +75,6 @@ class CommentFormLogic extends Component {
         };
 
         this.props.dispatch(CreateNewComment(newCommentData, () => {
-          const rootPostPath = '/' + this.props.match.params.category + '/' + this.props.match.params.parentId;
           this.props.history.push(rootPostPath);
         }));
       }
@@ -83,20 +83,22 @@ class CommentFormLogic extends Component {
 
   componentWillMount() {
     const isEditPost = this.props.match.url.includes(TYPE_EDIT) ? TYPE_EDIT : TYPE_ADD;
+    const nextCommentId = this.props.match.params.commentId;
+    const { category, parentId } = this.props.match.params;
 
     switch (isEditPost) {
       case TYPE_EDIT:{
-        const nextCommentId = this.props.match.params.commentId;
         this.props.dispatch(FetchComment(nextCommentId));
         this.setState({
-          type: isEditPost
+          type: isEditPost,
+          category,
+          parentId
         });
         break;
       }
 
       case TYPE_ADD:
       default: {
-        const { category, parentId } = this.props.match.params;
         this.setState({ 
           comment: {
             ...this.state.comment,
@@ -110,7 +112,7 @@ class CommentFormLogic extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const isEditPost = nextProps.match.url.includes(TYPE_EDIT) ? TYPE_EDIT : TYPE_ADD;
+    const isEditPost = nextProps.match.path.includes(TYPE_EDIT) ? TYPE_EDIT : TYPE_ADD;
 
     switch (isEditPost) {
       case TYPE_ADD: {
@@ -126,17 +128,18 @@ class CommentFormLogic extends Component {
         if (this.props.comment === undefined) {
           this.props.dispatch(FetchComment(nextCommentId));
           return;
-        }         
-        
+        } 
+        const nextCommentIdCom = nextProps.comment.id;
+        if (this.props.comment.id === nextCommentIdCom 
+          &&  nextCommentIdCom !== nextCommentId) {
+          this.props.dispatch(FetchComment(nextCommentId));
+        }
+
         this.setState({ 
           comment: nextProps.comment,
           type: isEditPost
         });
 
-        if (this.state.comment.id !== nextCommentId) {
-          this.handleSectionCommentUpdate('id', nextCommentId);
-          this.props.dispatch(FetchComment(nextCommentId));
-        }
         break;
       }
 
@@ -160,6 +163,7 @@ CommentFormLogic.propTypes = {
 
 const mapStateToProps = (state) => {
   const { comment } = state.commentHandler;
+  console.log(comment);
   return { comment };
 };
 
