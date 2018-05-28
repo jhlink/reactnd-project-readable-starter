@@ -187,5 +187,5 @@ export const DeletePost = ( postId, cb ) => dispatch => {
 
 export const DeleteComment = ( commentId ) => dispatch => {
   return ServerAPI.DeleteComment(commentId)
-    .then(comment => dispatch(deletePost(comment)));
+    .then(comment => dispatch(deleteComment(comment)));
 };
