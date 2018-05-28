@@ -56,6 +56,11 @@ export const PutPost = (postId, postData) =>
   }).then((res) => res.json());
 
 //  DELETE /posts/:id
+export const DeletePost = (postId) => 
+  fetch(`${API_HOST}/posts/${postId}`, {
+    headers: reqHeaders,
+    method: 'DELETE',
+  }).then((res) => res.json());
 //    USAGE:
 //      Sets the deleted flag for a post to 'true'.
 //      Sets the parentDeleted flag for all child comments to 'true'.
@@ -87,8 +92,6 @@ export const PostVoteForComment = (commentId, voteIntent) =>
     method: 'POST',
     body: JSON.stringify(voteIntent)
   }).then((res) => res.json());
-//    USAGE:
-//      Used for voting on a comment.
 
 //  PUT /comments/:id
 export const PutComment = (commentId, commentData) => 
@@ -99,6 +102,11 @@ export const PutComment = (commentId, commentData) =>
   }).then((res) => res.json());
 
 //  DELETE /comments/:id
+export const DeleteComment = (commentId) => 
+  fetch(`${API_HOST}/posts/${commentId}`, {
+    headers: reqHeaders,
+    method: 'DELETE',
+  }).then((res) => res.json());
 //    USAGE:
 //      Sets a comment's deleted flag to 'true'
  
