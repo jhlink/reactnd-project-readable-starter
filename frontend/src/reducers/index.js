@@ -64,6 +64,9 @@ function postHandler (state = {}, action) {
     case DELETE_POST:
       return {
         ...state,
+        posts: state.posts.map(sPost => {
+          return (sPost.id === post.id) ? post : sPost;
+        }),
         post
       }; 
 
@@ -125,6 +128,9 @@ function commentHandler (state = {}, action) {
     case DELETE_COMMENT:
       return {
         ...state,
+        comments: state.comments.map(sComment => {
+          return (sComment.id === comment.id) ? comment : sComment;
+        }),
         comment 
       }; 
 
