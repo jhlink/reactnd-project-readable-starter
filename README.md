@@ -32,8 +32,7 @@ To accesss the backend server in your code, we have stored the URL to the API se
 2. All posts are listed at the root.
 3. Root list page has sort mechanism 
 4. Root list page has AddPost 
-6. Root list page has edit/delete functions for each post. 
-8. A mechanism for deleting posts and comments exists. Clicking the button/link correctly removes the post/comment from list view and makes post inaccessible at its URL. When a user goes to a deleted post’s URL, a 404 page is displayed.
+-- 8. Clicking the button/link correctly removes the post/comment from list view and makes post inaccessible at its URL. When a user goes to a deleted post’s URL, a 404 page is displayed.
 
 Stretch Goals
 -- Replace Immutability-Helper and lodash with Facebook's Immutable.js
