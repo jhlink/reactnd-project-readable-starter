@@ -12,6 +12,7 @@ export const POST_NEW_COMMENT = 'POST_NEW_COMMENT';
 export const PUT_COMMENT = 'PUT_COMMENT';
 export const GET_COMMENT = 'GET_COMMENT';
 export const POST_VOTE_COMMENT = 'POST_VOTE_COMMENT';
+export const DELETE_POST = 'DELETE_POST';
 
 export const loadCategoryPosts = ( posts ) => {
   return {
@@ -78,7 +79,6 @@ export const sendVoteComment = ( comment ) => {
   };
 }; 
 
-
 export const postNewComment = ( comment, cbOnSuccess ) => {
   cbOnSuccess();
   return {
@@ -101,6 +101,14 @@ export const getComment = ( comment ) => {
     comment 
   };
 };
+
+export const deletePost = ( post ) => {
+  return {
+    type: DELETE_POST,
+    post 
+  };
+};
+
 
 // Thunks 
 
@@ -162,4 +170,9 @@ export const FetchComment = ( commentId ) => dispatch => {
 export const SendVoteForComment = ( commentId, voteIntent ) => dispatch => {
   return ServerAPI.PostVoteForComment(commentId, voteIntent)
     .then(comment => dispatch(sendVoteComment(comment)));
+};
+
+export const DeletePost = ( postId ) => dispatch => {
+  return ServerAPI.DeletePost(postId)
+    .then(post => dispatch(deletePost(post)));
 };
