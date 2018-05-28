@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Post from '../components/Post';
-import { FetchPost, FetchPostComments } from '../actions';
+import { FetchPost } from '../actions';
 
 class PostDetailViewLogic extends Component {
   /* TODO: Ask how if this is what production code looks like
@@ -17,11 +17,6 @@ class PostDetailViewLogic extends Component {
     };
   }
 
- handleCommentsDispatch = ( postId ) => {
-   if (postId) {
-     this.props.dispatch(FetchPostComments(postId));
-   }
- }
 
   isObjectEmpty = ( obj ) => {
     return Object.keys(obj).length === 0 && obj.constructor === Object;
@@ -35,7 +30,6 @@ class PostDetailViewLogic extends Component {
 
   componentWillMount() {
     const { postId } = this.props.match.params;
-    this.handleCommentsDispatch(postId);
     this.handlePostDispatch(postId);
   }
 
