@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Post from '../components/Post';
-import { FetchPost, SendVoteForPost } from '../actions';
+import { FetchPost, SendVoteForPost, DeletePost } from '../actions';
 
 class PostDetailViewLogic extends Component {
   /* TODO: Ask how if this is what production code looks like
@@ -16,6 +16,7 @@ class PostDetailViewLogic extends Component {
     };
 
     this.handleVote = this.handleVote.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
 
@@ -33,6 +34,11 @@ class PostDetailViewLogic extends Component {
     e.preventDefault();
     const voteType = { option: e.target.id };
     this.props.dispatch(SendVoteForPost(postId, voteType));
+  }
+
+  handleDelete = (e) => {
+    e.preventDefault();
+    this.props.dispatch(DeletePost(this.state.post.id));
   }
 
   componentWillMount() {
@@ -54,6 +60,7 @@ class PostDetailViewLogic extends Component {
     return <Post 
       post={ post } 
       voteHandler={ this.handleVote }
+      deleteHandler={ this.handleDelete }
       match={ match } 
       location={ location }/>;
   }
