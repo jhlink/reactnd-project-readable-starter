@@ -9,7 +9,7 @@ import {
   POST_NEW_POST,
   GET_POST,
   PUT_POST,
-  POST_VOTE,
+  POST_VOTE_POST,
   POST_NEW_COMMENT,
   PUT_COMMENT,
   GET_COMMENT
@@ -67,7 +67,7 @@ function postHandler (state = {}, action) {
       };
 
     
-    case POST_VOTE:
+    case POST_VOTE_POST:
       return {
         ...state,
         posts: state.posts.map(sPost => {

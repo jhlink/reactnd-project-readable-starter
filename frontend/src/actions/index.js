@@ -7,7 +7,7 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const POST_NEW_POST = 'POST_NEW_POST';
 export const GET_POST = 'GET_POST';
 export const PUT_POST = 'PUT_POST';
-export const POST_VOTE = 'POST_VOTE';
+export const POST_VOTE_POST = 'POST_VOTE_POST';
 export const POST_NEW_COMMENT = 'POST_NEW_COMMENT';
 export const PUT_COMMENT = 'PUT_COMMENT';
 export const GET_COMMENT = 'GET_COMMENT';
@@ -63,9 +63,9 @@ export const editPost = ( post, cbOnSuccess ) => {
   };
 };
 
-export const postVote = ( post ) => {
+export const sendVotePost = ( post ) => {
   return {
-    type: POST_VOTE,
+    type: POST_VOTE_POST,
     post
   };
 }; 
@@ -130,9 +130,9 @@ export const PutPost = ( postId, postBody, cb ) => dispatch => {
     .then(post => dispatch(editPost(post, cb)));
 };
 
-export const PostVote = ( postId, voteIntent ) => dispatch => {
-  return ServerAPI.PostVote(postId, voteIntent)
-    .then(post => dispatch(postVote(post)));
+export const SendVoteForPost = ( postId, voteIntent ) => dispatch => {
+  return ServerAPI.PostVoteForPost(postId, voteIntent)
+    .then(post => dispatch(sendVotePost(post)));
 };
 
 export const CreateNewComment = ( commentData, cb ) => dispatch => {

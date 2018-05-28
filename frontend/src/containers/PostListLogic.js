@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostList from '../components/PostList';
-import { FetchAllPosts, FetchCategoryPosts, PostVote } from '../actions';
+import { FetchAllPosts, FetchCategoryPosts, SendVoteForPost } from '../actions';
 import _ from 'lodash';
 
 class PostListLogic extends Component {
@@ -33,7 +33,7 @@ class PostListLogic extends Component {
     e.preventDefault();
     const voteType = { option: e.target.id };
     console.log(voteType);
-    this.props.dispatch(PostVote(postId, voteType));
+    this.props.dispatch(SendVoteForPost(postId, voteType));
   }
 
   handleSelectedSort = ( e ) => {

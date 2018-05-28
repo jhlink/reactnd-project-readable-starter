@@ -40,7 +40,7 @@ export const GetPost = (postId) =>
   }).then((res) => res.json());
 
 //  POST /posts/:id
-export const PostVote = (postId, voteIntent) =>
+export const PostVoteForPost = (postId, voteIntent) =>
   fetch(`${API_HOST}/posts/${postId}`, {
     headers: reqHeaders,
     method: 'POST',
