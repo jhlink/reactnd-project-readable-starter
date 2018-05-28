@@ -26,11 +26,15 @@ Information about the API server and how to use it can be found in its [README f
 To accesss the backend server in your code, we have stored the URL to the API server in the environment variable `REACT_APP_BACKEND` which you can access in your code using `process.env.REACT_APP_BACKEND`. You can see this in action in `frontend/src/App.js` in `componentDidMount`.
 
 
+--7. Move comment count and other stuff to Post list view
+
 1. Implement Delete Post
--4. Implement vote on comment 
 5. Implement delete comment
-7. Move comment count and other stuff to Post list view
-8. Show 404 when accessing deleted page.
+2. All posts are listed at the root.
+3. Root list page has sort mechanism 
+4. Root list page has AddPost 
+6. Root list page has edit/delete functions for each post. 
+8. A mechanism for deleting posts and comments exists. Clicking the button/link correctly removes the post/comment from list view and makes post inaccessible at its URL. When a user goes to a deleted post’s URL, a 404 page is displayed.
 
 Stretch Goals
 -- Replace Immutability-Helper and lodash with Facebook's Immutable.js
