@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CommentList from '../components/CommentList';
-import { FetchPostComments, PostVote } from '../actions';
+import { FetchPostComments, SendVoteForComment } from '../actions';
 
 class CommentListLogic extends Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class CommentListLogic extends Component {
   handleVote = (commentId, e) => {
     e.preventDefault();
     const voteType = { option: e.target.id };
-    this.props.dispatch(PostVote(commentId, voteType));
+    this.props.dispatch(SendVoteForComment(commentId, voteType));
   }
 
   componentWillMount() {
