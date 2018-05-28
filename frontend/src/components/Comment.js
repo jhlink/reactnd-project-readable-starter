@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import Voter from './Voter';
 import EditDeleteBlock from './EditDeleteBlock';
 
 const Comment = (props) => { 
   const { comment, match, voteHandler, deleteHandler } = props;
-  const { id, timestamp, body, author, voteScore, deleted, parentDeleted } = comment;
+  const { id, timestamp, body, author } = comment;
   const formattedDated = new Date(timestamp).toLocaleString();
 
   return (
