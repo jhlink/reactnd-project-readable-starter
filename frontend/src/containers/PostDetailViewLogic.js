@@ -12,8 +12,7 @@ class PostDetailViewLogic extends Component {
     super(props);
 
     this.state = {
-      post: {},
-      comments: []
+      post: {}
     };
   }
 
@@ -46,37 +45,28 @@ class PostDetailViewLogic extends Component {
         { post: nextProps.post }
       );
     }
-
-    if (nextProps.comments && nextProps.comments.length > 0) {
-      this.setState(
-        {comments: nextProps.comments}
-      );
-    }
   }
   
   render() {
-    const { post, comments } = this.state;
+    const { post } = this.state;
     const { match, location } = this.props;
     return <Post post={ post } 
-      comments={ comments } 
       match={ match } 
       location={ location }/>;
   }
 }
 
 PostDetailViewLogic.propTypes = {
-  post: PropTypes.object,
-  comments: PropTypes.array
+  post: PropTypes.object
 };
 
 const mapStateToProps = (state, props) => {
-  const { comments } = state.commentHandler;
   const { posts } = state.postHandler;
   const { postId } = props.match.params;
 
   const post = posts ? posts.filter( post => post.id === postId)[0] : {}; 
 
-  return { post, comments }; 
+  return { post }; 
 };
 
 export default connect(mapStateToProps)(PostDetailViewLogic);
