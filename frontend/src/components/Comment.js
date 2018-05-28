@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import Voter from './Voter';
 
 const Comment = (props) => { 
-  const { comment, match } = props;
+  const { comment, match, voteHandler } = props;
   const { id, timestamp, body, author, voteScore, deleted, parentDeleted } = comment;
   const formattedDated = new Date(timestamp).toLocaleString();
 
@@ -19,7 +20,7 @@ const Comment = (props) => {
           className="nav-link edit"
         > Edit  
         </NavLink>
-        <div className="vote-score"> Vote Score:  { voteScore } </div>
+        <Voter item={ comment } voteHandler={ voteHandler }/>
       </div>
     </div>
   );
@@ -28,6 +29,5 @@ const Comment = (props) => {
 Comment.propTypes = {
   comment: PropTypes.object.isRequired
 };
-
 
 export default Comment;

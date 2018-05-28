@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import Comment from './Comment';
 
 const CommentList = (props) => {
-  const { comments, positionStyle, match } = props;
+  const { comments, match, voteHandler } = props;
 
   return (
-    <ul style={ positionStyle }>
+    <ul>
       {comments.map((comment) => (
-        <li key={comment.id} className="comment">
+        <li key={ comment.id } className="comment">
           <Comment comment={ comment }
-            match={ match }/>
+            match={ match }
+            voteHandler={ voteHandler }/>
         </li>
       ))}
     </ul>
