@@ -2,18 +2,19 @@ import { combineReducers } from 'redux';
 import update from 'immutability-helper';
 
 import {
-  LOAD_CATEGORY_POSTS,
-  LOAD_POST_COMMENTS,
   GET_ALL_CATEGORIES,
   GET_ALL_POSTS,
-  POST_NEW_POST,
+  LOAD_CATEGORY_POSTS,
+  LOAD_POST_COMMENTS,
   GET_POST,
-  PUT_POST,
-  POST_VOTE_POST,
-  POST_NEW_COMMENT,
-  PUT_COMMENT,
   GET_COMMENT,
-  POST_VOTE_COMMENT
+  PUT_POST,
+  PUT_COMMENT,
+  POST_NEW_COMMENT,
+  POST_NEW_POST,
+  POST_VOTE_POST,
+  POST_VOTE_COMMENT,
+  DELETE_POST
 } from '../actions';
 
 function categoryHandler (state = {}, action) {
@@ -54,6 +55,12 @@ function postHandler (state = {}, action) {
       };
 
     case GET_POST:
+      return {
+        ...state,
+        post
+      }; 
+
+    case DELETE_POST:
       return {
         ...state,
         post
