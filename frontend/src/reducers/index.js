@@ -18,6 +18,11 @@ import {
   DELETE_COMMENT
 } from '../actions';
 
+function isObjectEmpty( obj ) {
+  return Object.keys(obj).length === 0 
+    && obj.constructor === Object;
+}
+
 function categoryHandler (state = {}, action) {
   const { categories } = action;
 
@@ -55,11 +60,15 @@ function postHandler (state = {}, action) {
         post
       };
 
-    case GET_POST:
+    //  Add ShouldRedirect here after validating post is {}
+    case GET_POST: {
+      const shouldRedirect = isObjectEmpty(post);
       return {
         ...state,
-        post
+        post,
+        shouldRedirect
       }; 
+    }
 
     case DELETE_POST:
       return {
