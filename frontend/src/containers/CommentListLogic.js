@@ -40,7 +40,7 @@ class CommentListLogic extends Component {
       this.handleCommentsDispatch(newPostId);
     }
 
-    if (nextProps.comments && nextProps.comments.length > 0) {
+    if (nextProps.comments) {
       this.setState(
         {comments: nextProps.comments}
       );
