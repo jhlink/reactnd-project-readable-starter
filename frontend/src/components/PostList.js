@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
+import PostCommentCounter from '../containers/PostCommentCounter';
 import EditDeleteBlock from './EditDeleteBlock';
 import Voter from './Voter';
 
@@ -57,6 +58,7 @@ const PostList = ( props ) =>  {
               <EditDeleteBlock 
                 editLinkPath={match.url + '/' + post.id}
                 deleteHandler={ (e) => { deleteHandler(post.id, e); }}/>
+              <PostCommentCounter postId={post.id}/>
               <Voter item={ post }
                 voteHandler={ voteHandler }/>
             </div>
