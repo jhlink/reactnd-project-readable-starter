@@ -2,19 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CommentListLogic from '../containers/CommentListLogic';
 import CommentFormLogic from '../containers/CommentFormLogic';
-import { Route, Switch, NavLink } from 'react-router-dom'; 
+import { Route, Switch, NavLink, Redirect } from 'react-router-dom'; 
 import PostFormLogic from '../containers/PostFormLogic';
 import Voter from './Voter';
 import EditDeleteBlock from './EditDeleteBlock';
 
 const Post = (props) => {
-  const { post, match, location, voteHandler, deleteHandler } = props;
+  const { post, match, location, voteHandler, deleteHandler, shouldRedirect } = props;
   const { id, timestamp, title, body, author, category, voteScore, deleted } = post;
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
 
   return (
     <div className="structure-flex-col">
+      { shouldRedirect && (
+        <Redirect from="*" to="/404"/>
+      )}
       { isEditPost && (
         <div className="container-post">
           <h2 className="title-style"> { title } </h2> 
