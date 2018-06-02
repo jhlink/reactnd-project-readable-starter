@@ -6,6 +6,7 @@ import {
   GET_ALL_POSTS,
   LOAD_CATEGORY_POSTS,
   LOAD_POST_COMMENTS,
+  GET_COMMENT_COUNT,
   GET_POST,
   GET_COMMENT,
   PUT_POST,
@@ -87,7 +88,6 @@ function postHandler (state = {}, action) {
         })
       };
 
-    
     case POST_VOTE_POST:
       return {
         ...state,
@@ -103,7 +103,7 @@ function postHandler (state = {}, action) {
 }
 
 function commentHandler (state = {}, action) {
-  const { comments, comment } = action;
+  const { comments, comment, postId } = action;
 
   switch (action.type) {
     case LOAD_POST_COMMENTS:
@@ -119,6 +119,15 @@ function commentHandler (state = {}, action) {
           {$push: [ comment ]}),
         comment
       };
+
+    case GET_COMMENT_COUNT: {
+      const commentLength = comments.length;
+      return {
+        ...state,
+        count: commentLength,
+        parentId: postId
+      };
+    }
 
     case PUT_COMMENT:
       return {
