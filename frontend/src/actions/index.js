@@ -166,7 +166,7 @@ export const CreateNewComment = ( commentData, cb ) => dispatch => {
 };
 
 export const PutComment = ( commentId, commentBody, cb ) => dispatch => {
-  return ServerAPI.PutPost(commentId, commentBody)
+  return ServerAPI.PutComment(commentId, commentBody)
     .then(comment => dispatch(editComment(comment, cb)));
 };
 
