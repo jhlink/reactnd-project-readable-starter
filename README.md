@@ -27,12 +27,9 @@ To accesss the backend server in your code, we have stored the URL to the API se
 
 
 --7. Move comment count and other stuff to Post list view
-
---5. Implement delete comment
 2. All posts are listed at the root.
 3. Root list page has sort mechanism 
 4. Root list page has AddPost 
--- 8. Clicking the button/link correctly removes the post/comment from list view and makes post inaccessible at its URL. When a user goes to a deleted post’s URL, a 404 page is displayed.
 
 Stretch Goals
 -- Replace Immutability-Helper and lodash with Facebook's Immutable.js
