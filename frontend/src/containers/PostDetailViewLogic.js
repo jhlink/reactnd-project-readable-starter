@@ -12,7 +12,8 @@ class PostDetailViewLogic extends Component {
     super(props);
 
     this.state = {
-      post: {}
+      post: {},
+      shouldRedirect: false
     };
 
     this.handleVote = this.handleVote.bind(this);
@@ -51,18 +52,20 @@ class PostDetailViewLogic extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.post) {
       this.setState(
-        { post: nextProps.post }
+        { post: nextProps.post,
+          shouldRedirect: nextProps.shouldRedirect }
       );
     }
   }
   
   render() {
-    const { post } = this.state;
+    const { post, shouldRedirect } = this.state;
     const { match, location } = this.props;
     return <Post 
       post={ post } 
       voteHandler={ this.handleVote }
       deleteHandler={ this.handleDelete }
+      shouldRedirect={ shouldRedirect }
       match={ match } 
       location={ location }/>;
   }
@@ -73,9 +76,9 @@ PostDetailViewLogic.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const { post } = state.postHandler;
+  const { post, shouldRedirect } = state.postHandler;
 
-  return { post }; 
+  return { post, shouldRedirect }; 
 };
 
 export default connect(mapStateToProps)(PostDetailViewLogic);
