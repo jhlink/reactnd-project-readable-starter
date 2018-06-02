@@ -121,10 +121,9 @@ function commentHandler (state = {}, action) {
       };
 
     case GET_COMMENT_COUNT: {
-      const commentLength = comments.length;
       return {
         ...state,
-        count: commentLength,
+        comments,
         parentId: postId
       };
     }
@@ -149,9 +148,8 @@ function commentHandler (state = {}, action) {
     case DELETE_COMMENT:
       return {
         ...state,
-        comments: state.comments.map(sComment => {
-          return (sComment.id === comment.id) ? comment : sComment;
-        })
+        comments: state.comments.filter(sComment =>  
+          sComment.id !== comment.id)
       }; 
 
     case POST_VOTE_COMMENT:
