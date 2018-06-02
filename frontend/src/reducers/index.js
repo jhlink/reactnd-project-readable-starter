@@ -128,11 +128,14 @@ function commentHandler (state = {}, action) {
         })
       };
 
-    case GET_COMMENT:
+    case GET_COMMENT: {
+      const shouldRedirect = isObjectEmpty(comment);
       return {
         ...state,
-        comment 
+        comment,
+        shouldRedirect
       }; 
+    }
 
     case DELETE_COMMENT:
       return {
