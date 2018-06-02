@@ -4,6 +4,7 @@ export const LOAD_CATEGORY_POSTS = 'LOAD_CATEGORY_POSTS';
 export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS';
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
+export const GET_COMMENT_COUNT = 'GET_COMMENT_COUNT';
 export const POST_NEW_POST = 'POST_NEW_POST';
 export const GET_POST = 'GET_POST';
 export const PUT_POST = 'PUT_POST';
@@ -40,6 +41,13 @@ export const getPost = ( post ) => {
   return {
     type: GET_POST,
     post 
+  };
+};
+
+export const getCommentCount = ( comments ) => {
+  return {
+    type: GET_COMMENT_COUNT,
+    comments
   };
 };
 
@@ -189,3 +197,9 @@ export const DeleteComment = ( commentId ) => dispatch => {
   return ServerAPI.DeleteComment(commentId)
     .then(comment => dispatch(deleteComment(comment)));
 };
+
+export const GetCommentCount = ( postId ) => dispatch => {
+  return ServerAPI.GetPostComments(postId)
+    .then(postComments => dispatch(getCommentCount(postComments)));
+};
+
