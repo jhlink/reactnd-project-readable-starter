@@ -44,10 +44,11 @@ export const getPost = ( post ) => {
   };
 };
 
-export const getCommentCount = ( comments ) => {
+export const getCommentCount = (postId, comments ) => {
   return {
     type: GET_COMMENT_COUNT,
-    comments
+    comments,
+    postId
   };
 };
 
@@ -200,6 +201,6 @@ export const DeleteComment = ( commentId ) => dispatch => {
 
 export const GetCommentCount = ( postId ) => dispatch => {
   return ServerAPI.GetPostComments(postId)
-    .then(postComments => dispatch(getCommentCount(postComments)));
+    .then(postComments => dispatch(getCommentCount(postId, postComments)));
 };
 
