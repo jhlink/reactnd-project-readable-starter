@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 const CommentForm = (props) => {
   const { comment,
     type,
     handleCommentSubmit, 
-    handleCommentChange 
+    handleCommentChange,
+    shouldRedirect
   } = props;
 
   const {
@@ -20,6 +22,9 @@ const CommentForm = (props) => {
 
   return (
     <div className="main-body">
+      { shouldRedirect && (
+        <Redirect from="*" to="/404"/>
+      )}
       <h2 className="uppercase">{ typeHeader } Comment about { category } Category</h2>
       <form className="form-style" onSubmit={ handleCommentSubmit }>
         <input type="text" 
