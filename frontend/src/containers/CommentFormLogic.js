@@ -27,7 +27,8 @@ class CommentFormLogic extends Component {
 
     this.state = {
       comment: INIT_COMMENT_STATE,
-      type: ''
+      type: '',
+      shouldRedirect: false
     };
   }
 
@@ -59,6 +60,8 @@ class CommentFormLogic extends Component {
           timestamp: Date.now(),
           body: this.state.comment.body
         };
+
+        console.log(this.state.comment.id);
 
         this.props.dispatch(PutComment(this.state.comment.id, commentEditedText, () => {
           this.props.history.push(rootPostPath);
@@ -137,7 +140,8 @@ class CommentFormLogic extends Component {
 
         this.setState({ 
           comment: nextProps.comment,
-          type: isEditPost
+          type: isEditPost,
+          shouldRedirect: nextProps.shouldRedirect
         });
 
         break;
@@ -148,12 +152,13 @@ class CommentFormLogic extends Component {
   }
   
   render() {
-    const { comment, type } = this.state;
+    const { comment, type, shouldRedirect } = this.state;
     return <CommentForm 
       handleCommentSubmit={(e) => this.handleCommentSubmit(e) }
       handleCommentChange={(e) => this.handleCommentChange(e) }
       comment={ comment }
-      type={ type }/>;
+      type={ type }
+      shouldRedirect={ shouldRedirect }/>;
   }
 }
 
@@ -162,9 +167,8 @@ CommentFormLogic.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const { comment } = state.commentHandler;
-  console.log(comment);
-  return { comment };
+  const { comment, shouldRedirect } = state.commentHandler;
+  return { comment, shouldRedirect };
 };
 
 export default connect(mapStateToProps)(CommentFormLogic);
