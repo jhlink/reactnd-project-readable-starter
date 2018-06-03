@@ -85,7 +85,8 @@ function postHandler (state = {}, action) {
         ...state,
         posts: state.posts.map(sPost => {
           return (sPost.id === post.id) ? post : sPost;
-        })
+        }),
+        post
       };
 
     case POST_VOTE_POST:
