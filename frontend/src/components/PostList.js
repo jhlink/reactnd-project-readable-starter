@@ -50,11 +50,14 @@ const PostList = ( props ) =>  {
       <ul style={ isEmpty }>
         {postsNotDeleted.map((post) => (
           <li key={post.id} className="post">
-            <NavLink 
-              to={categoryUrl(post.category) + '/' +  post.id}
-              className="nav-link item-width"
-            > { post.title } 
-            </NavLink>
+            <div className="structure-flex-col post-flex">
+              <NavLink 
+                to={categoryUrl(post.category) + '/' +  post.id}
+                className="nav-link"
+              > { post.title } 
+              </NavLink>
+              <label className="subtitle-style">{post.author}</label>
+            </div>
             <div className="structure-flex-col">
               <EditDeleteBlock 
                 editLinkPath={categoryUrl('') + '/' + post.id + '/editpost'}
