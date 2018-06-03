@@ -20,15 +20,17 @@ class PostCommentCounter extends Component {
   }
 
   componentWillMount() {
-    const { postId } = this.props;
-    this.handleCommentDispatch(postId);
+    const { postId } = this.props.match.params;
+    this.handleCommentDispatch(postId); 
   }
 
   componentWillReceiveProps(nextProps) {
-    const { postId } = this.props;
-    const { parentId, count } = nextProps;
+    const { postId } = this.props.match.params;
+    const { commentCount } = this.state;
+    const { parentId, count  } = nextProps;
 
-    if (postId === parentId) {
+    console.log(nextProps);
+    if (postId === parentId && commentCount !== count ) {
       this.setState({ commentCount: count });
     }
   }
@@ -41,13 +43,15 @@ class PostCommentCounter extends Component {
 }
 
 PostCommentCounter.propTypes = {
-  postId: PropTypes.string.isRequired
+  postId: PropTypes.string
 };
 
 const mapStateToProps = (state) => {
-  const { parentId, count } = state.commentHandler;
+  const { parentId, comments } = state.commentHandler;
     
-  return { parentId, count };
+  const nCount = comments !== undefined ? comments.length : 0;    
+
+  return { parentId, count: nCount };
 };
 
 export default connect(mapStateToProps)(PostCommentCounter);

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CommentListLogic from '../containers/CommentListLogic';
+import PostCommentCounter from '../containers/PostCommentCounter';
 import CommentFormLogic from '../containers/CommentFormLogic';
 import { Route, Switch, NavLink, Redirect } from 'react-router-dom'; 
 import PostFormLogic from '../containers/PostFormLogic';
@@ -33,6 +34,7 @@ const Post = (props) => {
             <Voter 
               item={ post }
               voteHandler={ voteHandler }/> 
+            <PostCommentCounter match={ match } postId={ post.id }/>
             <NavLink 
               to={match.url + '/addcomment'}
               className="nav-link post"
