@@ -4,18 +4,53 @@ This is the starter project for the final assessment project for Udacity's Redux
 
 This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
 
-## Start Developing
+## Instructions for Installation
 
-To get started developing right away:
+Utilization of the project web app can be started by following the listed steps. 
 
 * Install and start the API server
     - `cd api-server`
     - `npm install`
-    - `node server`
-* In another terminal window, install and start the pre-scaffolded Create React App project
+    - `npm start`
+* In another terminal window, install and start the frontend project .
     - `cd frontend`
     - `npm install`
     - `npm start`
+
+## Questions
+
+There are a couple of questions that I've discovered while working through the project. 
+They are marked with by *TODO*.
+
+There are found in the following files: 
+
+- src/components/CategoryList.js
+- src/containers/AppLogic.js
+
+## Notes about Application
+
+The UI doesn't exactly create the most aesthetically pleasing experiences, but I primarily focused on functionality than appearances. 
+
+Quick Note: I specialize in writing hardware level code, primarily C/C++. I hardly have any experience in web development, so one might notice blatant issues or problems that would otherwise be uncommon in more experienced web developers. 
+
+Please point them out!!! I love to learn, but it's a struggle for me to figure out what or which areas, if any, I need to focus on!! D:
+
+One might notice that there's a seemingly large conflagration of dispatched actions when loading posts in a Category or at the root level in the "All" link. This was the simplest method for displaying coment count that I could think of without writing additional code that in my opinion would overcomplicate and pollute the code base. 
+
+Furthermore, certain quirks like the server not providing a 404 error when accessing deleted resources or the post object not storing a "comment count" property left me no option but to create workarounds in order to implement the specifications defined in the rubric. 
+
+In production, I believe that these functions would be handle server side, but for the purposes of this exercise/project, I understand that this is definitely an interesting problem and excellent opportunity to demonstrate one's core knowledge of React-Redux-Router. 
+
+## Final Words
+
+Hi. My name is James. Thank you for taking the time to review my project!!
+I appreciate any additional feedback you can provide regardless of how strict they may be!! I won't know how to improve if I don't know what I'm doing wrong! :) 
+
+I hope you have an awesome, amazing day, and if anything a kick butt breakfast. 
+
+Random thoughts: God I love breakfast. And chocolate too!! Although I do shamelessly blame Richard (Udacity Instrutor) for the now random intense cravings for ice cream. Like seriously, thanks to Richard, my friends and I now have way-too serious conversations about the best ice creams parlors/shops. Personally, I'm a fan of Cold Stones, but I've been hearing Ben & Jerry's, Graeters, and Comfy Cow. 
+
+Anyways!! I hope you like ice cream!! :)
 
 ## API Server
 
