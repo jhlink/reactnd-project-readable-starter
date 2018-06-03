@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const PostCount = (props) => {
   const { count } = props;
 
-  return <label> Comments: { count } </label>;
+  return <label className="count">Comments: { count }</label>;
 };
 
 PostCount.propTypes = {

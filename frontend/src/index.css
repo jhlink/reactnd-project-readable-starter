@@ -68,6 +68,10 @@ li.comment {
   width: fit-content;
 }
 
+.count {
+  padding: 0 1em;
+}
+
 /* Container Organization */ 
 
 .vote {
