@@ -70,6 +70,7 @@ li.comment {
 
 .count {
   padding: 0 1em;
+  text-align: right;
 }
 
 /* Container Organization */ 
@@ -179,9 +180,8 @@ li.comment {
   border: solid black .125em;
 }
 
-.item-width {
-  max-width: 55%;
-  width: fit-content;
+.post-flex {
+  max-width: 55%
 }
 
 .vote-score {
