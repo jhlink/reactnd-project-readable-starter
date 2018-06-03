@@ -43,7 +43,9 @@ class PostCommentCounter extends Component {
 }
 
 PostCommentCounter.propTypes = {
-  postId: PropTypes.string
+  postId: PropTypes.string,
+  count: PropTypes.number,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, props) => {
