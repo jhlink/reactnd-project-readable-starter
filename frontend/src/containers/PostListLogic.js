@@ -89,10 +89,13 @@ class PostListLogic extends Component {
 }
 
 PostListLogic.propTypes = {
-  posts: PropTypes.array
+  posts: PropTypes.array,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const { posts } = state.postHandler;
 
   return { posts };
