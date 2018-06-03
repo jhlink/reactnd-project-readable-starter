@@ -33,7 +33,7 @@ const Post = (props) => {
             <Voter 
               item={ post }
               voteHandler={ voteHandler }/> 
-            <PostCommentCounter match={ match } postId={ post.id }/>
+            <PostCommentCounter match={ match } postId={ id }/>
             <NavLink 
               to={match.url + '/addcomment'}
               className="nav-link post"
