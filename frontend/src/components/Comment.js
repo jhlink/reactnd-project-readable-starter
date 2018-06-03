@@ -30,7 +30,7 @@ Comment.propTypes = {
   comment: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   voteHandler: PropTypes.func.isRequired,
-  deleteHandler: PropTypes.object.isRequired
+  deleteHandler: PropTypes.func.isRequired
 };
 
 export default Comment;
