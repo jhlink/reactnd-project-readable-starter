@@ -5,7 +5,9 @@ const PostForm = (props) => {
   const { post,
     type,
     handlePostSubmit, 
-    handlePostChange 
+    handlePostChange,
+    handleCategorySelect,
+    categories
   } = props;
 
   const {
@@ -20,6 +22,22 @@ const PostForm = (props) => {
   return (
     <div className="main-body">
       <h2 className="uppercase">{ type } Post about { category } Category</h2>
+      { !isEditForm && ( 
+        <div className="structure-flex-col"> 
+          <h2 className="sort-header">Select Category</h2>
+          <select value={ category } 
+            onChange={handleCategorySelect.bind(this)}
+            className="sort">
+            { categories.map(category => {
+              return <option 
+                key={ category.path } 
+                value={ category.path }>
+                { category.name }
+              </option>;
+            })}
+          </select>
+        </div>
+      )}
       <form className="form-style" onSubmit={ handlePostSubmit }>
         <input type="text" 
           name="title" 

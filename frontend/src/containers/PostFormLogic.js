@@ -2,10 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
-import { PutPost, FetchPost, CreateNewPost } from '../actions';
+import { PutPost, FetchPost, CreateNewPost, FetchCategories } from '../actions';
 import serializeForm from 'form-serialize';
 import uuidv4 from 'uuid/v4';
 import update from 'immutability-helper';
+
+const INIT_POST = {
+  deleted: false,
+  voteScore: 1,
+  category: '',
+  title: '',
+  body: '',
+  author: ''
+};
 
 class PostFormLogic extends Component {
 
@@ -13,16 +22,12 @@ class PostFormLogic extends Component {
     super(props);
 
     this.state = {
-      post: {
-        deleted: false,
-        voteScore: 1,
-        category: '',
-        title: '',
-        body: '',
-        author: ''
-      },
-      type: ''
+      post: INIT_POST,
+      type: '',
+      categories: []
     };
+
+    this.handleCategorySelect = this.handleCategorySelect.bind(this);
   }
 
   handleSectionPostUpdate = ( property, value ) => {
@@ -72,11 +77,16 @@ class PostFormLogic extends Component {
     }
   }
 
+  handleCategorySelect = ( e ) => {
+    e.preventDefault();
+    const selectedCategory  = e.target.value;
+    this.handleSectionPostUpdate('category', selectedCategory);
+  }
+
   componentWillMount() {
     const isEditPost = this.props.match.url.includes('editpost') ? 'edit' : 'add';
     this.setState({type: isEditPost});
 
-  
     switch (isEditPost) {
       case 'edit':
         if (this.props.post !== undefined) {
@@ -89,26 +99,39 @@ class PostFormLogic extends Component {
       case 'add':
       default:
         const { categoryId } = this.props.match.params;
-        this.handleSectionPostUpdate('category', categoryId);
+        if (categoryId) {
+          this.handleSectionPostUpdate('category', categoryId);
+        }
+        this.props.dispatch(FetchCategories());
     }
   }
+  
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.post === undefined) {
-      return;
+    const { post, categories } = nextProps;
+
+    if (categories !== undefined) {
+      this.setState({
+        categories
+      });
     }
 
-    if (this.state.post.id === undefined || this.state.post.id !== nextProps.post.id) {
-      this.setState(
-        { post: nextProps.post }
-      );
+    if (this.state.type === 'edit') {
+      this.setState({
+        post: {
+          ...post,
+          category: this.state.post.category
+        }
+      });
     }
   }
   
   render() {
-    const { post, type } = this.state;
+    const { categories, post, type } = this.state;
     return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
       handlePostChange={(e) => this.handlePostChange(e) }
+      handleCategorySelect={(e) => this.handleCategorySelect(e) }
+      categories={ categories }
       post={ post }
       type={ type }/>;
   }
@@ -120,7 +143,8 @@ PostFormLogic.propTypes = {
 
 const mapStateToProps = (state) => {
   const { post } = state.postHandler;
-  return { post };
+  const { categories } = state.categoryHandler;
+  return { post, categories };
 };
 
 export default connect(mapStateToProps)(PostFormLogic);
