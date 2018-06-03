@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 };
 
 AppLogic.propTypes = {
-  categories: PropTypes.array.isRequired,
+  categories: PropTypes.array,
   dispatch: PropTypes.func.isRequired
 };
 
