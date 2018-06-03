@@ -28,6 +28,12 @@ const PostForm = (props) => {
           <select value={ category } 
             onChange={handleCategorySelect.bind(this)}
             className="sort">
+            <option
+              key='blank' 
+              value=''
+              disabled
+            >
+            </option>;
             { categories.map(category => {
               return <option 
                 key={ category.path } 
