@@ -58,7 +58,12 @@ const Post = (props) => {
 };
 
 Post.propTypes = {
-  post: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  voteHandler: PropTypes.func.isRequired,
+  deleteHandler: PropTypes.func.isRequired,
+  shouldRedirect: PropTypes.bool
 };
 
 export default Post;
