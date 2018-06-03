@@ -60,7 +60,10 @@ class CommentListLogic extends Component {
 }
 
 CommentListLogic.propTypes = {
-  comments: PropTypes.array
+  comments: PropTypes.array,
+  postId: PropTypes.string,
+  match: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
