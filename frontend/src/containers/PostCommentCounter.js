@@ -21,25 +21,18 @@ class PostCommentCounter extends Component {
 
 
   componentDidMount() {
-    const { postId, count } = this.props;
-    const backupPostId = this.props.match.params.postId;
-    const guaranteedPostId = postId !== undefined ? postId : backupPostId;
-    //this.handleCommentDispatch(guaranteedPostId); 
-    //const { count } = this.props;
-    //if (count !== undefined) {
-    //  this.setState({ commentCount: count });
-    //}
-    this.setState({ commentCount: count });
+    const { count } = this.props;
+    if (count !== undefined) {
+      this.setState({ commentCount: count });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     const {  count } = nextProps;
-    const oldCount = this.props.count;
 
-
-    this.setState({ commentCount: count });
-    //if (count !== undefined || count != oldCount) {
-    //}
+    if (count !== undefined) {
+      this.setState({ commentCount: count });
+    }
   }
   
   render() {
@@ -61,7 +54,7 @@ const mapStateToProps = (state, props) => {
     const count = counts[postId];
     return { count };
   } else {
-    return { };
+    return {  };
   }
 
 };
