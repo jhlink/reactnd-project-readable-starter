@@ -31,7 +31,7 @@ function categoryHandler (state = {}, action) {
     case GET_ALL_CATEGORIES:
       return {
         ...state,
-        categories
+        ...categories
       };
 
     default : 
