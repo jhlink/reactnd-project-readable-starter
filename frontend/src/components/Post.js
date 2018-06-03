@@ -9,7 +9,7 @@ import EditDeleteBlock from './EditDeleteBlock';
 
 const Post = (props) => {
   const { post, match, location, voteHandler, deleteHandler, shouldRedirect } = props;
-  const { id, timestamp, title, body, author, category, voteScore, deleted } = post;
+  const { id, timestamp, title, body, author, category } = post;
   const formattedDated = new Date(timestamp).toLocaleString();
   const isEditPost = location.pathname !== match.url + '/editpost';
 
