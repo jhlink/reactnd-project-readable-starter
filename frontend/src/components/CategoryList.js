@@ -6,11 +6,19 @@ import PostFormLogic from '../containers/PostFormLogic';
 
 const CategoryList = (props) => {
   const { categories } = props;
+  
 
   return (
     <div className="body-layout">
       <div>
         <ul className="list-tight">
+          <li key="root" >
+            <NavLink 
+              exact
+              to={'/'}
+              className="nav-link"
+            > all </NavLink>
+          </li>
           { categories.map( c => 
             <li key={ c.path } >
               <NavLink 
