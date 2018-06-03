@@ -20,7 +20,7 @@ const CategoryList = (props) => {
             > all </NavLink>
           </li>
           { categories.map( c => 
-            <li key={ c.path } >
+            <li key={ c.path  } >
               <NavLink 
                 to={'/' +  c.path}
                 className="nav-link"
@@ -40,7 +40,7 @@ const CategoryList = (props) => {
          /  URL path, is it okay to place the NavLink in a separate component and add the Route
          /  to that component to the parent of that component?
         */}
-        <Route path={'/:categoryId/addpost'} component={ PostFormLogic }/>
+        <Route path={'/:categoryId?/addpost'} component={ PostFormLogic }/>
         <Route path={'/:categoryId?'} component={ PostListLogic }/>
       </Switch>
     </div>
