@@ -19,20 +19,27 @@ class PostCommentCounter extends Component {
     }
   }
 
-  componentWillMount() {
-    const { postId } = this.props.match.params;
-    this.handleCommentDispatch(postId); 
+
+  componentDidMount() {
+    const { postId, count } = this.props;
+    const backupPostId = this.props.match.params.postId;
+    const guaranteedPostId = postId !== undefined ? postId : backupPostId;
+    //this.handleCommentDispatch(guaranteedPostId); 
+    //const { count } = this.props;
+    //if (count !== undefined) {
+    //  this.setState({ commentCount: count });
+    //}
+    this.setState({ commentCount: count });
   }
 
   componentWillReceiveProps(nextProps) {
-    const { postId } = this.props.match.params;
-    const { commentCount } = this.state;
-    const { parentId, count  } = nextProps;
+    const {  count } = nextProps;
+    const oldCount = this.props.count;
 
-    console.log(nextProps);
-    if (postId === parentId && commentCount !== count ) {
-      this.setState({ commentCount: count });
-    }
+
+    this.setState({ commentCount: count });
+    //if (count !== undefined || count != oldCount) {
+    //}
   }
   
   render() {
@@ -46,12 +53,17 @@ PostCommentCounter.propTypes = {
   postId: PropTypes.string
 };
 
-const mapStateToProps = (state) => {
-  const { parentId, comments } = state.commentHandler;
-    
-  const nCount = comments !== undefined ? comments.length : 0;    
+const mapStateToProps = (state, props) => {
+  const { counts } = state.commentHandler;
+  const { postId } = props;
 
-  return { parentId, count: nCount };
+  if (counts !== undefined) {
+    const count = counts[postId];
+    return { count };
+  } else {
+    return { };
+  }
+
 };
 
 export default connect(mapStateToProps)(PostCommentCounter);

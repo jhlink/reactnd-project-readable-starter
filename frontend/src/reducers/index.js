@@ -7,6 +7,7 @@ import {
   LOAD_CATEGORY_POSTS,
   LOAD_POST_COMMENTS,
   GET_COMMENT_COUNT,
+  UPDATE_COMMENT_COUNT,
   GET_POST,
   GET_COMMENT,
   PUT_POST,
@@ -122,10 +123,22 @@ function commentHandler (state = {}, action) {
       };
 
     case GET_COMMENT_COUNT: {
+      const checkedContainer = state.counts || []; 
+      const count = checkedContainer[postId];
+
       return {
         ...state,
-        comments,
-        parentId: postId
+        count    
+      };
+    }
+
+    case UPDATE_COMMENT_COUNT: {
+      const checkedContainer = state.counts || {}; 
+      const commentCount = { [postId]: comments.length || 0 };
+      const counts = update(checkedContainer, {$merge: commentCount});
+      return {
+        ...state,
+        counts 
       };
     }
 

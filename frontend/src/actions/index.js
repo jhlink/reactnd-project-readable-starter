@@ -5,6 +5,7 @@ export const LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS';
 export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
 export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const GET_COMMENT_COUNT = 'GET_COMMENT_COUNT';
+export const UPDATE_COMMENT_COUNT = 'UPDATE_COMMENT_COUNT';
 export const POST_NEW_POST = 'POST_NEW_POST';
 export const GET_POST = 'GET_POST';
 export const PUT_POST = 'PUT_POST';
@@ -44,9 +45,16 @@ export const getPost = ( post ) => {
   };
 };
 
-export const getCommentCount = (postId, comments ) => {
+export const getCommentCount = (postId ) => {
   return {
     type: GET_COMMENT_COUNT,
+    postId
+  };
+};
+
+export const updateCommentCount = (postId, comments ) => {
+  return {
+    type: UPDATE_COMMENT_COUNT,
     comments,
     postId
   };
@@ -136,7 +144,12 @@ export const FetchCategories = () => dispatch => {
 
 export const FetchAllPosts = () => dispatch => {
   return ServerAPI.GetPosts()
-    .then(posts => dispatch(getPosts(posts)));
+    .then(posts => {
+      posts.forEach(post => 
+        dispatch(FetchPostComments(post.id))
+      );
+      return dispatch(getPosts(posts));
+    });
 };
 
 export const FetchCategoryPosts = ( categoryId ) => dispatch => {
@@ -146,7 +159,10 @@ export const FetchCategoryPosts = ( categoryId ) => dispatch => {
 
 export const FetchPostComments = ( postId ) => dispatch => {
   return ServerAPI.GetPostComments(postId)
-    .then(postComments => dispatch(loadPostComments(postComments)));
+    .then(postComments => {
+      dispatch(UpdateCommentCount(postId, postComments));
+      return dispatch(loadPostComments(postComments));
+    });
 };
 
 export const CreateNewPost = ( postData, cb ) => dispatch => {
@@ -199,8 +215,11 @@ export const DeleteComment = ( commentId ) => dispatch => {
     .then(comment => dispatch(deleteComment(comment)));
 };
 
+const UpdateCommentCount = ( postId, comments ) => dispatch  => {
+  return dispatch(updateCommentCount(postId, comments));
+};
+
 export const GetCommentCount = ( postId ) => dispatch => {
-  return ServerAPI.GetPostComments(postId)
-    .then(postComments => dispatch(getCommentCount(postId, postComments)));
+  return dispatch(getCommentCount(postId));
 };
 
