@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "form-serialize": "^0.7.2",
     "immutability-helper": "^2.6.6",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
