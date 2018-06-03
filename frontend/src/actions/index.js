@@ -154,7 +154,12 @@ export const FetchAllPosts = () => dispatch => {
 
 export const FetchCategoryPosts = ( categoryId ) => dispatch => {
   return ServerAPI.GetCategoryPosts(categoryId)
-    .then(categoryPosts => dispatch(loadCategoryPosts(categoryPosts)));
+    .then(categoryPosts => {
+      categoryPosts.forEach(post => 
+        dispatch(FetchPostComments(post.id))
+      );
+      return dispatch(loadCategoryPosts(categoryPosts));
+    });
 };
 
 export const FetchPostComments = ( postId ) => dispatch => {
