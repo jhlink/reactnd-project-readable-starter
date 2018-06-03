@@ -25,10 +25,3 @@ Information about the API server and how to use it can be found in its [README f
 
 To accesss the backend server in your code, we have stored the URL to the API server in the environment variable `REACT_APP_BACKEND` which you can access in your code using `process.env.REACT_APP_BACKEND`. You can see this in action in `frontend/src/App.js` in `componentDidMount`.
 
-
--2. All posts are listed at the root.
-3. Root list page has sort mechanism 
-4. Root list page has AddPost 
-
-Stretch Goals
--- Replace Immutability-Helper and lodash with Facebook's Immutable.js
