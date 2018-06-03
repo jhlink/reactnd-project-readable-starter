@@ -22,6 +22,8 @@ const EditDeleteBlock = (props) => {
 };
 
 EditDeleteBlock.propTypes = {
+  editLinkPath: PropTypes.string.isRequired,
+  deleteHandler: PropTypes.func.isRequired
 };
 
 export default EditDeleteBlock;
