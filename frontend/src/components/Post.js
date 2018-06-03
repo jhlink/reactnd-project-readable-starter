@@ -4,7 +4,6 @@ import CommentListLogic from '../containers/CommentListLogic';
 import PostCommentCounter from '../containers/PostCommentCounter';
 import CommentFormLogic from '../containers/CommentFormLogic';
 import { Route, Switch, NavLink, Redirect } from 'react-router-dom'; 
-import PostFormLogic from '../containers/PostFormLogic';
 import Voter from './Voter';
 import EditDeleteBlock from './EditDeleteBlock';
 
@@ -51,9 +50,6 @@ const Post = (props) => {
         </div>
       )}
       <Switch className="container-forms">
-        <Route path={match.url + '/editpost'} render={props => (
-          <PostFormLogic post={props.post} {...props}/>  
-        )}/>
         <Route path={'/:category/:parentId/addcomment'} component={ CommentFormLogic }/>
         <Route path={'/:category/:parentId/:commentId/editcomment'} component={ CommentFormLogic }/>
       </Switch>

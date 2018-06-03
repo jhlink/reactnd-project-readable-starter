@@ -87,15 +87,15 @@ class PostFormLogic extends Component {
 
   componentWillMount() {
     const isEditPost = this.props.match.url.includes('editpost') ? 'edit' : 'add';
+    const { postId } = this.props.match.params;
     this.setState({type: isEditPost});
 
     switch (isEditPost) {
       case 'edit':
-        if (this.props.post !== undefined) {
-          this.setState(
-            { post: this.props.post }
-          );
-        }
+        this.props.dispatch(FetchPost(postId));
+        this.setState({
+          type: 'edit'
+        });
         break;
 
       case 'add':
@@ -112,18 +112,15 @@ class PostFormLogic extends Component {
   componentWillReceiveProps(nextProps) {
     const { post, categories } = nextProps;
 
-    if (categories !== undefined) {
+    if (this.state.type === 'edit') {
       this.setState({
-        categories
+        post
       });
     }
 
-    if (this.state.type === 'edit') {
+    if (categories !== undefined) {
       this.setState({
-        post: {
-          ...post,
-          category: this.state.post.category
-        }
+        categories
       });
     }
   }

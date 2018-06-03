@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import PostDetailViewLogic from '../containers/PostDetailViewLogic';
 import PostCommentCounter from '../containers/PostCommentCounter';
+import PostFormLogic from '../containers/PostFormLogic';
 import EditDeleteBlock from './EditDeleteBlock';
 import Voter from './Voter';
 
@@ -56,7 +57,7 @@ const PostList = ( props ) =>  {
             </NavLink>
             <div className="structure-flex-col">
               <EditDeleteBlock 
-                editLinkPath={match.url + '/' + post.id}
+                editLinkPath={categoryUrl('') + '/' + post.id + '/editpost'}
                 deleteHandler={ (e) => { deleteHandler(post.id, e); }}/>
               <PostCommentCounter match={ match } postId={post.id}/>
               <Voter item={ post }
@@ -66,6 +67,7 @@ const PostList = ( props ) =>  {
         ))}
       </ul>
       <Switch> 
+        <Route path={'/:category?/:postId/editpost'} component={ PostFormLogic }/>
         <Route path={match.url + '/:postId'} component={ PostDetailViewLogic }/>
       </Switch>
     </div>
