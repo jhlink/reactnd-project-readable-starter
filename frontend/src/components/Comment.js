@@ -27,7 +27,10 @@ const Comment = (props) => {
 };
 
 Comment.propTypes = {
-  comment: PropTypes.object.isRequired
+  comment: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
+  voteHandler: PropTypes.func.isRequired,
+  deleteHandler: PropTypes.object.isRequired
 };
 
 export default Comment;
