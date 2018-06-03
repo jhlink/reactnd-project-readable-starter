@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import PostForm from '../components/PostForm';
 import { connect } from 'react-redux';
 import { PutPost, FetchPost, CreateNewPost, FetchCategories } from '../actions';
-import serializeForm from 'form-serialize';
 import uuidv4 from 'uuid/v4';
 import update from 'immutability-helper';
 
