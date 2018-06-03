@@ -164,12 +164,19 @@ function commentHandler (state = {}, action) {
       }; 
     }
 
-    case DELETE_COMMENT:
+    case DELETE_COMMENT:{
+      const comments = state.comments.filter(sComment =>  
+        sComment.id !== comment.id);
+      const checkedContainer = state.counts || {}; 
+      const commentCount = { [comment.parentId]: comments.length || 0 };
+      const counts = update(checkedContainer, {$merge: commentCount});
+
       return {
         ...state,
-        comments: state.comments.filter(sComment =>  
-          sComment.id !== comment.id)
+        counts,
+        comments 
       }; 
+    }
 
     case POST_VOTE_COMMENT:
       return {
