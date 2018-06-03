@@ -5,9 +5,6 @@ import Post from '../components/Post';
 import { FetchPost, SendVoteForPost, DeletePost } from '../actions';
 
 class PostDetailViewLogic extends Component {
-  /* TODO: Ask how if this is what production code looks like
-   *        and if components are initialized with props with lifecycle methods
-   */
   constructor(props) {
     super(props);
 
