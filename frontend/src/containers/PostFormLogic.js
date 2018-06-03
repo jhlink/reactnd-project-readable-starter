@@ -96,12 +96,13 @@ class PostFormLogic extends Component {
         break;
 
       case 'add':
-      default:
+      default: {
         const { categoryId } = this.props.match.params;
         if (categoryId) {
           this.handleSectionPostUpdate('category', categoryId);
         }
         this.props.dispatch(FetchCategories());
+      }
     }
   }
   
@@ -136,7 +137,13 @@ class PostFormLogic extends Component {
 }
 
 PostFormLogic.propTypes = {
-  post: PropTypes.object
+  post: PropTypes.object,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  categories: PropTypes.array,
+  dispatch: PropTypes.func.isRequired,
+  shouldRedirect: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
