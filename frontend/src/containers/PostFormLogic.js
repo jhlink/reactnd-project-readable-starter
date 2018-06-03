@@ -93,9 +93,6 @@ class PostFormLogic extends Component {
     switch (isEditPost) {
       case 'edit':
         this.props.dispatch(FetchPost(postId));
-        this.setState({
-          type: 'edit'
-        });
         break;
 
       case 'add':
@@ -112,7 +109,7 @@ class PostFormLogic extends Component {
   componentWillReceiveProps(nextProps) {
     const { post, categories } = nextProps;
 
-    if (this.state.type === 'edit') {
+    if (this.state.type === 'edit' && post !== undefined) {
       this.setState({
         post
       });
