@@ -72,10 +72,15 @@ class PostDetailViewLogic extends Component {
 }
 
 PostDetailViewLogic.propTypes = {
-  post: PropTypes.object
+  post: PropTypes.object,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  shouldRedirect: PropTypes.bool
 };
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const { post, shouldRedirect } = state.postHandler;
 
   return { post, shouldRedirect }; 
