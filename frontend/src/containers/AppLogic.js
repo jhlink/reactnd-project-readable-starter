@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FetchCategories } from '../actions';
+import PropTypes from 'prop-types';
 import App from '../components/App';
 import { withRouter } from 'react-router-dom';
 
@@ -29,11 +30,17 @@ class AppLogic extends Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   const { categories } = state.categoryHandler;
 
   return { categories };
 };
+
+AppLogic.propTypes = {
+  categories: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
+
 
 // TODO: Using withRouter here feels like a hack. Commit 859229a69 
 //   Is there a better way or is this the best method to use for production?
