@@ -58,7 +58,7 @@ const PostList = ( props ) =>  {
               <EditDeleteBlock 
                 editLinkPath={match.url + '/' + post.id}
                 deleteHandler={ (e) => { deleteHandler(post.id, e); }}/>
-              <PostCommentCounter postId={post.id}/>
+              <PostCommentCounter match={ match } postId={post.id}/>
               <Voter item={ post }
                 voteHandler={ voteHandler }/>
             </div>
