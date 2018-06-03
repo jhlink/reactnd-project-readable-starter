@@ -51,7 +51,7 @@ class PostFormLogic extends Component {
     e.preventDefault();
 
     switch (this.state.type) {
-      case 'edit':
+      case 'edit': {
         const postEditedText = {
           title: this.state.post.title,
           body: this.state.post.body
@@ -62,9 +62,10 @@ class PostFormLogic extends Component {
         }));
 
         break;
+      }
 
       case 'add':
-      default:
+      default:{
         const newPostData = {
           ...this.state.post,
           id: uuidv4(),
@@ -74,6 +75,7 @@ class PostFormLogic extends Component {
         this.props.dispatch(CreateNewPost(newPostData, () => {
           this.props.history.push('/' + this.state.post.category);
         }));
+      }
     }
   }
 
