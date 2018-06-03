@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CommentForm from '../components/CommentForm';
 import { connect } from 'react-redux';
-//import { PutPost, FetchPost, CreateNewPost } from '../actions';
 import { CreateNewComment, PutComment, FetchComment } from '../actions';
-//import serializeForm from 'form-serialize';
 import uuidv4 from 'uuid/v4';
 import update from 'immutability-helper';
 
@@ -163,7 +161,12 @@ class CommentFormLogic extends Component {
 }
 
 CommentFormLogic.propTypes = {
-  comment: PropTypes.object
+  comment: PropTypes.object,
+  dispatch: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
+  shouldRedirect: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
