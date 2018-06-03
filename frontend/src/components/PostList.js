@@ -78,7 +78,12 @@ const PostList = ( props ) =>  {
 };
 
 PostList.propTypes = {
-  posts: PropTypes.array.isRequired
+  posts: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
+  voteHandler: PropTypes.func.isRequired,
+  deleteHandler: PropTypes.func.isRequired,
+  sortValues: PropTypes.object.isRequired
 };
 
 export default PostList;
