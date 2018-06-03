@@ -6,9 +6,6 @@ import { FetchAllPosts, FetchCategoryPosts, SendVoteForPost, DeletePost } from '
 import _ from 'lodash';
 
 class PostListLogic extends Component {
-  /* TODO: Ask how if this is what production code looks like
-   *        and if components are initialized with props with lifecycle methods
-   */
   constructor(props) {
     super(props);
 
