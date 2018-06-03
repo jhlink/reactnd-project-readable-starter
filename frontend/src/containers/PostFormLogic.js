@@ -23,7 +23,8 @@ class PostFormLogic extends Component {
     this.state = {
       post: INIT_POST,
       type: '',
-      categories: []
+      categories: [],
+      shouldRedirect: false
     };
 
     this.handleCategorySelect = this.handleCategorySelect.bind(this);
@@ -106,11 +107,12 @@ class PostFormLogic extends Component {
   
 
   componentWillReceiveProps(nextProps) {
-    const { post, categories } = nextProps;
+    const { post, categories, shouldRedirect } = nextProps;
 
     if (this.state.type === 'edit' && post !== undefined) {
       this.setState({
-        post
+        post,
+        shouldRedirect
       });
     }
 
@@ -122,13 +124,14 @@ class PostFormLogic extends Component {
   }
   
   render() {
-    const { categories, post, type } = this.state;
+    const { categories, post, type, shouldRedirect } = this.state;
     return <PostForm handlePostSubmit={(e) => this.handlePostSubmit(e) }
       handlePostChange={(e) => this.handlePostChange(e) }
       handleCategorySelect={(e) => this.handleCategorySelect(e) }
       categories={ categories }
       post={ post }
-      type={ type }/>;
+      type={ type }
+      shouldRedirect={ shouldRedirect }/>;
   }
 }
 
@@ -137,9 +140,9 @@ PostFormLogic.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const { post } = state.postHandler;
+  const { post, shouldRedirect } = state.postHandler;
   const { categories } = state.categoryHandler;
-  return { post, categories };
+  return { post, categories, shouldRedirect };
 };
 
 export default connect(mapStateToProps)(PostFormLogic);

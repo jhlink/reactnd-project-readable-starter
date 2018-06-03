@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 const PostForm = (props) => {
   const { post,
@@ -7,7 +8,8 @@ const PostForm = (props) => {
     handlePostSubmit, 
     handlePostChange,
     handleCategorySelect,
-    categories
+    categories,
+    shouldRedirect 
   } = props;
 
   const {
@@ -21,6 +23,9 @@ const PostForm = (props) => {
 
   return (
     <div className="main-body">
+      { shouldRedirect && (
+        <Redirect from="*" to="/404"/>
+      )}
       <h2 className="uppercase">{ type } Post about { category } Category</h2>
       { !isEditForm && ( 
         <div className="structure-flex-col"> 
