@@ -47,6 +47,9 @@ const CommentForm = (props) => {
 };
 
 CommentForm.propTypes = {
+  comment: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
+  shouldRedirect: PropTypes.bool,
   handleCommentSubmit: PropTypes.func.isRequired,
   handleCommentChange: PropTypes.func.isRequired
 };
