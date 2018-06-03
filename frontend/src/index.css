@@ -38,6 +38,13 @@ li.comment {
 
 /* Text Styling */ 
 
+.error {
+  font-size: 12em;
+  margin-top: 1em;
+  vertical-align: center;
+  text-align: center;
+}
+
 .subtitle-style {
   font-size: 1em;
   font-weight: 300;
