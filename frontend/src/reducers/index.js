@@ -114,13 +114,18 @@ function commentHandler (state = {}, action) {
         comments
       };
 
-    case POST_NEW_COMMENT:
+    case POST_NEW_COMMENT:{
+      const comments = update(state.comments, {$push: [ comment ]});
+      const checkedContainer = state.counts || {}; 
+      const commentCount = { [comment.parentId]: comments.length || 0 };
+      const counts = update(checkedContainer, {$merge: commentCount});
       return {
         ...state,
-        comments: update(state.comments, 
-          {$push: [ comment ]}),
+        counts,
+        comments,
         comment
       };
+    }
 
     case GET_COMMENT_COUNT: {
       const checkedContainer = state.counts || []; 
